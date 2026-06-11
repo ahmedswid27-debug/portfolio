@@ -29,7 +29,7 @@ export default function CountUp({ value, className }: { value: string; className
 
   if (!hasNum) return <span className={className}>{value}</span>;
   return (
-    <span className={className} dir="ltr">
+    <span className={className}>
       {prefix}
       {n.toLocaleString("en-US")}
       {suffix}
