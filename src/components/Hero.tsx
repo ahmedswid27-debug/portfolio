@@ -17,7 +17,8 @@ export default function Hero({ c }: { c: Content }) {
           </span>
 
           <h1 className="rise d1 font-display font-black tracking-normal leading-[1.15] text-4xl sm:text-5xl lg:text-[56px]">
-            {ui.hero.iAm}{profile.name}
+            {ui.hero.iAm}
+            <span className="text-gold-shine">{profile.name}</span>
             <br />
             <span className="text-gold-grad">{profile.title.split("·")[0].trim()}</span>
           </h1>

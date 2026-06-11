@@ -12,6 +12,8 @@ import Credentials from "./Credentials";
 import Disciplines from "./Disciplines";
 import Contact from "./Contact";
 import ChatWidget from "./ChatWidget";
+import ScrollReveal from "./ScrollReveal";
+import ScrollProgress from "./ScrollProgress";
 
 export default function Portfolio({ lang }: { lang: Lang }) {
   const c = getContent(lang);
@@ -23,6 +25,12 @@ export default function Portfolio({ lang }: { lang: Lang }) {
 
   return (
     <main dir={c.ui.dir}>
+      <div className="ambient" aria-hidden="true">
+        <span />
+        <span />
+      </div>
+      <ScrollProgress />
+      <ScrollReveal />
       <Nav c={c} lang={lang} />
       <Hero c={c} />
       <About c={c} />
