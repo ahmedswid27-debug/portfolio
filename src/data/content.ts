@@ -32,7 +32,7 @@ export type UI = {
     rows: { phone: string; email: string; linkedin: string };
     footer: string;
   };
-  chat: { greeting: string; ask: string; status: string; suggestions: string[]; placeholder: string; error: string };
+  chat: { greeting: string; ask: string; fab: string; status: string; suggestions: string[]; placeholder: string; error: string };
   cv: { back: string; print: string; summary: string; experience: string; skills: string; core: string; tech: string; certs: string; languages: string; courses: string };
 };
 
@@ -61,8 +61,8 @@ const AR_UI: UI = {
     startProject: "ابدأ مشروعاً", pdf: "PDF ⤓", cvMobile: "السيرة الذاتية · طباعة PDF ⤓",
   },
   hero: {
-    badge: "متاح للعمل الحر والاستشارات", iAm: "أنا",
-    ctaWork: "استعرض أعمالي", ctaContact: "تواصل معي", ctaCv: "السيرة الذاتية ⤓",
+    badge: "متاح للعمل الحر والاستشارات", iAm: "",
+    ctaWork: "نماذج للأعمال", ctaContact: "تواصل معي", ctaCv: "السيرة الذاتية ⤓",
     cardTop: "خبير Power BI", cardSub: "CAPM® · محلل أعمال وبيانات",
   },
   sec: {
@@ -92,10 +92,10 @@ const AR_UI: UI = {
     footer: "صُمّم وبُرمج بـ Next.js وذكاء Claude.",
   },
   chat: {
-    greeting: "أهلاً 👋 أنا المساعد الذكي لأحمد. اسألني أي شيء عن أعماله، خبراته، أو كيف يقدر يساعدك.",
-    ask: "اسأل عن أحمد", status: "مساعد ذكي · رد فوري",
-    suggestions: ["إيش بيشتغل أحمد بالضبط؟", "وريني أعمال تحليل البيانات", "تقدر تبنيلي لوحة تحكم؟"],
-    placeholder: "اكتب سؤالك…", error: "عذراً، تعذّر الوصول للخادم. راسلني على ",
+    greeting: "مرحبًا 👋 أنا المساعد الذكي لأحمد. اسألني أي شيء عن أعماله أو خبراته أو كيف يمكنه مساعدتك.",
+    ask: "اسأل عن أحمد", fab: "اسأل عن أحمد", status: "مساعد ذكي · ردّ فوري",
+    suggestions: ["ما الذي يعمل به أحمد؟", "أرني أعمال تحليل البيانات", "هل يمكنه بناء لوحة تحكم لي؟"],
+    placeholder: "اكتب سؤالك…", error: "عذرًا، تعذّر الوصول إلى الخادم. راسلني على ",
   },
   cv: {
     back: "← رجوع للموقع", print: "تحميل / طباعة PDF ⤓",
@@ -115,8 +115,8 @@ const EN_UI: UI = {
     startProject: "Start a project", pdf: "PDF ⤓", cvMobile: "Resume · Print PDF ⤓",
   },
   hero: {
-    badge: "Available for freelance & consulting", iAm: "I'm",
-    ctaWork: "View my work", ctaContact: "Get in touch", ctaCv: "Resume ⤓",
+    badge: "Available for freelance & consulting", iAm: "I'm ",
+    ctaWork: "Work samples", ctaContact: "Get in touch", ctaCv: "Resume ⤓",
     cardTop: "Power BI Expert", cardSub: "CAPM® · Business & Data Analyst",
   },
   sec: {
@@ -147,7 +147,7 @@ const EN_UI: UI = {
   },
   chat: {
     greeting: "Hi 👋 I'm Ahmed's AI assistant. Ask me anything about his work, experience, or how he can help you.",
-    ask: "Ask about Ahmed", status: "AI assistant · instant",
+    ask: "Ask about Ahmed", fab: "Ask about Ahmed", status: "AI assistant · instant",
     suggestions: ["What does Ahmed do exactly?", "Show me data analysis work", "Can you build me a dashboard?"],
     placeholder: "Type your question…", error: "Sorry, couldn't reach the server. Email me at ",
   },

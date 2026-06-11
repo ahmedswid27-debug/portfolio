@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Content } from "@/data/content";
+import CountUp from "./CountUp";
 
 export default function Hero({ c }: { c: Content }) {
   const { profile, stats, ui } = c;
@@ -15,8 +16,8 @@ export default function Hero({ c }: { c: Content }) {
             {ui.hero.badge}
           </span>
 
-          <h1 className="rise d1 font-display font-black tracking-tight leading-[1.15] text-4xl sm:text-5xl lg:text-[56px]">
-            {ui.hero.iAm} {profile.name}
+          <h1 className="rise d1 font-display font-black tracking-normal leading-[1.15] text-4xl sm:text-5xl lg:text-[56px]">
+            {ui.hero.iAm}{profile.name}
             <br />
             <span className="text-gold-grad">{profile.title.split("·")[0].trim()}</span>
           </h1>
@@ -49,7 +50,7 @@ export default function Hero({ c }: { c: Content }) {
           <div className="rise d4 mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl">
             {stats.map((s) => (
               <div key={s.label}>
-                <p className="font-display text-2xl sm:text-3xl font-bold text-gold tabular">{s.value}</p>
+                <CountUp value={s.value} className="font-display text-2xl sm:text-3xl font-bold text-gold tabular block" />
                 <p className="text-xs text-white/50 mt-1 leading-snug">{s.label}</p>
               </div>
             ))}

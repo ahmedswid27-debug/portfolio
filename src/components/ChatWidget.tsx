@@ -59,8 +59,16 @@ export default function ChatWidget({ c }: { c: Content }) {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen((o) => !o)} aria-label="chat" className="no-print fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full bg-gradient-to-l from-gold2 to-gold shadow-xl shadow-gold/30 flex items-center justify-center text-2xl text-ink hover:scale-105 active:scale-95 transition-transform">
-        {open ? "✕" : "✦"}
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-label={t.fab}
+        className={`no-print fixed bottom-6 left-6 z-50 h-14 rounded-full bg-gradient-to-l from-gold2 to-gold shadow-xl shadow-gold/30 flex items-center justify-center text-ink hover:scale-105 active:scale-95 transition-transform ${
+          open ? "w-14" : "gap-2 px-5"
+        }`}
+      >
+        <span className="text-2xl leading-none">{open ? "✕" : "✦"}</span>
+        {!open && <span className="text-sm font-bold whitespace-nowrap">{t.fab}</span>}
       </button>
 
       <div className={`no-print fixed bottom-24 left-6 z-50 w-[min(92vw,380px)] origin-bottom-left transition-all duration-300 ${open ? "scale-100 opacity-100 pointer-events-auto" : "scale-90 opacity-0 pointer-events-none"}`}>

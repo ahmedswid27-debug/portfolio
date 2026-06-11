@@ -32,9 +32,9 @@ export default async function CvPage({
           <h1 className="font-display text-3xl font-extrabold text-gold-grad">{profile.fullName}</h1>
           <p className="mt-2 text-white/75 text-sm leading-relaxed">{profile.title}</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5 text-xs text-white/70">
-            <span dir="ltr">📞 {profile.phone}</span>
-            <span dir="ltr">✉️ {profile.email}</span>
-            <span dir="ltr">🔗 linkedin.com/in/ahmed-mahmoud-95aa1b2a5</span>
+            <a href={`tel:${profile.phoneIntl}`} dir="ltr" className="hover:text-gold transition-colors">📞 {profile.phone}</a>
+            <a href={`mailto:${profile.email}`} dir="ltr" className="hover:text-gold transition-colors">✉️ {profile.email}</a>
+            <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" dir="ltr" className="hover:text-gold transition-colors">🔗 linkedin.com/in/ahmed-mahmoud-95aa1b2a5</a>
             <span>📍 {profile.location}</span>
           </div>
         </header>
