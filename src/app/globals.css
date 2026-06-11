@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0B0E14;
+  --panel: #11161F;
+  --panel2: #161D29;
+  --gold: #C9A86A;
+  --gold2: #E6CF9B;
+  --goldDeep: #9A7B3F;
+  --saud: #1E6B4F;
+  --foreground: rgba(255, 255, 255, 0.85);
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-gold: var(--gold);
+  --color-gold2: var(--gold2);
+  --color-goldDeep: var(--goldDeep);
+  --color-saud: var(--saud);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 106, 0.25) transparent;
 }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(201, 168, 106, 0.25); border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 106, 0.45); }
 
 body {
-  background: var(--background);
+  background: #0B0E14;
+  background-image:
+    radial-gradient(900px 500px at 85% -5%, rgba(201, 168, 106, 0.1), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(30, 107, 79, 0.08), transparent 55%);
+  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── طبقة حبيبات خفيفة (grain) ── */
+.grain::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── خط ذهبي متدرّج ── */
+.hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(201, 168, 106, 0.55), transparent); }
+
+/* ── نص بتدرّج ذهبي ── */
+.text-gold-grad {
+  background: linear-gradient(180deg, #F3E4BE 0%, #C9A86A 55%, #9A7B3F 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ── إطار ذهبي زجاجي ── */
+.card-gold {
+  background: linear-gradient(180deg, rgba(22, 29, 41, 0.9), rgba(13, 17, 24, 0.9));
+  border: 1px solid rgba(201, 168, 106, 0.14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.card-gold:hover { border-color: rgba(201, 168, 106, 0.4); }
+
+/* ── حركات الظهور ── */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes glowPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes scrollCue { 0% { transform: translateY(0); opacity: 0.8; } 50% { transform: translateY(8px); opacity: 0.3; } 100% { transform: translateY(0); opacity: 0.8; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+.rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.fade { animation: fade 1.2s ease both; }
+.float { animation: float 6s ease-in-out infinite; }
+.cue { animation: scrollCue 2s ease-in-out infinite; }
+.glow { animation: glowPulse 3s ease-in-out infinite; }
+
+.d1 { animation-delay: 0.08s } .d2 { animation-delay: 0.16s } .d3 { animation-delay: 0.24s }
+.d4 { animation-delay: 0.32s } .d5 { animation-delay: 0.4s } .d6 { animation-delay: 0.48s }
+.d7 { animation-delay: 0.56s } .d8 { animation-delay: 0.64s }
+
+/* ── حد متوهّج عند المرور ── */
+.tile { position: relative; overflow: hidden; }
+.tile::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(201, 168, 106, 0.12) 50%, transparent 70%);
+  background-size: 200% 100%; opacity: 0; transition: opacity 0.4s;
+}
+.tile:hover::after { opacity: 1; animation: shimmer 1.2s ease; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* قائمة منسدلة — خلفية صلبة معتمة */
+.solid-menu { background: #0B0E14; border: 1px solid rgba(201, 168, 106, 0.35); }
+
+/* نقاط الكتابة للشات */
+.typing span {
+  display: inline-block; width: 6px; height: 6px; margin: 0 1px; border-radius: 50%;
+  background: var(--gold); animation: blink 1.4s infinite both;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+
+/* ═══ طباعة السيرة الذاتية على خلفية بيضاء ═══ */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body:has(.cv-root) {
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body:has(.cv-root) .grain::before { display: none !important; }
+  .no-print { display: none !important; }
+  .cv-sheet { box-shadow: none !important; }
 }
