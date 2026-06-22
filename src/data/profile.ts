@@ -118,6 +118,12 @@ export const certifications: {
 // الدورات التدريبية (شهادات إتمام — LinkedIn Learning)
 export const courses: { title: string; issuer: string; topic: string; link: string }[] = [
   {
+    title: "Claude 101",
+    issuer: "Anthropic",
+    topic: "ذكاء اصطناعي · Claude",
+    link: "/certs/courses/claude-101.pdf",
+  },
+  {
     title: "Complete Guide to Power BI for Data Analysts",
     issuer: "Microsoft Press · LinkedIn Learning",
     topic: "Power BI",
@@ -225,50 +231,68 @@ export const sections: Section[] = [
     layout: "gallery",
     items: [
       {
-        title: "لوحة معلومات قطاع الشمال",
-        desc: "لوحة تحليل البلاغات الرئيسية: 26,229 بلاغ، مؤشرات الإنجاز (94.6%) والتنفيذ (99.8%)، خريطة وتوزيعات.",
+        title: "لوحة المعلومات المركزية",
+        desc: "واجهة تنقّل تفاعلية تربط البلاغات والأصول والمعاملات والمشاريع في مكان واحد — قطاع الشمال.",
+        image: "/works/analysis/central-hub.png",
+        tags: ["Dashboard", "UX", "تصميم"],
+      },
+      {
+        title: "لوحة معلومات قطاع الشمال — البلاغات",
+        desc: "لوحة تحليل البلاغات الرئيسية: مؤشرات الإنجاز والتنفيذ، خريطة جغرافية، وتوزيعات حسب الحي.",
         image: "/works/analysis/north-complaints.jpg",
         tags: ["Power BI", "DAX", "KPIs"],
       },
       {
-        title: "تحليل بلاغات 940 — صيانة الإنارة",
-        desc: "لوحات تفاعلية متعددة لتحليل بلاغات الإنارة حسب النطاقات والأحياء وأهم المؤشرات.",
+        title: "لوحة الشكاوى والاستجابة",
+        desc: "متابعة الشكاوى وزمن الاستجابة والمعالجة مع خريطة توزيع جغرافي ومؤشرات شهرية.",
+        image: "/works/analysis/complaints-response.png",
+        tags: ["Power BI", "تحليل", "خرائط"],
+      },
+      {
+        title: "تحليل بلاغات 940",
+        desc: "لوحة تفاعلية لتحليل بلاغات 940 حسب النطاقات والأحياء وأهم المؤشرات التشغيلية.",
+        image: "/works/analysis/complaints-940.png",
+        tags: ["Power BI", "تحليل"],
+      },
+      {
+        title: "تحليل بلاغات الإنارة",
+        desc: "لوحات تفاعلية لتحليل بلاغات صيانة الإنارة حسب النطاقات والأحياء.",
         image: "/works/analysis/lighting-940.jpg",
         tags: ["Power BI", "تحليل"],
       },
       {
-        title: "لوحة البلاغات — عرض على الأجهزة اللوحية",
-        desc: "تصميم لوحة تحكم البلاغات (قطاع الجنوب) بتجربة استخدام تعمل على التابلت لمتابعة لحظية.",
-        image: "/works/analysis/complaints-tablet.jpg",
+        title: "لوحة التدفقات النقدية",
+        desc: "تحليل المخطّط مقابل المصروف والوفر عبر الأرباع، مع مؤشرات مالية تنفيذية.",
+        image: "/works/analysis/cashflows.png",
+        tags: ["Power BI", "تحليل مالي", "KPIs"],
+      },
+      {
+        title: "متابعة أعمال المشاريع",
+        desc: "لوحة متابعة الإنجاز ونسب التقدّم ومؤشرات الأداء على مستوى المشاريع.",
+        image: "/works/analysis/project-tracking.png",
+        tags: ["Power BI", "متابعة", "KPIs"],
+      },
+      {
+        title: "الأداء التنفيذي للمبيعات العالمية",
+        desc: "لوحة Power BI: مقارنة سنوية، مستهدف مقابل محقّق، نمو سنوي بأسهم، وخريطة جغرافية — بيانات توضيحية.",
+        image: "/works/analysis/sales-global.png",
+        tags: ["Power BI", "DAX", "YoY"],
+      },
+      {
+        title: "لوحة على الأجهزة اللوحية",
+        desc: "تصميم لوحة تحكم بتجربة استخدام تعمل على التابلت لمتابعة لحظية.",
+        image: "/works/analysis/dashboard-tablet.jpg",
         tags: ["Dashboard", "UX"],
       },
       {
         title: "مؤشر أداء التوطين",
-        desc: "إنفوجرافيك تحليلي لنسب التوطين عبر 5 مشاريع و129 موظفاً فنياً و10 جنسيات.",
+        desc: "إنفوجرافيك تحليلي لنسب التوطين عبر المشاريع والموظفين الفنيين والجنسيات.",
         image: "/works/analysis/localization-pro.jpg",
         tags: ["إنفوجرافيك", "تحليل"],
       },
       {
-        title: "تقرير الأعمال التنفيذية السنوي",
-        desc: "إنفوجرافيك تنفيذي يلخّص مؤشرات الأداء: 2,240 موظفاً، 1,190 معدة، ومستوى الإنجاز.",
-        image: "/works/analysis/exec-report.jpg",
-        tags: ["تقرير تنفيذي", "إنفوجرافيك"],
-      },
-      {
-        title: "لوحة المعلومات المركزية",
-        desc: "واجهة تنقّل تفاعلية تربط أصول الحدائق والطرق والإنارة والمعاملات والمشاريع في مكان واحد.",
-        image: "/works/analysis/north-hub.jpg",
-        tags: ["Dashboard", "UX", "تصميم"],
-      },
-      {
-        title: "تحليل أصول الإنارة",
-        desc: "لوحة تحليل أصول الإنارة: 340 محطة، 50,502 عمود، 2.7 مليون متر كابل، مع خريطة توزيع جغرافي.",
-        image: "/works/analysis/lighting-assets.jpg",
-        tags: ["Power BI", "أصول", "خرائط"],
-      },
-      {
         title: "تحليل أصول الحدائق",
-        desc: "لوحة تحليل أصول الحدائق: 469 حديقة، أشجار ومضخات وآبار، مع توزيع جغرافي ومؤشرات لكل حي.",
+        desc: "لوحة تحليل أصول الحدائق: حدائق وأشجار ومضخات وآبار، مع توزيع جغرافي ومؤشرات لكل حي.",
         image: "/works/analysis/gardens-assets.jpg",
         tags: ["Power BI", "أصول", "تحليل"],
       },

@@ -80,10 +80,6 @@ export default function Contact({ c }: { c: Content }) {
         </div>
       </div>
 
-      <footer className="mt-14 text-center text-sm text-white/40">
-        <div className="w-full hairline mb-6" />
-        © {new Date().getFullYear()} {profile.fullName}. {t.footer}
-      </footer>
     </section>
   );
 }

@@ -193,6 +193,11 @@ body {
 /* ═══ طباعة السيرة الذاتية على خلفية بيضاء ═══ */
 @media print {
   @page { size: A4; margin: 12mm; }
+  /* إظهار كل الأقسام في الطباعة/PDF (تعطيل أنيميشن الظهور بالتمرير) */
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .rise { animation: none !important; opacity: 1 !important; transform: none !important; }
+  main section { opacity: 1 !important; transform: none !important; break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   body:has(.cv-root) {
     background: #ffffff !important;
     -webkit-print-color-adjust: exact;
