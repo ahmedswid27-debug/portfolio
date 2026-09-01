@@ -24,7 +24,7 @@ export default function Nav({ c, lang }: { c: Content; lang: Lang }) {
           <span className="text-white/40 text-sm hidden sm:inline"> · {c.profile.titleShort}</span>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-6 text-sm text-white/65">
+        <ul className="hidden lg:flex items-center gap-6 text-sm text-white/76">
           {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="hover:text-gold transition-colors">

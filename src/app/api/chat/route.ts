@@ -7,7 +7,22 @@ function buildSystemPrompt(lang: Lang) {
   const c = getContent(lang);
   const { profile, sections, stats } = c;
   const sectionLines = sections
-    .map((s) => `▪ ${s.name} — ${s.sub}\n${s.items.map((i) => `   • ${i.title}: ${i.desc}`).join("\n")}`)
+    .map((s) => {
+      const items = s.items
+        .map((i) => {
+          // الأعمال الرئيسية تدخل بأرقامها وقدراتها لا بعنوانها فقط.
+          const extra = [
+            i.org && `     ${i.org}`,
+            i.metrics && `     ${i.metrics.map((m) => `${m.value} ${m.label}`).join(" · ")}`,
+            i.highlights && i.highlights.map((h) => `     - ${h}`).join("\n"),
+          ]
+            .filter(Boolean)
+            .join("\n");
+          return `   • ${i.title}: ${i.desc}${extra ? `\n${extra}` : ""}`;
+        })
+        .join("\n");
+      return `▪ ${s.name} — ${s.sub}\n${items}`;
+    })
     .join("\n\n");
   const statLines = stats.map((s) => `${s.value} ${s.label}`).join(" · ");
   const intro =
@@ -28,22 +43,30 @@ function localAnswer(question: string, lang: Lang): string {
     return en
       ? `You can reach Ahmed on WhatsApp ${c.profile.phone} or email ${c.profile.email}. He's available for freelance & consulting.`
       : `يمكنك التواصل مع أحمد عبر واتساب ${c.profile.phone} أو البريد ${c.profile.email}. وهو متاح للعمل الحر والاستشارات.`;
+  if (has("مخاطر", "خطورة", "سلامة", "risk", "safety"))
+    return en
+      ? `One of Ahmed's strongest pieces: a risk analysis of Riyadh's street-lighting network that classified 60,658 poles and 445 stations into five risk tiers from resistance and current-leakage readings — so repair priority rests on measurement, not judgement. It's in the Data Analytics section.`
+      : `من أقوى أعمال أحمد: تحليل مخاطر شبكة الإنارة في الرياض — صنّف 60,658 عمود إنارة و445 محطة إلى خمس درجات خطورة من قراءات المقاومة والتسريب، فصار ترتيب أولويات الإصلاح مبنيّاً على قياس لا على اجتهاد. تجده في قسم "تحليل البيانات".`;
+  if (has("evm", "قيمة مكتسبة", "spi", "مشاريع", "project", "capm", "إدارة مشاريع"))
+    return en
+      ? `Ahmed holds the CAPM certification and builds earned-value (EVM) performance boards — schedule and cost performance indices per contract, planned versus actual by month, plus collection and budget-adherence rates.`
+      : `أحمد حاصل على شهادة CAPM، ويبني لوحات أداء بمنهج القيمة المكتسبة (EVM): مؤشر أداء الجدول والتكلفة لكل عقد، والمخطّط مقابل الفعلي شهرياً، ونِسب التحصيل والالتزام بالموازنة.`;
   if (has("power bi", "داشبورد", "لوحة", "dashboard", "تحليل", "analy", "بيانات", "data"))
     return en
-      ? `Ahmed is a certified Power BI expert. He builds interactive dashboards and executive reports — see the Data Analytics section for real work at Riyadh Municipality.`
-      : `أحمد خبير معتمد في Power BI، ويبني لوحات تحليل تفاعلية وتقارير تنفيذية — يمكنك الاطّلاع على قسم "تحليل البيانات" لأعماله الفعلية في أمانة الرياض.`;
+      ? `Ahmed is a certified Power BI expert. His boards run real operations at Riyadh Municipality — lighting risk analysis over 60,658 poles, complaint analytics, earned-value project performance, and executive KPI dashboards. See the Data Analytics section.`
+      : `أحمد خبير معتمد في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر 60,658 عمود إنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
   if (has("تدريب", "كورس", "دورة", "train", "course", "workshop"))
     return en
       ? `Ahmed has trained 150+ employees and delivered an official "Business Analysis with Power BI" course. See the Training section for photos.`
       : `درّب أحمد أكثر من 150 موظفًا وقدّم دورة رسمية بعنوان "تحليل الأعمال باستخدام Power BI". يمكنك مشاهدة الصور في قسم "التدريب".`;
-  if (has("أتمتة", "بوت", "automation", "bot", "n8n", "ai"))
+  if (has("أتمتة", "بوت", "الوسط", "وسط", "منصة", "نظام", "automation", "bot", "n8n", "ai", "wasat", "platform", "system"))
     return en
-      ? `Ahmed builds automation with n8n and AI bots (Claude/Gemini) — including an enterprise system for Riyadh Municipality. See the Automation section.`
-      : `يبني أحمد أنظمة أتمتة باستخدام n8n وبوتات ذكاء اصطناعي (Claude/Gemini) — منها نظام مؤسسي لأمانة الرياض. اطّلع على قسم "الأتمتة".`;
-  if (has("خبرة", "experience", "سنوات", "years", "من هو", "who"))
+      ? `Ahmed builds full operational platforms. His flagship is the Wasat Sector platform for Riyadh Municipality: 34 analytical screens running SAR 179.3M of maintenance contracts, 7,709 complaints mapped across eight zones, EVM forecasting, a Claude assistant on Telegram, and a daily executive report. See the Automation section.`
+      : `يبني أحمد منصّات تشغيلية كاملة. وأبرزها منصة قطاع الوسط لأمانة الرياض: 34 شاشة تحليلية تدير عقود صيانة بقيمة 179.3 مليون ريال، وخريطة لـ7,709 بلاغات على ثمانية نطاقات، وتنبؤ EVM، ومساعد Claude على تيليجرام، وتقرير تنفيذي يومي. اطّلع على قسم "الأتمتة".`;
+  if (has("خبرة", "experience", "سنوات", "years", "من هو", "who", "توظيف", "وظيفة", "hire", "hiring"))
     return en
-      ? `Ahmed is a Business & Data Analyst at Riyadh Municipality with 5+ years of practical experience and CAPM certification.`
-      : `أحمد محلل أعمال وبيانات في أمانة الرياض، يتمتّع بخبرة تزيد عن 5 سنوات عملية وحاصل على شهادة CAPM.`;
+      ? `Ahmed is a Business & Data Analyst at Riyadh Municipality — 5+ years, CAPM certified, certified Power BI expert. He has built and operates a platform running SAR 179.3M of contracts, risk-classified 60,000+ lighting poles, and trained 150+ employees. He's open to opportunities — ${c.profile.email}.`
+      : `أحمد محلل أعمال وبيانات في أمانة الرياض — أكثر من 5 سنوات، حاصل على CAPM، وخبير معتمد في Power BI. بنى ويشغّل منصّة تدير عقوداً بقيمة 179.3 مليون ريال، وصنّف مخاطر أكثر من 60 ألف عمود إنارة، ودرّب أكثر من 150 موظفاً. وهو منفتح على الفرص — ${c.profile.email}.`;
   return en
     ? `Ahmed is a Business & Data Analyst and certified Power BI expert. Ask me about his analytics, automation, design, or training work — or reach him at ${c.profile.email}.`
     : `أحمد محلل أعمال وبيانات وخبير معتمد في Power BI. اسألني عن أعماله في التحليل أو الأتمتة أو التصميم أو التدريب، أو تواصل معه عبر ${c.profile.email}.`;

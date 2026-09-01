@@ -33,7 +33,7 @@ export default function Contact({ c }: { c: Content }) {
   ];
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-24 scroll-mt-20">
+    <section id="contact" className="mx-auto max-w-6xl px-6 sm:px-10 py-24 scroll-mt-24">
       <div className="relative overflow-hidden card-gold rounded-3xl px-6 py-14 sm:px-12">
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-[80%] bg-gold/15 blur-[100px] rounded-full" />
 
@@ -44,14 +44,14 @@ export default function Contact({ c }: { c: Content }) {
               <div className="w-16 hairline" />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">{t.title}</h2>
-            <p className="mt-4 text-white/60 max-w-md mx-auto lg:mx-0 leading-relaxed">{t.sub}</p>
+            <p className="mt-4 text-white/72 max-w-md mx-auto lg:mx-0 leading-relaxed">{t.sub}</p>
 
             <div className="mt-8 space-y-3 max-w-md mx-auto lg:mx-0">
               {rows.map((row) => (
                 <div key={row.key} className="flex items-center gap-3 bg-ink/40 border border-gold/15 rounded-xl px-4 py-3">
                   <span className="text-lg shrink-0">{row.icon}</span>
                   <div className="min-w-0 flex-1 text-start">
-                    <p className="text-[11px] text-white/45">{row.label}</p>
+                    <p className="text-[11px] text-white/72">{row.label}</p>
                     <a href={row.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/85 hover:text-gold transition-colors truncate block text-start" dir="ltr">
                       {row.value}
                     </a>
@@ -68,9 +68,9 @@ export default function Contact({ c }: { c: Content }) {
             <h3 className="font-display font-bold text-lg mb-5 flex items-center gap-2">
               <span className="text-gold">✦</span> {t.sendTitle}
             </h3>
-            <label className="block text-sm text-white/60 mb-1.5">{t.nameLabel}</label>
+            <label className="block text-sm text-white/72 mb-1.5">{t.nameLabel}</label>
             <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t.namePh} className="w-full bg-panel2 border border-gold/15 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-gold/50 transition-colors mb-4" />
-            <label className="block text-sm text-white/60 mb-1.5">{t.msgLabel}</label>
+            <label className="block text-sm text-white/72 mb-1.5">{t.msgLabel}</label>
             <textarea value={msg} onChange={(e) => setMsg(e.target.value)} placeholder={t.msgPh} rows={4} className="w-full bg-panel2 border border-gold/15 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-gold/50 transition-colors mb-5 resize-none" />
             <button type="submit" className="w-full px-6 py-3.5 rounded-full font-bold text-ink bg-gradient-to-l from-gold2 to-gold shadow-lg shadow-gold/20 hover:shadow-gold/40 transition-shadow">
               {t.send}

@@ -1,42 +1,37 @@
 import type { Content } from "@/data/content";
-
-function Chips({ items, accent }: { items: string[]; accent: string }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {items.map((s) => (
-        <span key={s} className={`text-sm px-3 py-1.5 rounded-full border transition-colors ${accent}`}>
-          {s}
-        </span>
-      ))}
-    </div>
-  );
-}
+import SectionHead from "./SectionHead";
 
 export default function SkillsSection({ c }: { c: Content }) {
-  const { skills, ui } = c;
+  const { skillGroups, ui } = c;
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-20 scroll-mt-20">
-      <div className="flex items-center gap-3 mb-3">
-        <span className="text-gold text-xl">❖</span>
-        <span className="font-mono text-xs text-gold/60">07</span>
-        <div className="flex-1 hairline" />
-      </div>
-      <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">{ui.sec.skills}</h2>
+    <section id="skills" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
+      <SectionHead n={7} icon="❖" title={ui.sec.skills} img="/riyadh/street.jpg" />
 
-      <div className="mt-10 grid md:grid-cols-2 gap-6">
-        <div className="card-gold rounded-2xl p-7">
-          <h3 className="font-display font-bold text-lg mb-5 flex items-center gap-2">
-            <span className="text-gold">◆</span> {ui.skills.core}
-          </h3>
-          <Chips items={skills.core} accent="bg-gold/8 border-gold/20 text-white/80 hover:border-gold/50" />
-        </div>
+      {/* كل مجموعة بدليلها — الرقاقة وحدها لا تقول للقارئ شيئاً */}
+      <div className="stagger grid gap-5 md:grid-cols-2">
+        {skillGroups.map((g) => (
+          <article key={g.title} className="tile card-gold rounded-2xl p-6 sm:p-7 flex flex-col">
+            <div className="flex items-center gap-3">
+              <span className="grid place-items-center h-9 w-9 rounded-lg bg-gold/10 border border-gold/25 text-gold text-sm">
+                {g.icon}
+              </span>
+              <h3 className="font-display font-bold text-lg leading-snug">{g.title}</h3>
+            </div>
 
-        <div className="card-gold rounded-2xl p-7">
-          <h3 className="font-display font-bold text-lg mb-5 flex items-center gap-2">
-            <span className="text-gold">⚡</span> {ui.skills.technical}
-          </h3>
-          <Chips items={skills.technical} accent="bg-saud/12 border-saud/30 text-emerald-100/85 hover:border-saud/60" />
-        </div>
+            <p className="mt-3.5 text-[13px] text-white/62 leading-loose">{g.proof}</p>
+
+            <div className="mt-5 pt-4 border-t border-gold/10 flex flex-wrap gap-1.5">
+              {g.items.map((it) => (
+                <span
+                  key={it}
+                  className="text-[11.5px] px-2.5 py-1 rounded-md bg-gold/[0.07] border border-gold/15 text-gold/85"
+                >
+                  {it}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

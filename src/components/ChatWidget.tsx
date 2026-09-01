@@ -77,7 +77,7 @@ export default function ChatWidget({ c }: { c: Content }) {
             <div className="h-9 w-9 rounded-full bg-gradient-to-l from-gold2 to-gold flex items-center justify-center text-ink">✦</div>
             <div>
               <p className="text-sm font-bold leading-tight">{t.ask}</p>
-              <p className="text-[11px] text-white/45">{t.status}</p>
+              <p className="text-[11px] text-white/72">{t.status}</p>
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function ChatWidget({ c }: { c: Content }) {
             {messages.length === 1 && (
               <div className="flex flex-wrap gap-2 pt-2">
                 {t.suggestions.map((s) => (
-                  <button type="button" key={s} onClick={() => send(s)} className="text-xs px-3 py-1.5 rounded-full border border-gold/20 text-white/60 hover:text-gold hover:border-gold/50 transition-colors">
+                  <button type="button" key={s} onClick={() => send(s)} className="text-xs px-3 py-1.5 rounded-full border border-gold/20 text-white/72 hover:text-gold hover:border-gold/50 transition-colors">
                     {s}
                   </button>
                 ))}

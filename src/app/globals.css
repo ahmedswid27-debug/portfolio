@@ -61,13 +61,22 @@ body {
 
 /* ── إطار ذهبي زجاجي ── */
 .card-gold {
-  background: linear-gradient(180deg, rgba(22, 29, 41, 0.9), rgba(13, 17, 24, 0.9));
-  border: 1px solid rgba(201, 168, 106, 0.14);
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(201, 168, 106, 0.07), transparent 55%),
+    linear-gradient(180deg, rgba(26, 34, 48, 0.92), rgba(13, 17, 24, 0.94));
+  border: 1px solid rgba(201, 168, 106, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 30px -18px rgba(0, 0, 0, 0.9);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.35s ease;
 }
-.card-gold:hover { border-color: rgba(201, 168, 106, 0.4); }
+.card-gold:hover {
+  border-color: rgba(201, 168, 106, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 18px 44px -20px rgba(0, 0, 0, 1),
+              0 0 0 1px rgba(201, 168, 106, 0.06);
+}
 
 /* ── حركات الظهور ── */
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
@@ -98,6 +107,10 @@ body {
 
 .tabular { font-variant-numeric: tabular-nums; }
 
+/* قائمةٌ تنساب بلا شريط تمرير مرئي — الشريط كان يظهر خطاً ذهبياً دخيلاً */
+.no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+.no-sb::-webkit-scrollbar { width: 0; height: 0; }
+
 /* قائمة منسدلة — خلفية صلبة معتمة */
 .solid-menu { background: #0B0E14; border: 1px solid rgba(201, 168, 106, 0.35); }
 
@@ -121,6 +134,28 @@ body {
   transform: none;
 }
 
+/* أبناء القسم يظهرون تباعاً — الحركة تهمس ولا تصرخ */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal-in .stagger > * { opacity: 1; transform: none; }
+.reveal-in .stagger > *:nth-child(1) { transition-delay: 0.05s }
+.reveal-in .stagger > *:nth-child(2) { transition-delay: 0.11s }
+.reveal-in .stagger > *:nth-child(3) { transition-delay: 0.17s }
+.reveal-in .stagger > *:nth-child(4) { transition-delay: 0.23s }
+.reveal-in .stagger > *:nth-child(5) { transition-delay: 0.29s }
+.reveal-in .stagger > *:nth-child(6) { transition-delay: 0.35s }
+.reveal-in .stagger > *:nth-child(n+7) { transition-delay: 0.4s }
+
+/* تكبيرٌ بطيء لصورة الواجهة — Ken Burns */
+@keyframes kenburns {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.09) translate3d(0, -1.5%, 0); }
+}
+.kenburns { animation: kenburns 34s ease-in-out infinite alternate; will-change: transform; }
+
 /* ═══ توهّج ذهبي متحرك في الخلفية ═══ */
 .ambient {
   position: fixed;
@@ -134,8 +169,8 @@ body {
   width: 48vw;
   height: 48vw;
   border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.14;
+  filter: blur(100px);
+  opacity: 0.26;
   will-change: transform;
 }
 .ambient span:nth-child(1) {
@@ -149,6 +184,19 @@ body {
   bottom: -14%;
   left: -10%;
   animation: drift-b 32s ease-in-out infinite alternate;
+}
+.ambient span:nth-child(3) {
+  background: radial-gradient(circle, #c9a86a, transparent 62%);
+  top: 42%;
+  left: 22%;
+  width: 34vw;
+  height: 34vw;
+  opacity: 0.14;
+  animation: drift-c 38s ease-in-out infinite alternate;
+}
+@keyframes drift-c {
+  from { transform: translate(0, 0) scale(0.9); }
+  to { transform: translate(10vw, -12vh) scale(1.15); }
 }
 @keyframes drift-a {
   from { transform: translate(0, 0) scale(1); }
@@ -187,12 +235,14 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .kenburns { animation: none !important; }
   .ambient span, .text-gold-shine { animation: none; }
 }
 
 /* ═══ طباعة السيرة الذاتية على خلفية بيضاء ═══ */
 @media print {
-  @page { size: A4; margin: 12mm; }
+  @page { size: A4; margin: 9mm; }
   /* إظهار كل الأقسام في الطباعة/PDF (تعطيل أنيميشن الظهور بالتمرير) */
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .rise { animation: none !important; opacity: 1 !important; transform: none !important; }
@@ -206,4 +256,21 @@ body {
   body:has(.cv-root) .grain::before { display: none !important; }
   .no-print { display: none !important; }
   .cv-sheet { box-shadow: none !important; }
+}
+
+/* ═══ السيرة الذاتية: صفحة واحدة عند الطباعة ═══
+   مراجعة JobLeads: مسؤول التوظيف يمسح سريعاً، فالمهمّ يجب أن يُرى فوراً.
+   خطٌّ واحد (خطّ المتن) — التسلسل بالحجم والوزن لا بتبديل نوع الخط. */
+@media print {
+  /* خطّ الموقع نفسه في الطباعة: ما يُرى على الشاشة هو ما يُطبع.
+     ⚠ حجم PDF الناتج ~٣ م.ب لأن Chrome يضمّن الخط العربيّ كاملاً ولا يجزّئه،
+     وجُرّبت بدائل النظام (Tahoma / Arial) فأصلحت لغةً وأفسدت الأخرى.
+     إن رفضت بوّابةُ توظيفٍ الحجم فالحلّ سطرٌ واحد هنا: بدّل الخطّ بـTahoma. */
+  .cv-root, .cv-root * { font-family: var(--font-body), "Segoe UI", Tahoma, sans-serif !important; }
+  .cv-sheet { max-width: none !important; }
+  .cv-root .space-y-5 > * + * { margin-top: 9px !important; }
+  .cv-root header { padding: 12px 24px !important; }
+  .cv-root .px-9 { padding-left: 24px !important; padding-right: 24px !important; }
+  .cv-root .py-6 { padding-top: 12px !important; padding-bottom: 12px !important; }
+  .cv-root section h2 { margin-bottom: 5px !important; }
 }

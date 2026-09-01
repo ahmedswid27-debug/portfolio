@@ -1,16 +1,12 @@
 import Image from "next/image";
 import type { Content } from "@/data/content";
+import SectionHead from "./SectionHead";
 
 export default function Credentials({ c }: { c: Content }) {
   const { certifications, courses, languages, ui } = c;
   return (
-    <section id="credentials" className="mx-auto max-w-6xl px-6 py-20 scroll-mt-20">
-      <div className="flex items-center gap-3 mb-3">
-        <span className="text-gold text-xl">❂</span>
-        <span className="font-mono text-xs text-gold/60">08</span>
-        <div className="flex-1 hairline" />
-      </div>
-      <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">{ui.sec.credentials}</h2>
+    <section id="credentials" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
+      <SectionHead n={8} icon="❂" title={ui.sec.credentials} img="/riyadh/skyline-sunset.jpg" />
 
       <div className="mt-10 grid lg:grid-cols-[1.3fr_0.7fr] gap-6">
         <div className="space-y-5">
@@ -25,7 +21,7 @@ export default function Credentials({ c }: { c: Content }) {
               )}
               <div className="min-w-0">
                 <h3 className="font-display font-bold leading-snug group-hover:text-gold transition-colors">{cert.title}</h3>
-                <p className="mt-1 text-sm text-white/55">{cert.issuer}</p>
+                <p className="mt-1 text-sm text-white/68">{cert.issuer}</p>
                 {cert.meta && <p className="mt-1 text-xs text-gold/70">{cert.meta}</p>}
                 {cert.link && <span className="mt-2 inline-block text-xs text-gold/80">{ui.creds.viewCert}</span>}
               </div>
@@ -42,7 +38,7 @@ export default function Credentials({ c }: { c: Content }) {
               <div key={l.name}>
                 <div className="flex items-baseline justify-between mb-2">
                   <span className="font-medium">{l.name}</span>
-                  <span className="text-xs text-white/50">{l.level}</span>
+                  <span className="text-xs text-white/62">{l.level}</span>
                 </div>
                 <div className="h-2 rounded-full bg-white/8 overflow-hidden">
                   <div className="h-full rounded-full bg-gradient-to-l from-gold2 to-gold" style={{ width: `${l.pct}%` }} />
@@ -66,7 +62,7 @@ export default function Credentials({ c }: { c: Content }) {
                 <span className="text-gold/50 text-xs group-hover:text-gold transition-colors">PDF ↗</span>
               </div>
               <h4 className="text-sm font-bold leading-snug group-hover:text-gold transition-colors">{co.title}</h4>
-              <p className="mt-2 text-xs text-white/45 mt-auto pt-2">{co.issuer}</p>
+              <p className="mt-2 text-xs text-white/72 mt-auto pt-2">{co.issuer}</p>
             </a>
           ))}
         </div>

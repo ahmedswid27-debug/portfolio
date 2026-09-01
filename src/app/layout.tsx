@@ -17,7 +17,7 @@ const body = Tajawal({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ahmed-swid.vercel.app"),
+  metadataBase: new URL("https://www.ahmedswid.com"),
   title: `${profile.fullName} — ${profile.titleShort}`,
   description: profile.tagline,
   keywords: [
