@@ -48,7 +48,7 @@ export default function Hero({ c }: { c: Content }) {
                 value={s.value}
                 className="font-display text-2xl sm:text-[32px] font-bold text-gold tabular block leading-none"
               />
-              <p className="mt-2 text-[11px] sm:text-xs text-white/72 leading-snug">{s.label}</p>
+              <p className="mt-2 text-[12px] sm:text-xs text-white/72 leading-snug">{s.label}</p>
             </div>
           ))}
         </div>

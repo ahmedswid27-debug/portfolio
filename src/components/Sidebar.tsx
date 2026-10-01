@@ -27,6 +27,7 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
   const [active, setActive] = useState("about");
   const other = lang === "ar" ? "/en" : "/";
   const cvHref = lang === "en" ? "/cv?lang=en" : "/cv";
+  const trainingHref = lang === "en" ? "/en/training" : "/training";
 
   // القسم النشط = آخر قسم تجاوز ثلث الشاشة.
   useEffect(() => {
@@ -73,17 +74,17 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
     <>
       {/* شريط علوي للجوال */}
       <div className="no-print md:hidden fixed inset-x-0 top-0 z-[60] flex items-center gap-3 px-4 h-14 bg-ink/92 backdrop-blur border-b border-gold/12">
-        <button onClick={() => setOpen(true)} aria-label="menu" className="text-gold text-xl leading-none">
+        <button onClick={() => setOpen(true)} aria-label="menu" className="-ms-2 grid h-11 w-11 shrink-0 place-items-center text-gold text-xl leading-none">
           ☰
         </button>
-        <a href="#top" className="font-display font-bold text-sm text-gold-grad">
+        <a href="#top" className="flex min-h-11 items-center font-display font-bold text-sm text-gold-grad">
           {c.profile.name}
         </a>
         <div className="ms-auto flex items-center gap-2">
-          <a href={other} className="text-[11px] font-bold px-2.5 py-1.5 rounded-full border border-gold/30 text-gold">
+          <a href={other} className="grid min-h-11 min-w-11 place-items-center text-[12px] sm:text-[11px] font-bold px-3 rounded-full border border-gold/30 text-gold">
             {c.ui.toggle}
           </a>
-          <a href={cvHref} className="text-[11px] font-bold px-2.5 py-1.5 rounded-full border border-gold/30 text-gold">
+          <a href={cvHref} className="grid min-h-11 place-items-center text-[12px] sm:text-[11px] font-bold px-3 rounded-full border border-gold/30 text-gold">
             {c.ui.nav.pdf}
           </a>
         </div>
@@ -126,6 +127,13 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
             className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-[13px] font-bold text-ink bg-gradient-to-l from-gold2 to-gold"
           >
             {c.ui.nav.pdf}
+          </a>
+          {/* صفحةٌ مستقلّة لا مرساة — تُفتح بالتنقّل لا بالتمرير */}
+          <a
+            href={trainingHref}
+            className="flex items-center justify-center w-full py-2.5 rounded-lg text-[12px] border border-gold/30 text-gold/90 hover:bg-gold/[0.08] transition-colors"
+          >
+            {c.ui.nav.trainingPage}
           </a>
           <div className="flex gap-2">
             <a

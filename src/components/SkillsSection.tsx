@@ -18,7 +18,7 @@ export default function SkillsSection({ c }: { c: Content }) {
               <h3 className="font-display font-bold text-lg leading-snug">{g.title}</h3>
             </div>
 
-            <p className="mt-3.5 text-[13px] text-white/62 leading-loose">{g.proof}</p>
+            <p className="mt-3.5 text-[14px] sm:text-[13px] text-white/62 leading-loose">{g.proof}</p>
 
             <div className="mt-5 pt-4 border-t border-gold/10 flex flex-wrap gap-1.5">
               {g.items.map((it) => (

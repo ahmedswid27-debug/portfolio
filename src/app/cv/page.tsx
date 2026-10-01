@@ -53,11 +53,11 @@ export default async function CvPage({
   return (
     <div className="cv-root min-h-screen print:min-h-0 bg-[#11161F] py-8 px-4 print:p-0 print:bg-white" dir={dir}>
       <div className="no-print max-w-[820px] mx-auto mb-5 flex items-center justify-between">
-        <a href={lang === "en" ? "/en" : "/"} className="text-sm text-gold hover:underline">
+        <a href={lang === "en" ? "/en" : "/"} className="inline-flex min-h-11 items-center text-sm text-gold hover:underline">
           {ui.cv.back}
         </a>
         <div className="flex items-center gap-2">
-          <a href={lang === "en" ? "/cv" : "/cv?lang=en"} className="text-xs px-3 py-2 rounded-full border border-gold/30 text-gold">
+          <a href={lang === "en" ? "/cv" : "/cv?lang=en"} className="grid min-h-11 min-w-11 place-items-center text-xs px-3 rounded-full border border-gold/30 text-gold">
             {ui.toggle}
           </a>
           <PrintButton label={ui.cv.print} autoPrint={autoPrint} />

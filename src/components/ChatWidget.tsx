@@ -92,7 +92,7 @@ export default function ChatWidget({ c }: { c: Content }) {
             {messages.length === 1 && (
               <div className="flex flex-wrap gap-2 pt-2">
                 {t.suggestions.map((s) => (
-                  <button type="button" key={s} onClick={() => send(s)} className="text-xs px-3 py-1.5 rounded-full border border-gold/20 text-white/72 hover:text-gold hover:border-gold/50 transition-colors">
+                  <button type="button" key={s} onClick={() => send(s)} className="min-h-9 text-xs px-3.5 py-2 rounded-full border border-gold/20 text-white/72 hover:text-gold hover:border-gold/50 transition-colors">
                     {s}
                   </button>
                 ))}
@@ -101,8 +101,8 @@ export default function ChatWidget({ c }: { c: Content }) {
           </div>
 
           <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="p-3 border-t border-gold/15 flex items-center gap-2">
-            <input value={input} onChange={(e) => setInput(e.target.value)} placeholder={t.placeholder} className="flex-1 bg-panel2 border border-gold/15 rounded-full px-4 py-2.5 text-sm outline-none focus:border-gold/50 transition-colors" />
-            <button type="submit" disabled={loading || !input.trim()} className="h-10 w-10 shrink-0 rounded-full bg-gradient-to-l from-gold2 to-gold flex items-center justify-center text-ink disabled:opacity-40 transition-opacity" aria-label="send">➤</button>
+            <input value={input} onChange={(e) => setInput(e.target.value)} placeholder={t.placeholder} className="flex-1 min-h-11 bg-panel2 border border-gold/15 rounded-full px-4 py-2.5 text-sm outline-none focus:border-gold/50 transition-colors" />
+            <button type="submit" disabled={loading || !input.trim()} className="h-11 w-11 shrink-0 rounded-full bg-gradient-to-l from-gold2 to-gold flex items-center justify-center text-ink disabled:opacity-40 transition-opacity" aria-label="send">➤</button>
           </form>
         </div>
       </div>

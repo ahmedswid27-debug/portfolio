@@ -25,7 +25,7 @@ export default function About({ c }: { c: Content }) {
           {facts.map((f) => (
             <li
               key={f}
-              className="flex items-start gap-3 text-[13px] text-white/70 leading-relaxed card-gold rounded-xl px-4 py-3.5"
+              className="flex items-start gap-3 text-[14px] sm:text-[13px] text-white/70 leading-relaxed card-gold rounded-xl px-4 py-3.5"
             >
               <span className="text-gold/80 mt-[3px] shrink-0 text-[10px]">◆</span>
               <span>{f}</span>

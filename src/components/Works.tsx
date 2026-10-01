@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import type { Content } from "@/data/content";
 import type { WorkItem } from "@/data/profile";
 import SectionHead from "./SectionHead";
+import VideoWall from "./VideoWall";
 
 /** صورة ترويسة لكل قسم — من مكتبة صور الرياض. */
 const SECTION_IMG: Record<string, string> = {
@@ -63,7 +65,7 @@ export default function Works({ c }: { c: Content }) {
                   </div>
                   <div className="p-4">
                     <h3 className="font-display font-bold text-base leading-snug">{item.title}</h3>
-                    <p className="mt-2 text-xs text-white/68 leading-relaxed line-clamp-2">{item.desc}</p>
+                    <p className="mt-2 text-[14px] sm:text-xs text-white/68 leading-relaxed line-clamp-2">{item.desc}</p>
                     {item.tags && (
                       <div className="mt-3 flex flex-wrap gap-1.5">
                         {item.tags.map((t) => (
@@ -114,10 +116,10 @@ export default function Works({ c }: { c: Content }) {
                   {/* ── القدرات: عمودان يملآن العرض ── */}
                   {item.highlights && (
                     <div className="px-6 sm:px-8 pt-6 sm:pt-8">
-                      <h4 className="text-xs font-medium text-gold/70 mb-4">{ui.works.whatItDoes}</h4>
+                      <h4 className="text-xs font-medium text-gold/70 mb-4">{item.highlightsLabel ?? ui.works.whatItDoes}</h4>
                       <ul className="grid gap-x-10 gap-y-3 md:grid-cols-2">
                         {item.highlights.map((h) => (
-                          <li key={h} className="flex gap-3 text-[13px] text-white/72 leading-relaxed">
+                          <li key={h} className="flex gap-3 text-[14px] sm:text-[13px] text-white/72 leading-relaxed">
                             <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-gold/70" />
                             <span>{h}</span>
                           </li>
@@ -165,11 +167,21 @@ export default function Works({ c }: { c: Content }) {
                       </div>
                     )}
                     {item.note && <p className="mt-4 text-[11px] text-white/50 leading-relaxed">{item.note}</p>}
-                    {item.link && (
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:gap-2.5 transition-all w-fit">
-                        {item.linkLabel || "↗"} ↗
-                      </a>
-                    )}
+                    {/* رابطٌ داخليّ (يبدأ بشرطة) يُفتح في الصفحة نفسها ويُبرَز زرّاً —
+                        وخارجيٌّ يُفتح في لسانٍ جديد كما كان. */}
+                    {item.link &&
+                      (item.link.startsWith("/") ? (
+                        <Link
+                          href={item.link}
+                          className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-bold text-ink bg-gradient-to-l from-gold2 to-gold hover:gap-3 transition-all w-fit"
+                        >
+                          {item.linkLabel || "↗"} ←
+                        </Link>
+                      ) : (
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:gap-2.5 transition-all w-fit">
+                          {item.linkLabel || "↗"} ↗
+                        </a>
+                      ))}
                   </div>
                 </article>
               ))}
@@ -198,6 +210,13 @@ export default function Works({ c }: { c: Content }) {
                   )}
                 </article>
               ))}
+            </div>
+          )}
+
+          {section.videos && (
+            <div className="mt-7">
+              <div className="flex items-center gap-2 mb-4 text-sm text-gold/70">{ui.works.clips}</div>
+              <VideoWall clips={section.videos} officialLabel={ui.works.official} />
             </div>
           )}
 
