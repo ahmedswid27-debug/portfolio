@@ -10,7 +10,6 @@ import Works from "./Works";
 import SkillsSection from "./SkillsSection";
 import Credentials from "./Credentials";
 import Contact from "./Contact";
-import ChatWidget from "./ChatWidget";
 import ScrollReveal from "./ScrollReveal";
 import ScrollProgress from "./ScrollProgress";
 
@@ -42,7 +41,6 @@ export default function Portfolio({ lang }: { lang: Lang }) {
         <Contact c={c} />
       </main>
 
-      <ChatWidget c={c} />
     </div>
   );
 }

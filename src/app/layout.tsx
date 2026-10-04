@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: profile.tagline,
     type: "website",
     locale: "ar_SA",
-    url: "https://ahmed-swid.vercel.app",
+    url: "https://www.ahmedswid.com",
   },
   twitter: {
     card: "summary_large_image",

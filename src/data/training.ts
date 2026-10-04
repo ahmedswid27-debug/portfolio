@@ -1,5 +1,5 @@
 // ============================================================
-//  ملف تعريف المدرّب والمنهج — صفحة /training و /en/training.
+//  ملفُّ ورش العمل ومحاورها — صفحة /training و /en/training.
 //
 //  مصدر المنهج: C:\Users\User\powerbi-course\training\plan-engineer-28h.md
 //  (٢٨ ساعة · ١٢ جلسة · ٤ أسابيع). ويُحدَّث هذا الملف وحده عند تعديل المنهج.
@@ -40,6 +40,33 @@ export type Clip = {
 
 export type Doc = { href: string; title: string; meta: string };
 
+/** ملفُّ ورش العمل — صفحةٌ واحدة لا تذكر غير الورش. */
+export type TrainerCv = {
+  back: string;
+  print: string;
+  role: string;
+  summaryTitle: string;
+  summary: string;
+  domainsTitle: string;
+  domains: string[];
+  recordTitle: string;
+  recordOrg: string;
+  recordPeriod: string;
+  record: string[];
+  programmeTitle: string;
+  programmeMeta: string;
+  programme: { w: string; line: string }[];
+  materialsTitle: string;
+  materials: string[];
+  methodTitle: string;
+  method: string;
+  qualsTitle: string;
+  quals: { t: string; m: string }[];
+  langsTitle: string;
+  practiceTitle: string;
+  practice: string;
+};
+
 export type TrainingContent = {
   dir: "rtl" | "ltr";
   back: string;
@@ -78,16 +105,12 @@ export type TrainingContent = {
   takeawayTitle: string;
   takeaways: string[];
 
-  docsTitle: string;
-  docsSub: string;
-  docsOpen: string;
-  docs: Doc[];
-
   ctaTitle: string;
   ctaBody: string;
   ctaWhatsapp: string;
   ctaEmail: string;
   ctaProfile: string;
+  ctaCv: string;
 };
 
 // ───────────────────────────── عربي ─────────────────────────────
@@ -95,30 +118,31 @@ export type TrainingContent = {
 const AR: TrainingContent = {
   dir: "rtl",
   back: "الملف المهني ←",
-  badge: "ملف تدريبي",
+  badge: "ملف ورش العمل",
   title: "تحليل الأعمال وبناء لوحات المعلومات بـ Power BI",
   lead:
-    "برنامج تدريبي تطبيقي مدته ٢٨ ساعة، يقدمه أحمد محمود سويد، محلل أعمال وبيانات " +
-    "بأمانة منطقة الرياض وحاصل على شهادة CAPM من معهد إدارة المشاريع PMI. " +
-    "يبدأ البرنامج من ملف خام فيه عيوب حقيقية، وينتهي بتقرير منشور ومؤمن يحدث بضغطة واحدة.",
+    "ورش عمل تطبيقية في تحليل الأعمال وبناء لوحات المعلومات، نفَّذها أحمد محمود سويد " +
+    "لمنسوبي أمانة منطقة الرياض. تبدأ الورشة من ملف خام فيه عيوب حقيقية، وتنتهي بتقرير " +
+    "منشور ومؤمَّن يُحدَّث بضغطة واحدة. والمادة والبيانات التطبيقية مُعَدَّة مسبقًا.",
 
+  // ⚠ سجلٌّ تراكميّ لما نُفِّذ فعلاً، لا وصفٌ لبرنامجٍ واحد.
   stats: [
-    { value: "+150", label: "متدرب" },
-    { value: "28", label: "ساعة تدريب" },
-    { value: "12", label: "جلسة تطبيقية" },
-    { value: "4", label: "أسابيع" },
+    { value: "+150", label: "مشارك" },
+    { value: "+360", label: "ساعة تنفيذ" },
+    { value: "+30", label: "جلسة تطبيقية" },
+    { value: "+30", label: "أسبوع عمل" },
   ],
 
-  evidenceTitle: "من قاعة التدريب",
+  evidenceTitle: "من قاعة الورشة",
   evidenceSub:
-    "ورشة Power BI لمدة أسبوع لمنسوبي أمانة منطقة الرياض — قطاعا الغرب والشمال. " +
+    "ورش Power BI لمنسوبي أمانة منطقة الرياض — قطاعات الغرب والشمال والجنوب. " +
     "المقاطع المعلّمة بهوية الأمانة من تغطية حساب التواصل الداخلي بالأمانة.",
   clips: [
     {
       src: "/training/video/workshop-west.mp4",
       poster: "/training/video/workshop-west.jpg",
       title: "ورشة Power BI — قطاع الغرب",
-      meta: "١١–١٥ يناير ٢٠٢٦ · تغطية رسمية من أمانة منطقة الرياض",
+      meta: "11–15 يناير 2026 · تغطية رسمية من أمانة منطقة الرياض",
       portrait: true,
       official: true,
     },
@@ -134,14 +158,14 @@ const AR: TrainingContent = {
       src: "/training/video/teaching.mp4",
       poster: "/training/video/teaching.jpg",
       title: "شرح على الشاشة الحية",
-      meta: "جلسة تطبيقية",
+      meta: "من الورشة",
       portrait: true,
     },
     {
       src: "/training/video/explaining.mp4",
       poster: "/training/video/explaining.jpg",
-      title: "متابعة المتدربين على أجهزتهم",
-      meta: "جلسة تطبيقية",
+      title: "متابعة المشاركين على أجهزتهم",
+      meta: "من الورشة",
       portrait: true,
     },
     {
@@ -154,7 +178,7 @@ const AR: TrainingContent = {
     {
       src: "/training/video/certificates.mp4",
       poster: "/training/video/certificates.jpg",
-      title: "تسليم شهادات المتدربين",
+      title: "تسليم شهادات المشاركين",
       meta: "ختام الورشة",
       portrait: false,
     },
@@ -174,29 +198,29 @@ const AR: TrainingContent = {
       v: "المحللون والمهندسون وموظفو التشغيل والمتابعة ومعدو التقارير — من يعمل على Excel يومياً ويحتاج الانتقال إلى نموذج بيانات يحدث بضغطة واحدة.",
     },
     { k: "المتطلبات", v: "جهاز بنظام Windows، وPower BI Desktop (مجاني)، وإلمام أساسي بـ Excel. لا تشترط خبرة برمجية." },
-    { k: "الصيغة", v: "١٢ جلسة على أربعة أسابيع (٣ جلسات أسبوعياً)، أو ورشة مكثفة في أسبوع واحد، أو تدريب فردي." },
-    { k: "مدة الجلسة", v: "ساعتان إلى ساعتين ونصف، منها ١٥ دقيقة لمراجعة واجب الجلسة السابقة." },
-    { k: "حجم المجموعة", v: "١٢ إلى ١٦ متدرباً. التدريب تطبيقي وكل متدرب يعمل على جهازه، فالعدد الأكبر يفقد المتابعة الفردية." },
+    { k: "الصيغة", v: "ورشة مكثفة في أسبوع، أو جلسات موزّعة على أربعة أسابيع، أو جلسات فردية — حسب جدول الجهة." },
+    { k: "مدة الجلسة", v: "ساعتان إلى ساعتين ونصف، منها 15 دقيقة لمراجعة واجب الجلسة السابقة." },
+    { k: "حجم المجموعة", v: "12 إلى 16 مشاركًا. الورشة تطبيقية وكل مشارك يعمل على جهازه، فالعدد الأكبر يفقد المتابعة الفردية." },
     { k: "اللغة", v: "عربي، والمصطلح التقني بلفظه الإنجليزي كما يرد في الأداة وفي التوثيق." },
     { k: "التجهيزات", v: "قاعة بأجهزة أو أجهزة شخصية، وشاشة عرض، وإنترنت للنشر إلى Power BI Service في الجلسة الأخيرة." },
   ],
 
-  curriculumTitle: "المنهج",
-  curriculumSub: "أربعة أسابيع، لكل أسبوع مخرج يراه المتدرب بنفسه قبل الانتقال إلى ما بعده.",
+  curriculumTitle: "محاور الورشة",
+  curriculumSub: "أربعة محاور متدرّجة، لكل محور مخرَج يراه المشارك بنفسه قبل الانتقال إلى ما بعده.",
   labLabel: "تطبيق",
-  outcomeLabel: "مخرج الأسبوع",
+  outcomeLabel: "مخرَج المحور",
   pivotLabel: "جلسة مفصلية",
   weeks: [
     {
-      n: "١",
-      title: "من الفوضى إلى جدول نظيف",
-      hours: "٧ ساعات",
+      n: "1",
+      title: "المحور الأول — من الفوضى إلى جدول نظيف",
+      hours: "",
       outcome: "ملف يحدث بضغطة واحدة، بعد أن كان عمل ساعتين يدوياً كل شهر.",
       sessions: [
         {
-          n: "١",
+          n: "1",
           title: "موضع Power BI ودورة البيانات",
-          hours: "٢ س",
+          hours: "",
           points: [
             "دورة البيانات: تولد ← تخزن ← تحلل ← تستهلك ← تثير أسئلة جديدة",
             "المسار الكامل: مصادر ← Power Query ← النموذج ← الرسوم ← النشر",
@@ -206,9 +230,9 @@ const AR: TrainingContent = {
           lab: "فتح الأداة والتنقل بين الأوضاع الثلاثة وتسميتها",
         },
         {
-          n: "٢",
+          n: "2",
           title: "Power Query — الاستيراد والتنظيف",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "المحرر: الاستعلامات · الخطوات المطبقة · المعاينة",
             "Transform Data لا Load — القرار الأول، وأكثر ما يخطأ فيه",
@@ -220,9 +244,9 @@ const AR: TrainingContent = {
           lab: "تنظيف ملف بلاغات خام حتى يصير صالحاً للتحميل",
         },
         {
-          n: "٣",
+          n: "3",
           title: "Power Query — الجمع والأتمتة",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "Split by Delimiter — عمود مركب ومسافاته الخفية",
             "Merge بأنواع الوصل الستة، ومؤشر التطابق قراءة تشخيصية",
@@ -236,15 +260,15 @@ const AR: TrainingContent = {
       ],
     },
     {
-      n: "٢",
-      title: "النموذج",
-      hours: "٧ ساعات",
+      n: "2",
+      title: "المحور الثاني — النموذج",
+      hours: "",
       outcome: "نموذج نظيف يجيب أسئلة لم تكن ممكنة على الجدول الخام.",
       sessions: [
         {
-          n: "٤",
+          n: "4",
           title: "النمذجة البعدية والعلاقات",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "لماذا لا يكفي جدول واحد عريض",
             "المخطط النجمي: جداول حقائق وجداول أبعاد",
@@ -256,9 +280,9 @@ const AR: TrainingContent = {
           lab: "ربط جدول الحقائق بجداول الأبعاد ومراجعة اتجاه الترشيح",
         },
         {
-          n: "٥",
+          n: "5",
           title: "جدول التاريخ والهرميات",
-          hours: "٢ س",
+          hours: "",
           points: [
             "إطفاء التاريخ التلقائي أولاً — ينشئ جدولاً خفياً لكل عمود تاريخ",
             "بناء جدول تاريخ صريح واعتماده",
@@ -269,9 +293,9 @@ const AR: TrainingContent = {
           lab: "جدول تاريخ كامل وهرم جغرافي يعمل بالتنقل",
         },
         {
-          n: "٦",
+          n: "6",
           title: "DAX — المقياس والعمود المحسوب",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "الفرق الجوهري: العمود يحسب صفاً صفاً ويخزن، والمقياس يحسب عند العرض",
             "متى عمود ومتى مقياس — سؤال يتكرر طول العمل",
@@ -285,29 +309,29 @@ const AR: TrainingContent = {
       ],
     },
     {
-      n: "٣",
-      title: "قلب الأداة",
-      hours: "٧ ساعات",
-      outcome: "المتدرب يكتب مقاييسه بنفسه، ويشخص أخطاءها بنفسه.",
+      n: "3",
+      title: "المحور الثالث — قلب الأداة",
+      hours: "",
+      outcome: "المشارك يكتب مقاييسه بنفسه، ويشخص أخطاءها بنفسه.",
       sessions: [
         {
-          n: "٧",
+          n: "7",
           title: "سياق المرشح — Filter Context",
-          hours: "٢٫٥ س",
+          hours: "",
           pivot: true,
           points: [
             "لماذا يتغير رقم المقياس نفسه من رسم إلى آخر؟",
             "سياق الصف مقابل سياق المرشح",
             "كيف يفرض الرسم سياقه: المحور · المقسم · المرشح · الصف",
             "التمرين المحوري: مقياس واحد يعرض في خمسة مواضع فيعطي خمسة أرقام، ثم يشرح كل منها",
-            "لا انتقال إلى الجلسة الثامنة قبل أن يشرح المتدرب الفرق بلا مساعدة",
+            "لا انتقال إلى الجلسة الثامنة قبل أن يشرح المشارك الفرق بلا مساعدة",
           ],
           lab: "تشخيص ثلاثة أرقام «خاطئة» ومعرفة سبب كل منها",
         },
         {
-          n: "٨",
+          n: "8",
           title: "CALCULATE وأخواتها",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "CALCULATE — الدالة التي تعدل السياق، ولب DAX كله",
             "FILTER: متى تلزم، ومتى تكون ترفاً مكلفاً",
@@ -318,9 +342,9 @@ const AR: TrainingContent = {
           lab: "نسب وترتيبات تتفاعل مع المقسمات على الوجه الصحيح",
         },
         {
-          n: "٩",
+          n: "9",
           title: "ذكاء الوقت — Time Intelligence",
-          hours: "٢ س",
+          hours: "",
           points: [
             "TOTALYTD · SAMEPERIODLASTYEAR · DATEADD · PREVIOUSMONTH",
             "لا تعمل إلا بجدول تاريخ معتمد — وهنا تظهر ثمرة الجلسة الخامسة",
@@ -333,15 +357,15 @@ const AR: TrainingContent = {
       ],
     },
     {
-      n: "٤",
-      title: "العرض والتسليم",
-      hours: "٧ ساعات",
-      outcome: "تقرير منشور ومؤمن، يعرضه المتدرب في خمس عشرة دقيقة.",
+      n: "4",
+      title: "المحور الرابع — العرض والتسليم",
+      hours: "",
+      outcome: "تقرير منشور ومؤمن، يعرضه المشارك في خمس عشرة دقيقة.",
       sessions: [
         {
-          n: "١٠",
+          n: "10",
           title: "الرسوم واختيارها",
-          hours: "٢٫٥ س",
+          hours: "",
           points: [
             "قاعدة الاختيار: مقارنة ← أعمدة · تطور ← خط · تركيب ← لا دائرة غالباً",
             "البطاقة والمؤشر، ومتى يغنيان عن رسم",
@@ -353,9 +377,9 @@ const AR: TrainingContent = {
           lab: "صفحة مؤشرات رئيسية كاملة",
         },
         {
-          n: "١١",
+          n: "11",
           title: "التفاعل والتنقل",
-          hours: "٢ س",
+          hours: "",
           points: [
             "تحرير التفاعل بين الرسوم — أكثر ما يغفل",
             "التنقل لأسفل ولأعلى، والعبور Drill through",
@@ -366,9 +390,9 @@ const AR: TrainingContent = {
           lab: "تقرير من ثلاث صفحات متنقلة",
         },
         {
-          n: "١٢",
-          title: "النشر والحوكمة ومشروع التخرج",
-          hours: "٢٫٥ س",
+          n: "12",
+          title: "النشر والحوكمة والمشروع الختامي",
+          hours: "",
           points: [
             "النشر إلى الخدمة · مساحات العمل · المشاركة",
             "لوحة المعلومات مقابل التقرير: الفرق، ومتى كل منهما",
@@ -376,72 +400,64 @@ const AR: TrainingContent = {
             "أمان مستوى الصف RLS: كل جهة ترى نطاقها — ويختبر",
             "قرر ما يدخل النموذج قبل أن يبني الناس فوقه، فالحذف بعد ذلك يكسر تقاريرهم",
           ],
-          lab: "مشروع التخرج: من الملف الخام إلى تقرير منشور مؤمن",
+          lab: "المشروع الختامي: من الملف الخام إلى تقرير منشور مؤمن",
         },
       ],
     },
   ],
 
   methodTitle: "منهجية التدريب",
-  methodSub: "خمس قواعد مستخلصة من تدريب أكثر من ١٥٠ موظفاً.",
+  methodSub: "خمس قواعد مستخلصة من تدريب أكثر من 150 موظفاً.",
   method: [
-    { n: "١", t: "لا شريحة تقرأ", d: "الشرح على الشاشة الحية، والمتدرب يعمل معك لا يشاهدك." },
-    { n: "٢", t: "الخطأ يصنع عمداً", d: "ثم يشخص. تشخيص الخطأ يثبت المعلومة أكثر من الطريق الصحيح." },
-    { n: "٣", t: "«لماذا» قبل «كيف»", d: "المتدرب المحترف لا يقبل خطوة بلا سبب، وهذه ميزة تستثمر لا عائق." },
-    { n: "٤", t: "المصطلح إنجليزي ومعناه عربي", d: "لأنه سيقرأ التوثيق ويعمل مع أدوات إنجليزية بعد انتهاء الدورة." },
-    { n: "٥", t: "جلسة التوقف", d: "إن تعثر في سياق المرشح أعيدت الجلسة السابعة، ولم يمض قدماً." },
+    { n: "1", t: "لا شريحة تقرأ", d: "الشرح على الشاشة الحية، والمشارك يعمل معك لا يشاهدك." },
+    { n: "2", t: "الخطأ يصنع عمداً", d: "ثم يشخص. تشخيص الخطأ يثبت المعلومة أكثر من الطريق الصحيح." },
+    { n: "3", t: "«لماذا» قبل «كيف»", d: "المشارك المحترف لا يقبل خطوة بلا سبب، وهذه ميزة تستثمر لا عائق." },
+    { n: "4", t: "المصطلح إنجليزي ومعناه عربي", d: "لأنه سيقرأ التوثيق ويعمل مع أدوات إنجليزية بعد انتهاء الدورة." },
+    { n: "5", t: "جلسة التوقف", d: "إن تعثر في سياق المرشح أعيدت الجلسة السابعة، ولم يمض قدماً." },
   ],
 
-  dataTitle: "البيانات التدريبية",
+  dataTitle: "البيانات التطبيقية",
   dataSub:
     "ستة ملفات معدة خصيصاً، في كل منها عيب مقصود يخدم درساً بعينه. " +
-    "والمبدأ: الملف النظيف لا يعلم شيئاً، والمتدرب يتعلم من الفوضى.",
+    "والمبدأ: الملف النظيف لا يعلم شيئاً، والمشارك يتعلم من الفوضى.",
   dataHead: ["الملف", "العيب المقصود", "الدرس"],
   dataRows: [
-    { file: "السجلات الخام (CSV)", flaw: "ثلاثة صفوف عنوان، وأعمدة بلا أسماء", lesson: "جلسة ٢ · التنظيف" },
-    { file: "جدول المرجع (XLSX)", flaw: "جدول داخل ورقة فيها ملاحظات جانبية", lesson: "جلسة ٣ · الجدول لا الورقة" },
-    { file: "النطاقات (XLSX)", flaw: "حقلان في عمود واحد، ومسافات حوله", lesson: "جلسة ٣ · التقسيم والتشذيب" },
-    { file: "الجهات (CSV)", flaw: "الاسم بصيغتين: همزة، وبادئة زائدة", lesson: "جلسة ٣ · التوحيد قبل الربط" },
-    { file: "ملفات شهرية (٦ ملفات)", flaw: "متطابقة البنية، تتجدد كل شهر", lesson: "جلسة ٣ · موصل المجلد" },
-    { file: "سجلات سنة سابقة", flaw: "عمودان مختلفان عن أخيه", lesson: "جلسة ٣ · الضم غير المتطابق" },
+    { file: "السجلات الخام (CSV)", flaw: "ثلاثة صفوف عنوان، وأعمدة بلا أسماء", lesson: "جلسة 2 · التنظيف" },
+    { file: "جدول المرجع (XLSX)", flaw: "جدول داخل ورقة فيها ملاحظات جانبية", lesson: "جلسة 3 · الجدول لا الورقة" },
+    { file: "النطاقات (XLSX)", flaw: "حقلان في عمود واحد، ومسافات حوله", lesson: "جلسة 3 · التقسيم والتشذيب" },
+    { file: "الجهات (CSV)", flaw: "الاسم بصيغتين: همزة، وبادئة زائدة", lesson: "جلسة 3 · التوحيد قبل الربط" },
+    { file: "ملفات شهرية (6 ملفات)", flaw: "متطابقة البنية، تتجدد كل شهر", lesson: "جلسة 3 · موصل المجلد" },
+    { file: "سجلات سنة سابقة", flaw: "عمودان مختلفان عن أخيه", lesson: "جلسة 3 · الضم غير المتطابق" },
   ],
   dataNote:
-    "وفي الصفوف عيوب مبثوثة: تواريخ نصية · أكواد ١/٠ تحتاج ترجمة · حالة أحرف مضطربة · " +
+    "وفي الصفوف عيوب مبثوثة: تواريخ نصية · أكواد 1/0 تحتاج ترجمة · حالة أحرف مضطربة · " +
     "مسافات عربية مزدوجة · سجلات بلا مرجع لدرس Anti Join · قيم شاذة في زمن المعالجة.",
 
   assessTitle: "التقويم",
   assess: [
-    { k: "واجب بعد كل جلسة", v: "٣٠ إلى ٤٥ دقيقة، يراجع في أول ١٥ دقيقة من الجلسة التالية." },
+    { k: "واجب بعد كل جلسة", v: "30 إلى 45 دقيقة، يراجع في أول 15 دقيقة من الجلسة التالية." },
     { k: "ثلاث نقاط تفتيش", v: "في نهاية كل أسبوع من الأسابيع الثلاثة الأولى." },
-    { k: "بوابة إلزامية", v: "الجلسة السابعة: لا انتقال قبل أن يشرح المتدرب سياق المرشح بلسانه." },
-    { k: "مشروع التخرج", v: "ملف خام ← تقرير منشور مؤمن، يعرضه المتدرب في خمس عشرة دقيقة." },
+    { k: "بوابة إلزامية", v: "الجلسة السابعة: لا انتقال قبل أن يشرح المشارك سياق المرشح بلسانه." },
+    { k: "المشروع الختامي", v: "ملف خام ← تقرير منشور مؤمن، يعرضه المشارك في خمس عشرة دقيقة." },
   ],
 
-  takeawayTitle: "ما يخرج به المتدرب",
+  takeawayTitle: "ما يخرج به المشارك",
   takeaways: [
     "ملف pbix كامل بناه بنفسه من ملف خام",
     "تقرير منشور على Power BI Service بصلاحيات مضبوطة",
     "مرجع مكتوب بالمصطلحات: الإنجليزي ومقابله العربي المعتمد",
-    "نسخة من البيانات التدريبية ليعيد التمرين بعد انتهاء الدورة",
+    "نسخة من البيانات التطبيقية ليعيد التمرين بعد انتهاء الورشة",
     "قائمة تحقق قبل نشر أي تقرير",
-  ],
-
-  docsTitle: "المواد المعدة",
-  docsSub: "كتيبات مصفوفة معدة للطباعة، مشتقة من السكربت نفسه فلا يتفرق المصطلح بينها.",
-  docsOpen: "فتح الملف",
-  docs: [
-    { href: "/training/docs/curriculum-plan.pdf", title: "خطة المنهج ومعيار اللغة", meta: "PDF · ٧ صفحات" },
-    { href: "/training/docs/part1-intro-power-bi.pdf", title: "الجزء الأول — مقدمة إلى Power BI", meta: "PDF · ٢٢ صفحة" },
-    { href: "/training/docs/part2-first-report.pdf", title: "الجزء الثاني — أول تقرير كامل", meta: "PDF · ٢٣ صفحة" },
   ],
 
   ctaTitle: "لتنسيق دورة",
   ctaBody:
-    "البرنامج قابل للتكييف حسب مدة المركز وعدد المتدربين ومستواهم، " +
-    "وتجهز البيانات التدريبية على مجال الجهة المتدربة إن طلب ذلك.",
+    "البرنامج قابل للتكييف حسب مدة المركز وعدد المشاركين ومستواهم، " +
+    "وتجهز البيانات التطبيقية على مجال الجهة المشاركة إن طلب ذلك.",
   ctaWhatsapp: "واتساب",
   ctaEmail: "البريد الإلكتروني",
   ctaProfile: "الملف المهني الكامل",
+  ctaCv: "ملف ورش العمل — نسخة للطباعة",
 };
 
 // ──────────────────────────── English ────────────────────────────
@@ -449,23 +465,24 @@ const AR: TrainingContent = {
 const EN: TrainingContent = {
   dir: "ltr",
   back: "← Professional profile",
-  badge: "Training profile",
+  badge: "Workshop profile",
   title: "Business Analysis & Dashboard Design with Power BI",
   lead:
-    "A 28-hour hands-on programme delivered by Ahmed Mahmoud Swid, Business & Data Analyst at " +
-    "Riyadh Municipality and a PMI-certified CAPM. It starts from a raw file with real defects and " +
-    "ends with a published, secured report that refreshes with a single click.",
+    "Hands-on workshops in business analysis and dashboard design, delivered by Ahmed Mahmoud Swid " +
+    "to Riyadh Municipality staff. Each workshop starts from a raw file with real defects and ends " +
+    "with a published, secured report that refreshes with a single click. Material and practice data are prepared in advance.",
 
+  // Cumulative record of what was actually delivered — not one programme's shape.
   stats: [
-    { value: "+150", label: "Trainees" },
-    { value: "28", label: "Training hours" },
-    { value: "12", label: "Hands-on sessions" },
-    { value: "4", label: "Weeks" },
+    { value: "+150", label: "Participants" },
+    { value: "+360", label: "Hours delivered" },
+    { value: "+30", label: "Hands-on sessions" },
+    { value: "+30", label: "Weeks of delivery" },
   ],
 
-  evidenceTitle: "From the training room",
+  evidenceTitle: "From the workshop room",
   evidenceSub:
-    "A week-long Power BI workshop for Riyadh Municipality staff — West and North sectors. " +
+    "Power BI workshops for Riyadh Municipality staff — West, North and South sectors. " +
     "Clips carrying the Municipality's identity are from its own internal-communications coverage.",
   clips: [
     {
@@ -494,7 +511,7 @@ const EN: TrainingContent = {
     {
       src: "/training/video/explaining.mp4",
       poster: "/training/video/explaining.jpg",
-      title: "Working through it with the trainees",
+      title: "Working through it with the participants",
       meta: "Hands-on session",
       portrait: true,
     },
@@ -528,29 +545,29 @@ const EN: TrainingContent = {
       v: "Analysts, engineers, operations and monitoring staff, and report writers — anyone living in Excel who needs to move to a data model that refreshes with one click.",
     },
     { k: "Prerequisites", v: "A Windows machine, Power BI Desktop (free), and working Excel knowledge. No programming experience required." },
-    { k: "Format", v: "12 sessions across four weeks (3 per week), a one-week intensive workshop, or one-to-one coaching." },
+    { k: "Format", v: "A one-week intensive workshop, sessions spread across four weeks, or one-to-one sessions — to suit the host's schedule." },
     { k: "Session length", v: "Two to two and a half hours, including 15 minutes reviewing the previous session's assignment." },
-    { k: "Group size", v: "12 to 16 trainees. Every trainee works on their own machine, so a larger group loses individual follow-up." },
+    { k: "Group size", v: "12 to 16 participants. Every participant works on their own machine, so a larger group loses individual follow-up." },
     { k: "Language", v: "Arabic, with technical terms kept in English as they appear in the tool and its documentation." },
     { k: "Facilities", v: "A room with machines or personal laptops, a display screen, and internet access for publishing to Power BI Service in the final session." },
   ],
 
-  curriculumTitle: "Curriculum",
-  curriculumSub: "Four weeks. Each one ends with an output the trainee can see before moving on.",
+  curriculumTitle: "Workshop tracks",
+  curriculumSub: "Four progressive tracks. Each ends with an output the participant sees before moving on.",
   labLabel: "Lab",
-  outcomeLabel: "Week output",
+  outcomeLabel: "Track output",
   pivotLabel: "Pivotal session",
   weeks: [
     {
       n: "1",
-      title: "From mess to a clean table",
-      hours: "7 hours",
+      title: "Track 1 — From mess to a clean table",
+      hours: "",
       outcome: "A file that refreshes with one click, where it used to be two hours of manual work every month.",
       sessions: [
         {
           n: "1",
           title: "Where Power BI sits, and the data cycle",
-          hours: "2 h",
+          hours: "",
           points: [
             "The data cycle: generated → stored → analysed → consumed → raises new questions",
             "The full path: sources → Power Query → model → visuals → publish",
@@ -562,7 +579,7 @@ const EN: TrainingContent = {
         {
           n: "2",
           title: "Power Query — import and clean",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "The editor: queries · applied steps · preview",
             "Transform Data, not Load — the first decision, and the most commonly wrong one",
@@ -576,7 +593,7 @@ const EN: TrainingContent = {
         {
           n: "3",
           title: "Power Query — combine and automate",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "Split by Delimiter — a compound column and its hidden spaces",
             "Merge with all six join kinds, reading the match indicator diagnostically",
@@ -591,14 +608,14 @@ const EN: TrainingContent = {
     },
     {
       n: "2",
-      title: "The model",
-      hours: "7 hours",
+      title: "Track 2 — The model",
+      hours: "",
       outcome: "A clean model that answers questions the raw table could not.",
       sessions: [
         {
           n: "4",
           title: "Dimensional modelling and relationships",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "Why one wide table is not enough",
             "The star schema: fact tables and dimension tables",
@@ -612,7 +629,7 @@ const EN: TrainingContent = {
         {
           n: "5",
           title: "Date table and hierarchies",
-          hours: "2 h",
+          hours: "",
           points: [
             "Turn off auto date/time first — it creates a hidden table per date column",
             "Build an explicit date table and mark it as such",
@@ -625,7 +642,7 @@ const EN: TrainingContent = {
         {
           n: "6",
           title: "DAX — measures and calculated columns",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "The core difference: a column computes row by row and is stored; a measure computes at display time",
             "When a column and when a measure — a question that recurs for a career",
@@ -640,28 +657,28 @@ const EN: TrainingContent = {
     },
     {
       n: "3",
-      title: "The heart of the tool",
-      hours: "7 hours",
-      outcome: "The trainee writes their own measures — and diagnoses their own mistakes.",
+      title: "Track 3 — The heart of the tool",
+      hours: "",
+      outcome: "The participant writes their own measures — and diagnoses their own mistakes.",
       sessions: [
         {
           n: "7",
           title: "Filter context",
-          hours: "2.5 h",
+          hours: "",
           pivot: true,
           points: [
             "Why does the same measure return a different number in a different visual?",
             "Row context versus filter context",
             "How a visual imposes its context: axis · slicer · filter · row",
             "The pivotal exercise: one measure shown in five places returning five numbers, then explaining each",
-            "No move to session 8 until the trainee explains the difference unaided",
+            "No move to session 8 until the participant explains the difference unaided",
           ],
           lab: "Diagnose three \"wrong\" numbers and name the cause of each",
         },
         {
           n: "8",
           title: "CALCULATE and its family",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "CALCULATE — the function that modifies context, and the core of all DAX",
             "FILTER: when it is required, and when it is an expensive luxury",
@@ -674,7 +691,7 @@ const EN: TrainingContent = {
         {
           n: "9",
           title: "Time intelligence",
-          hours: "2 h",
+          hours: "",
           points: [
             "TOTALYTD · SAMEPERIODLASTYEAR · DATEADD · PREVIOUSMONTH",
             "None of it works without a marked date table — the payoff from session 5",
@@ -688,14 +705,14 @@ const EN: TrainingContent = {
     },
     {
       n: "4",
-      title: "Presentation and delivery",
-      hours: "7 hours",
-      outcome: "A published, secured report the trainee presents in fifteen minutes.",
+      title: "Track 4 — Presentation and delivery",
+      hours: "",
+      outcome: "A published, secured report the participant presents in fifteen minutes.",
       sessions: [
         {
           n: "10",
           title: "Choosing the right visual",
-          hours: "2.5 h",
+          hours: "",
           points: [
             "The selection rule: comparison → bars · change over time → line · composition → rarely a pie",
             "Cards and KPIs, and when they replace a chart entirely",
@@ -709,7 +726,7 @@ const EN: TrainingContent = {
         {
           n: "11",
           title: "Interaction and navigation",
-          hours: "2 h",
+          hours: "",
           points: [
             "Edit interactions between visuals — the most overlooked feature",
             "Drill down, drill up, and drill through",
@@ -721,8 +738,8 @@ const EN: TrainingContent = {
         },
         {
           n: "12",
-          title: "Publishing, governance, and the capstone",
-          hours: "2.5 h",
+          title: "Publishing, governance, and the closing project",
+          hours: "",
           points: [
             "Publishing to the service · workspaces · sharing",
             "Dashboard versus report: the difference, and when each applies",
@@ -730,7 +747,7 @@ const EN: TrainingContent = {
             "Row-level security: each party sees only its own scope — and it gets tested",
             "Decide what enters the model before people build on it; deleting later breaks their reports",
           ],
-          lab: "Capstone: from the raw file to a published, secured report",
+          lab: "Closing project: from the raw file to a published, secured report",
         },
       ],
     },
@@ -739,9 +756,9 @@ const EN: TrainingContent = {
   methodTitle: "Training method",
   methodSub: "Five rules drawn from training more than 150 staff.",
   method: [
-    { n: "1", t: "No slide gets read aloud", d: "Teaching happens on the live screen, and the trainee works alongside you rather than watching." },
+    { n: "1", t: "No slide gets read aloud", d: "Teaching happens on the live screen, and the participant works alongside you rather than watching." },
     { n: "2", t: "Mistakes are made on purpose", d: "Then diagnosed. Diagnosing an error fixes the lesson better than the correct path does." },
-    { n: "3", t: "\"Why\" before \"how\"", d: "A professional trainee will not accept a step without a reason — that is an asset, not an obstacle." },
+    { n: "3", t: "\"Why\" before \"how\"", d: "A professional participant will not accept a step without a reason — that is an asset, not an obstacle." },
     { n: "4", t: "English term, Arabic meaning", d: "Because after the course they will read the documentation and work with English tools." },
     { n: "5", t: "The stop session", d: "If filter context does not land, session 7 is repeated and the course does not move on." },
   ],
@@ -749,7 +766,7 @@ const EN: TrainingContent = {
   dataTitle: "Training data",
   dataSub:
     "Six purpose-built files, each carrying one deliberate defect that serves one lesson. " +
-    "The principle: a clean file teaches nothing — the trainee learns from the mess.",
+    "The principle: a clean file teaches nothing — the participant learns from the mess.",
   dataHead: ["File", "Deliberate defect", "Lesson"],
   dataRows: [
     { file: "Raw records (CSV)", flaw: "Three title rows, columns with no names", lesson: "Session 2 · cleaning" },
@@ -767,11 +784,11 @@ const EN: TrainingContent = {
   assess: [
     { k: "Assignment after every session", v: "30 to 45 minutes, reviewed in the first 15 minutes of the next session." },
     { k: "Three checkpoints", v: "At the end of each of the first three weeks." },
-    { k: "A mandatory gate", v: "Session 7: no progress until the trainee explains filter context in their own words." },
-    { k: "Capstone project", v: "Raw file → published, secured report, presented by the trainee in fifteen minutes." },
+    { k: "A mandatory gate", v: "Session 7: no progress until the participant explains filter context in their own words." },
+    { k: "Closing project project", v: "Raw file → published, secured report, presented by the participant in fifteen minutes." },
   ],
 
-  takeawayTitle: "What the trainee leaves with",
+  takeawayTitle: "What the participant leaves with",
   takeaways: [
     "A complete .pbix file they built themselves from a raw source",
     "A report published to Power BI Service with permissions configured",
@@ -780,22 +797,175 @@ const EN: TrainingContent = {
     "A pre-publish checklist for any future report",
   ],
 
-  docsTitle: "Prepared material",
-  docsSub: "Typeset, print-ready handbooks derived from a single source script, so the terminology never diverges between them.",
-  docsOpen: "Open file",
-  docs: [
-    { href: "/training/docs/curriculum-plan.pdf", title: "Curriculum plan and language standard", meta: "PDF · 7 pages · Arabic" },
-    { href: "/training/docs/part1-intro-power-bi.pdf", title: "Part One — Introduction to Power BI", meta: "PDF · 22 pages · Arabic" },
-    { href: "/training/docs/part2-first-report.pdf", title: "Part Two — Your first complete report", meta: "PDF · 23 pages · Arabic" },
-  ],
-
   ctaTitle: "To arrange a course",
   ctaBody:
     "The programme adapts to the centre's schedule, group size, and starting level, " +
-    "and the training data can be rebuilt around the trainees' own domain on request.",
+    "and the training data can be rebuilt around the participants' own domain on request.",
   ctaWhatsapp: "WhatsApp",
   ctaEmail: "Email",
   ctaProfile: "Full professional profile",
+  ctaCv: "Workshop profile — printable",
 };
 
 export const getTraining = (lang: "ar" | "en"): TrainingContent => (lang === "en" ? EN : AR);
+
+// ───────────────────── ملفُّ ورش العمل (نسخةٌ للطباعة) ─────────────────────
+//  ⚠ لا تذكر غير ورش العمل — بطلب المالك. ولا تُستعمل صفةُ «مدرّب» في أيّ موضع:
+//    الوصفُ فعلٌ منفَّذ (ورشٌ قُدِّمت) لا صفةٌ مهنية، تجنّبًا للمساءلة. والخلفية العملية سطرٌ واحدٌ في
+//    آخرها لأنّ مصداقية المحتوى تأتي من ممارسةٍ قائمة، لا بوصفها خبرةً تُعرَض.
+//  ⚠ صفحةٌ واحدة: أيّ بندٍ يُضاف يُقاس بعده عددُ الصفحات لا يُفترَض.
+
+const CV_AR: TrainerCv = {
+  back: "ملف ورش العمل ←",
+  print: "تحميل / طباعة PDF",
+  role: "ورش عمل تطبيقية في تحليل الأعمال وبناء لوحات المعلومات — Power BI",
+
+  summaryTitle: "الملخص",
+  summary:
+    "محلل أعمال وبيانات بأمانة منطقة الرياض، بخبرة تتجاوز خمس سنوات. نفَّذ ورش عمل تطبيقية " +
+    "في تحليل الأعمال وبناء لوحات المعلومات بـ Power BI لأكثر من 150 من منسوبي الأمانة، " +
+    "تجاوز مجموعها 360 ساعة. وأعدَّ مادتها: بيانات تطبيقية مصمَّمة لغرض التعليم، وكتيِّبات " +
+    "مطبوعة، ومعجم مصطلحات عربي إنجليزي. حاصل على شهادة CAPM من معهد إدارة المشاريع PMI.",
+
+  domainsTitle: "مجالات التدريب",
+  domains: [
+    "Power BI Desktop",
+    "Power Query — ETL",
+    "نمذجة البيانات — Star Schema",
+    "DAX",
+    "سياق المرشح — Filter Context",
+    "ذكاء الوقت — Time Intelligence",
+    "تصميم لوحات المعلومات",
+    "بناء مؤشرات الأداء — KPI",
+    "Power BI Service والنشر",
+    "أمان مستوى الصف — RLS",
+    "تنظيف البيانات وجودتها",
+    "إعداد التقارير التنفيذية",
+  ],
+
+  recordTitle: "سجل ورش العمل",
+  recordOrg: "أمانة منطقة الرياض",
+  recordPeriod: "أكثر من 5 سنوات",
+  record: [
+    "ورشة «تحليل الأعمال باستخدام Power BI» لمنسوبي قطاع الغرب — خمسة أيام، 11 إلى 15 يناير 2026، بواقع أربع ساعات ونصف يومياً.",
+    "ورشة Power BI لمدة أسبوع لمنسوبي قطاع الشمال، غطّتها قناة التواصل الداخلي بالأمانة.",
+    "دورة رسمية في تحليل الأعمال وبناء لوحات المعلومات لمنسوبي قطاع الجنوب.",
+    "تدريب وتوجيه أكثر من 150 موظفاً على تحليل البيانات وإعداد التقارير وبناء لوحات المعلومات.",
+    "الورشة تطبيقية على الشاشة الحية: كل مشارك يعمل على جهازه، ويُختم البرنامج بمشروع ختامي يعرضه بنفسه.",
+  ],
+
+  programmeTitle: "محاور الورشة",
+  programmeMeta: "أربعة محاور متدرّجة · عربي بالمصطلح الإنجليزي",
+  programme: [
+    { w: "المحور الأول", line: "من الفوضى إلى جدول نظيف — الاستيراد والتنظيف والجمع وأتمتة التحديث بـ Power Query. المخرج: ملف يحدّث بضغطة." },
+    { w: "المحور الثاني", line: "النموذج — النمذجة البعدية والعلاقات، جدول التاريخ والهرميات، والمقياس مقابل العمود المحسوب في DAX." },
+    { w: "المحور الثالث", line: "قلب الأداة — سياق المرشح جلسةً كاملة وبوابةً إلزامية، ثم CALCULATE وأخواتها وذكاء الوقت." },
+    { w: "المحور الرابع", line: "العرض والتسليم — اختيار الرسوم والتفاعل والتنقل، ثم النشر والحوكمة وأمان مستوى الصف والمشروع الختامي." },
+  ],
+
+  materialsTitle: "المواد المعدة",
+  materials: [
+    "خطة المنهج ومعيار اللغة — 7 صفحات",
+    "الجزء الأول: مقدمة إلى Power BI — 22 صفحة",
+    "الجزء الثاني: أول تقرير كامل — 23 صفحة",
+    "معجم مصطلحات عربي إنجليزي معتمد للمنهج",
+    "ستة ملفات بيانات تدريبية، في كل منها عيب مقصود يخدم درساً بعينه",
+    "قائمة تحقق قبل نشر أي تقرير، تسلّم للمشارك",
+  ],
+
+  methodTitle: "أسلوب التنفيذ",
+  method:
+    "لا شريحة تقرأ، والشرح على الشاشة الحية · الخطأ يصنع عمداً ثم يشخّص · «لماذا» قبل «كيف» · " +
+    "المصطلح إنجليزي ومعناه عربي · لا انتقال قبل أن يشرح المشارك سياق المرشح بلسانه.",
+
+  qualsTitle: "المؤهلات",
+  quals: [
+    { t: "CAPM — Certified Associate in Project Management", m: "Project Management Institute (PMI) · رقم 4183768 · 2025–2028" },
+    { t: "Complete Guide to Power BI for Data Analysts", m: "Microsoft Press · LinkedIn Learning" },
+    { t: "Learning Power BI Desktop", m: "LinkedIn Learning" },
+  ],
+
+  langsTitle: "اللغات",
+  practiceTitle: "الخلفية العملية",
+  practice:
+    "ما يُدرَّس مأخوذ من ممارسة قائمة: محلل أعمال وبيانات بأمانة منطقة الرياض، بنى منصة تحليلية من 34 شاشة " +
+    "تدير عقود صيانة بقيمة 179.3 مليون ريال، وصنّف 60,658 عمود إنارة إلى خمس درجات خطورة.",
+};
+
+const CV_EN: TrainerCv = {
+  back: "← Workshop profile",
+  print: "Download / Print PDF",
+  role: "Hands-on workshops in Business Analysis & Dashboard Design — Power BI",
+
+  summaryTitle: "Summary",
+  summary:
+    "Business & Data Analyst at Riyadh Municipality with over five years of practice. Has delivered hands-on " +
+    "business-analysis and Power BI dashboard workshops to more than 150 Municipality staff, totalling over 360 " +
+    "hours, and authored their material: purpose-built practice data, printed handbooks and a glossary. PMI CAPM certified.",
+
+  domainsTitle: "Training areas",
+  domains: [
+    "Power BI Desktop",
+    "Power Query — ETL",
+    "Data modelling — star schema",
+    "DAX",
+    "Filter context",
+    "Time intelligence",
+    "Dashboard design",
+    "KPI development",
+    "Power BI Service & publishing",
+    "Row-level security",
+    "Data cleaning & quality",
+    "Executive reporting",
+  ],
+
+  recordTitle: "Workshop record",
+  recordOrg: "Riyadh Municipality",
+  recordPeriod: "5+ years",
+  record: [
+    "“Business Analysis with Power BI” workshop for West sector staff — five days, 11–15 January 2026, four and a half hours daily.",
+    "A week-long Power BI workshop for North sector staff, covered by the Municipality’s internal channel.",
+    "An official business analysis and dashboard course for South sector staff.",
+    "Trained and mentored more than 150 staff in data analysis, reporting and dashboard building.",
+    "Hands-on throughout: every participant works on their own machine, and the programme closes with a closing project they present themselves.",
+  ],
+
+  programmeTitle: "Workshop tracks",
+  programmeMeta: "Four progressive tracks · Arabic, with English terminology",
+  programme: [
+    { w: "Track 1", line: "From mess to a clean table — import, clean, combine and automate refresh with Power Query. Output: a file that refreshes in one click." },
+    { w: "Track 2", line: "The model — dimensional modelling and relationships, date table and hierarchies, measures versus calculated columns in DAX." },
+    { w: "Track 3", line: "The heart of the tool — filter context as a full session and a mandatory gate, then CALCULATE and its family, and time intelligence." },
+    { w: "Track 4", line: "Presentation and delivery — visual choice, interaction and navigation, then publishing, governance, RLS and the closing project." },
+  ],
+
+  materialsTitle: "Prepared material",
+  materials: [
+    "Curriculum plan and language standard — 7 pages",
+    "Part One: Introduction to Power BI — 22 pages",
+    "Part Two: Your first complete report — 23 pages",
+    "An agreed Arabic–English glossary for the curriculum",
+    "Six training data files, each with one deliberate defect",
+    "A pre-publish checklist handed to every participant",
+  ],
+
+  methodTitle: "How it runs",
+  method:
+    "No slide gets read aloud · Mistakes are made on purpose, then diagnosed · “Why” before “how” · " +
+    "English term, Arabic meaning · Filter context is a mandatory gate.",
+
+  qualsTitle: "Qualifications",
+  quals: [
+    { t: "CAPM — Certified Associate in Project Management", m: "Project Management Institute (PMI) · No. 4183768 · 2025–2028" },
+    { t: "Complete Guide to Power BI for Data Analysts", m: "Microsoft Press · LinkedIn Learning" },
+    { t: "Learning Power BI Desktop", m: "LinkedIn Learning" },
+  ],
+
+  langsTitle: "Languages",
+  practiceTitle: "Practical background",
+  practice:
+    "What is taught comes from live practice: a Business & Data Analyst at Riyadh Municipality who built a " +
+    "34-screen platform running SAR 179.3M of maintenance contracts.",
+};
+
+export const getTrainerCv = (lang: "ar" | "en"): TrainerCv => (lang === "en" ? CV_EN : CV_AR);

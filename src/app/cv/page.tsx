@@ -1,5 +1,6 @@
 import { getContent, type Lang } from "@/data/content";
 import PrintButton from "@/components/PrintButton";
+import HtmlLang from "@/components/HtmlLang";
 
 /**
  * السيرة الذاتية — صفحة واحدة.
@@ -52,6 +53,7 @@ export default async function CvPage({
 
   return (
     <div className="cv-root min-h-screen print:min-h-0 bg-[#11161F] py-8 px-4 print:p-0 print:bg-white" dir={dir}>
+      <HtmlLang lang={lang} dir={dir} />
       <div className="no-print max-w-[820px] mx-auto mb-5 flex items-center justify-between">
         <a href={lang === "en" ? "/en" : "/"} className="inline-flex min-h-11 items-center text-sm text-gold hover:underline">
           {ui.cv.back}
@@ -113,7 +115,7 @@ export default async function CvPage({
                     <span className="text-[10.5px] text-[#8a6d2f]">{pr.org}</span>
                   </div>
                   <p className="mt-0.5 text-[12.5px] text-[#3a3f52] leading-[1.7]">{pr.line}</p>
-                  <p className="mt-0.5 text-[10.5px] text-[#9095a8]" dir="ltr">{pr.stack}</p>
+                  <p className="mt-0.5 text-[10.5px] text-[#5a6072]" dir="ltr">{pr.stack}</p>
                 </li>
               ))}
             </ul>

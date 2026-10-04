@@ -5,8 +5,10 @@ import { getTraining } from "@/data/training";
 const t = getTraining("en");
 
 export const metadata: Metadata = {
-  title: `${t.title} — Training profile`,
-  description: t.lead,
+  title: `${t.title} — Hands-on workshops`,
+  // ⚠ Search descriptions are truncated past ~160 characters; `t.lead` is a full paragraph
+  description:
+    "Hands-on Power BI workshops — tracks, material and delivery terms, with over 360 hours delivered to 150+ participants in a government body.",
   alternates: { canonical: "/en/training", languages: { "ar-SA": "/training", "en-US": "/en/training" } },
   openGraph: {
     title: t.title,

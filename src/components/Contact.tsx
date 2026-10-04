@@ -40,7 +40,7 @@ export default function Contact({ c }: { c: Content }) {
         <div className="relative grid lg:grid-cols-2 gap-10 items-center">
           <div className="text-center lg:text-start">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-              <span className="text-gold">◆</span>
+              
               <div className="w-16 hairline" />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">{t.title}</h2>
@@ -66,7 +66,7 @@ export default function Contact({ c }: { c: Content }) {
 
           <form onSubmit={sendWhatsApp} className="bg-ink/40 border border-gold/15 rounded-2xl p-6">
             <h3 className="font-display font-bold text-lg mb-5 flex items-center gap-2">
-              <span className="text-gold">✦</span> {t.sendTitle}
+              {t.sendTitle}
             </h3>
             <label className="block text-sm text-white/72 mb-1.5">{t.nameLabel}</label>
             <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t.namePh} className="w-full min-h-11 bg-panel2 border border-gold/15 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-gold/50 transition-colors mb-4" />

@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/training`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE}/en/training`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/cv`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE}/cv/training`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/cv?lang=en`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 }

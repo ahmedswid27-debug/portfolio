@@ -6,6 +6,7 @@ import SectionHead from "./SectionHead";
 import VideoWall from "./VideoWall";
 import ScrollReveal from "./ScrollReveal";
 import ScrollProgress from "./ScrollProgress";
+import HtmlLang from "./HtmlLang";
 
 export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
   const t = getTraining(lang);
@@ -15,6 +16,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
 
   return (
     <div dir={t.dir} className="min-h-screen">
+      <HtmlLang lang={lang} dir={t.dir} />
       <ScrollProgress />
       {/* ⚠ `ScrollReveal` يختار `main section` ويخفيها حتى تدخل الشاشة —
           فأقسام هذه الصفحة كلُّها داخل `<main>` لذلك، وقواعد الطباعة تُظهرها. */}
@@ -74,13 +76,13 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
       <main className="mx-auto max-w-6xl px-6 sm:px-10">
         {/* ── ١ · من قاعة التدريب ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={1} icon="▶" title={t.evidenceTitle} sub={t.evidenceSub} img="/riyadh/kafd.jpg" />
+          <SectionHead n={1} title={t.evidenceTitle} sub={t.evidenceSub} img="/riyadh/kafd.jpg" />
           <VideoWall clips={t.clips} officialLabel={lang === "en" ? "Official" : "تغطية رسمية"} />
         </section>
 
         {/* ── ٢ · الفئة المستهدفة ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={2} icon="◆" title={t.audienceTitle} img="/riyadh/skyline-sunset.jpg" />
+          <SectionHead n={2} title={t.audienceTitle} img="/riyadh/skyline-sunset.jpg" />
           <dl className="card-gold rounded-2xl divide-y divide-gold/10">
             {t.audience.map((a) => (
               <div key={a.k} className="grid sm:grid-cols-[180px_1fr] gap-x-6 gap-y-1.5 px-6 sm:px-8 py-5">
@@ -93,7 +95,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
 
         {/* ── ٣ · المنهج ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={3} icon="❖" title={t.curriculumTitle} sub={t.curriculumSub} img="/riyadh/aerial-day.jpg" />
+          <SectionHead n={3} title={t.curriculumTitle} sub={t.curriculumSub} img="/riyadh/aerial-day.jpg" />
 
           <div className="space-y-10">
             {t.weeks.map((w) => (
@@ -105,7 +107,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
                   </span>
                   <div className="min-w-0">
                     <h3 className="font-display text-lg sm:text-xl font-bold leading-snug">{w.title}</h3>
-                    <p className="text-[12px] sm:text-[11px] text-gold/70 mt-0.5">{w.hours}</p>
+                    {w.hours && <p className="text-[12px] sm:text-[11px] text-gold/70 mt-0.5">{w.hours}</p>}
                   </div>
                   <span className="flex-1 hairline self-center" />
                 </div>
@@ -125,8 +127,8 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
                           {lang === "en" ? "S" : "ج"}
                           {s.n}
                         </span>
-                        <span className="text-white/35">·</span>
-                        <span className="text-white/55">{s.hours}</span>
+                        {s.hours && <><span className="text-white/35">·</span>
+                        <span className="text-white/55">{s.hours}</span></>}
                         {s.pivot && (
                           <span className="ms-auto px-2 py-0.5 rounded-full bg-saud/35 border border-saud/60 text-emerald-200 text-[11px] sm:text-[10px]">
                             {t.pivotLabel}
@@ -165,7 +167,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
 
         {/* ── ٤ · منهجية التدريب ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={4} icon="✦" title={t.methodTitle} sub={t.methodSub} img="/riyadh/street.jpg" />
+          <SectionHead n={4} title={t.methodTitle} sub={t.methodSub} img="/riyadh/street.jpg" />
           <ol className="relative border-s border-gold/18 ms-3 space-y-7">
             {t.method.map((m) => (
               <li key={m.n} className="relative ps-7">
@@ -181,7 +183,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
 
         {/* ── ٥ · البيانات التدريبية ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={5} icon="❂" title={t.dataTitle} sub={t.dataSub} img="/riyadh/kingdom-night.jpg" />
+          <SectionHead n={5} title={t.dataTitle} sub={t.dataSub} img="/riyadh/kingdom-night.jpg" />
           <div className="card-gold rounded-2xl overflow-hidden">
             {/* ⚠ ثلاثة أعمدة في شاشة ٣٩٠ تعرض عمودين ونصفاً، والثالث يُقرأ شظيّةً.
                 فعلى الجوال تُفكَّك الصفوف بطاقاتٍ، وعلى الشاشة الواسعة تبقى جدولاً. */}
@@ -223,9 +225,9 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
           </div>
         </section>
 
-        {/* ── ٦ · التقويم وما يخرج به المتدرب ── */}
+        {/* ── ٦ · التقويم وما يخرج به المشارك ── */}
         <section className="py-16 sm:py-20">
-          <SectionHead n={6} icon="◈" title={t.assessTitle} img="/riyadh/aerial-day.jpg" />
+          <SectionHead n={6} title={t.assessTitle} img="/riyadh/aerial-day.jpg" />
           <div className="grid gap-5 lg:grid-cols-2 items-start">
             <dl className="card-gold rounded-2xl divide-y divide-gold/10">
               {t.assess.map((a) => (
@@ -241,35 +243,12 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
               <ul className="mt-5 space-y-3.5">
                 {t.takeaways.map((k) => (
                   <li key={k} className="flex gap-3 text-[14px] sm:text-[13px] text-white/80 leading-relaxed">
-                    <span className="mt-[3px] shrink-0 text-emerald-300/90">✓</span>
+                    <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-emerald-300/80" />
                     <span>{k}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-        </section>
-
-        {/* ── ٧ · المواد ── */}
-        <section className="py-16 sm:py-20">
-          <SectionHead n={7} icon="▤" title={t.docsTitle} sub={t.docsSub} img="/riyadh/skyline-sunset.jpg" />
-          <div className="grid gap-4 sm:grid-cols-3">
-            {t.docs.map((d) => (
-              <a
-                key={d.href}
-                href={d.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="tile card-gold rounded-2xl p-5 flex flex-col gap-2 group"
-              >
-                <span className="text-gold/70 text-lg leading-none">▤</span>
-                <h3 className="font-display font-bold text-[14px] leading-snug">{d.title}</h3>
-                <p className="text-[12px] sm:text-[11px] text-white/55">{d.meta}</p>
-                <span className="mt-2 text-[13px] sm:text-[12px] text-gold group-hover:gap-2 inline-flex items-center gap-1.5 transition-all w-fit">
-                  {t.docsOpen} ↗
-                </span>
-              </a>
-            ))}
           </div>
         </section>
 
@@ -287,6 +266,12 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
               >
                 {t.ctaWhatsapp}
               </a>
+              <Link
+                href={lang === "en" ? "/cv/training?lang=en" : "/cv/training"}
+                className="inline-flex items-center min-h-11 px-5 py-3 rounded-lg text-[14px] sm:text-[13px] font-bold border border-gold/45 bg-gold/[0.08] text-gold hover:bg-gold/[0.14] transition-colors"
+              >
+                {t.ctaCv}
+              </Link>
               <a
                 href={profile.social.email}
                 className="inline-flex items-center min-h-11 px-5 py-3 rounded-lg text-[14px] sm:text-[13px] border border-gold/30 text-gold/90 hover:bg-gold/[0.07] transition-colors"

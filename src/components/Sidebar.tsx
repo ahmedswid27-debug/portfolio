@@ -63,8 +63,7 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
           on ? "text-gold bg-gold/[0.09] font-semibold" : "text-white/68 hover:text-white/90 hover:bg-white/[0.04]"
         }`}
       >
-        {on && <span className="absolute inset-inline-start-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full bg-gold" />}
-        <span className={`text-[9px] transition-opacity ${on ? "opacity-100" : "opacity-40"}`}>◆</span>
+        {on && <span className="absolute start-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full bg-gold" />}
         <span className="truncate">{label}</span>
       </a>
     );
@@ -102,7 +101,6 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
         bg-ink transition-transform duration-300`}
       >
         <a href="#top" onClick={() => setOpen(false)} className="px-5 py-5 flex items-center gap-2.5 border-b border-white/[0.06] shrink-0">
-          <span className="text-gold text-lg leading-none">◆</span>
           <div className="leading-tight min-w-0">
             <p className="font-display font-bold text-white text-sm truncate">{c.profile.fullName}</p>
             <p className="text-[10px] text-white/40 truncate">{c.profile.titleShort}</p>

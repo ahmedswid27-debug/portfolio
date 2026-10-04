@@ -62,10 +62,10 @@ const AR_UI: UI = {
   groups: { main: "الرئيسية", work: "الأعمال", creds: "المؤهلات", reach: "التواصل" },
   nav: {
     about: "الملخّص المهني", experience: "الخبرة", analysis: "تحليل البيانات", design: "التصاميم",
-    automation: "الأنظمة والأتمتة", training: "التدريب", credentials: "الشهادات",
+    automation: "الأنظمة والأتمتة", training: "ورش العمل", credentials: "الشهادات",
     skills: "المهارات", reports: "التقارير", disciplines: "منهج العمل", contact: "التواصل",
     startProject: "تواصل", pdf: "السيرة الذاتية ⤓", cvMobile: "السيرة الذاتية · طباعة PDF ⤓",
-    trainingPage: "ملف التدريب — المنهج",
+    trainingPage: "ورش العمل والمحاور",
   },
   hero: {
     badge: "مفتوح للفرص", iAm: "",
@@ -77,9 +77,9 @@ const AR_UI: UI = {
     credentials: "الشهادات واللغات",
   },
   works: {
-    view: "تكبير", fromTraining: "من التدريب", caseStudy: "دراسة حالة",
+    view: "تكبير", fromTraining: "من الورشة", caseStudy: "دراسة حالة",
     role: "الدور:", whatItDoes: "ما يفعله النظام", moreShots: "",
-    clips: "مقاطع من قاعة التدريب", official: "تغطية رسمية",
+    clips: "مقاطع من قاعة الورشة", official: "تغطية رسمية",
   },
   skills: { core: "المهارات الأساسية", technical: "المهارات التقنية" },
   creds: {
@@ -123,10 +123,10 @@ const EN_UI: UI = {
   groups: { main: "Overview", work: "Work", creds: "Credentials", reach: "Contact" },
   nav: {
     about: "Professional Summary", experience: "Experience", analysis: "Data Analytics", design: "Design",
-    automation: "Systems & Automation", training: "Training", credentials: "Certificates",
+    automation: "Systems & Automation", training: "Workshops", credentials: "Certificates",
     skills: "Skills", reports: "Reports", disciplines: "How I work", contact: "Contact",
     startProject: "Contact", pdf: "Résumé ⤓", cvMobile: "Resume · Print PDF ⤓",
-    trainingPage: "Training profile — curriculum",
+    trainingPage: "Workshop profile",
   },
   hero: {
     badge: "Open to opportunities", iAm: "I'm ",
@@ -138,9 +138,9 @@ const EN_UI: UI = {
     credentials: "Certificates & Languages",
   },
   works: {
-    view: "Enlarge", fromTraining: "From the training room", caseStudy: "Case study",
+    view: "Enlarge", fromTraining: "From the workshop", caseStudy: "Case study",
     role: "Role:", whatItDoes: "What the system does", moreShots: "",
-    clips: "Clips from the training room", official: "Official",
+    clips: "Clips from the workshop room", official: "Official",
   },
   skills: { core: "Core skills", technical: "Technical skills" },
   creds: {
@@ -183,8 +183,8 @@ const EN_PROFILE = {
   name: "Ahmed Swid",
   fullName: "Ahmed Mahmoud Swid",
   initials: "AS",
-  title: "Business Analyst · Dashboard Design · Reporting · Power BI Trainer",
-  titleShort: "Business & Data Analyst · Power BI Trainer",
+  title: "Business Analyst · Dashboard Design · Reporting · Power BI Workshops",
+  titleShort: "Business & Data Analyst",
   tagline:
     "I turn raw operational data into clear indicators and decision-ready reports — and build automation that cuts manual effort and speeds delivery.",
   location: "Riyadh, Saudi Arabia",
@@ -194,8 +194,8 @@ const EN_PROFILE = {
     "decision-ready dashboards and KPIs. Designed and delivered BI platforms governing SAR 179.3M in " +
     "maintenance contracts, and automated executive reporting end to end — from data cleaning to daily " +
     "delivery with no manual step. Skilled in Power BI, DAX, Power Query, SQL and Excel across data " +
-    "modelling, dashboard design and workflow automation. PMI CAPM® certified; trained 150+ staff in " +
-    "data analysis, and authored a 28-hour Power BI curriculum delivered as an official workshop.",
+    "modelling, dashboard design and workflow automation. PMI CAPM® certified; delivered over 360 hours of " +
+    "hands-on Power BI workshops to 150+ staff, and authored their material.",
   summary:
     "A business and data analyst at Riyadh Municipality. My work starts from a question management asks and " +
     "cannot answer reliably — where complaints are piling up, which contractor is behind, which lighting pole is " +
@@ -203,10 +203,10 @@ const EN_PROFILE = {
     "For the Wasat sector I built a thirty-four-screen platform running SAR 179.3M of maintenance contracts, " +
     "classified 60,658 lighting poles into five risk tiers from resistance and leakage readings, and replaced " +
     "subjective contractor assessment with one objective yardstick. I work in Power BI, DAX and data modelling, " +
-    "and build with Next.js, Supabase and n8n when a dashboard alone is not enough. Training is part of the " +
-    "work rather than an addition to it: a week-long Power BI workshop delivered to Municipality staff in the " +
-    "West and North sectors, and a prepared 28-hour curriculum across twelve sessions, with training data " +
-    "carrying deliberate defects and typeset handbooks. CAPM certified in project management.",
+    "and build with Next.js, Supabase and n8n when a dashboard alone is not enough. Capability building is part " +
+    "of the work rather than an addition to it: hands-on Power BI workshops delivered to Municipality staff in " +
+    "the West, North and South sectors — over 360 hours in all — with practice data carrying deliberate defects " +
+    "and typeset handbooks I authored. CAPM certified in project management.",
   bio: "I'm Ahmed Mahmoud Swid, a Business & Data Analyst at Riyadh Municipality with 5+ years of practical experience and a certified Power BI expert. I specialize in operational data analysis, administrative reporting, dashboard design (Power BI), and process automation with n8n. I've trained and mentored 150+ employees in a government entity, and I hold the CAPM project-management certification. I turn raw data into measurable decisions.",
 };
 
@@ -214,14 +214,14 @@ const EN_STATS = [
   { value: "+5", label: "Years experience" },
   { value: "SAR 179M", label: "In contracts run by a system I built" },
   { value: "+320", label: "Analytics projects" },
-  { value: "+150", label: "Trained on Power BI" },
+  { value: "+150", label: "Power BI workshop participants" },
 ];
 
 const EN_FACTS = [
   "5+ years of practical experience at Riyadh Municipality",
   "Certified expert in Power BI and dashboard design",
-  "Trained 150+ employees in a government entity on Power BI",
-  "A prepared curriculum: 28 hours across 12 sessions, with printed material and training data",
+  "Delivered Power BI workshops to 150+ employees in a government entity",
+  "Over 360 hours delivered, with printed material and purpose-built practice data",
   "Proficient across Microsoft Office and Adobe Creative tools",
   "CAPM — Certified Associate in Project Management (PMI)",
 ];
@@ -380,43 +380,43 @@ const EN_SECTIONS: Section[] = [
     ],
   },
   {
-    id: "training", name: "Training & Capability Building",
-    sub: "A 28-hour hands-on Power BI programme — delivered to 150+ staff in a government body",
+    id: "training", name: "Workshops & Capability Building",
+    sub: "Hands-on Power BI workshops — over 360 hours delivered to 150+ staff in a government body",
     icon: "❖", layout: "cards",
     items: [
       {
         featured: true,
-        title: "Business Analysis & Dashboard Design with Power BI",
+        title: "Workshops: Business Analysis & Dashboard Design with Power BI",
         org: "Riyadh Municipality — West, North and South sectors",
-        status: "Trainer",
+        status: "Delivered & authored",
         desc:
           "A hands-on programme that starts from a raw file carrying deliberate defects and ends with a published, " +
           "secured report that refreshes with one click. Delivered as a one-week intensive workshop for Municipality " +
           "staff, and also prepared as twelve sessions across four weeks. The curriculum, the training data and the " +
           "handbooks are all prepared in advance — nothing is improvised.",
         metrics: [
-          { value: "+150", label: "Trainees" },
-          { value: "28", label: "Training hours" },
-          { value: "12", label: "Hands-on sessions" },
+          { value: "+150", label: "Participants" },
+          { value: "+360", label: "Hours delivered" },
+          { value: "+30", label: "Hands-on sessions" },
           { value: "52", label: "Pages of material" },
         ],
         highlightsLabel: "What the programme covers",
         highlights: [
-          "A four-week curriculum where every week ends in an output the trainee can see",
+          "Four progressive tracks; each ends in an output the participant can see",
           "A full session on Filter Context — a mandatory gate that is never merged or shortened",
           "Six data files with deliberate defects, each defect serving one specific lesson",
-          "Taught on the live screen; the trainee works on their own machine rather than watching",
-          "Capstone project: raw file to a published report with row-level security",
-          "Two typeset handbooks and an Arabic–English glossary the trainee keeps",
+          "Taught on the live screen; participants work on their own machines rather than watching",
+          "Closing project: raw file to a published report with row-level security",
+          "Two typeset handbooks and an Arabic–English glossary each participant keeps",
         ],
         gallery: [
           { src: "/works/training/banner-powerbi.jpg", caption: "Business Analysis with Power BI course" },
           { src: "/works/training/room-powerbi.jpg", caption: "Hands-on Power BI workshop" },
-          { src: "/works/training/certificates.jpg", caption: "Certificates awarded to trainees" },
+          { src: "/works/training/certificates.jpg", caption: "Certificates awarded to participants" },
         ],
         tags: ["Power BI", "DAX", "Power Query", "Hands-on training", "Prepared curriculum"],
         link: "/en/training",
-        linkLabel: "Full training profile — curriculum, material and delivery terms",
+        linkLabel: "Workshop profile — tracks, material and delivery terms",
         note: "Clips carrying the Municipality's identity are from its own internal-communications coverage.",
       },
       { title: "Learning Roadmap — From Zero to Pro Automation", desc: "A progressive path of seven skills (JSON · Git · Python · SQL · APIs · n8n · Claude) for building working systems, with a hands-on project per skill.", tags: ["Learning Path", "9 weeks", "7 skills"], status: "Available" },
@@ -426,7 +426,7 @@ const EN_SECTIONS: Section[] = [
       { src: "/training/video/workshop-west.mp4", poster: "/training/video/workshop-west.jpg", title: "Power BI workshop — West sector", meta: "11–15 January 2026 · official Municipality coverage", portrait: true, official: true },
       { src: "/training/video/workshop-north.mp4", poster: "/training/video/workshop-north.jpg", title: "Power BI workshop — North sector", meta: "Official coverage · Riyadh Municipality", portrait: true, official: true },
       { src: "/training/video/teaching.mp4", poster: "/training/video/teaching.jpg", title: "Teaching on the live screen", meta: "Hands-on session", portrait: true },
-      { src: "/training/video/explaining.mp4", poster: "/training/video/explaining.jpg", title: "Working through it with the trainees", meta: "Hands-on session", portrait: true },
+      { src: "/training/video/explaining.mp4", poster: "/training/video/explaining.jpg", title: "Working through it with the participants", meta: "Hands-on session", portrait: true },
     ],
     photos: [
       { src: "/works/training/presenting.jpg", caption: "Delivering dashboard training" },

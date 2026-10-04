@@ -9,7 +9,7 @@ export default function About({ c }: { c: Content }) {
 
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
-      <SectionHead n={1} icon="❂" title={ui.sec.about} img="/riyadh/skyline-sunset.jpg" />
+      <SectionHead n={1} title={ui.sec.about} img="/riyadh/skyline-sunset.jpg" />
 
       <div className="grid gap-10 lg:grid-cols-[1.45fr_1fr] lg:gap-14">
         <div className="rtl:border-r ltr:border-l border-gold/25 rtl:pr-6 ltr:pl-6 sm:rtl:pr-8 sm:ltr:pl-8">
@@ -27,7 +27,7 @@ export default function About({ c }: { c: Content }) {
               key={f}
               className="flex items-start gap-3 text-[14px] sm:text-[13px] text-white/70 leading-relaxed card-gold rounded-xl px-4 py-3.5"
             >
-              <span className="text-gold/80 mt-[3px] shrink-0 text-[10px]">◆</span>
+              <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-gold/70" />
               <span>{f}</span>
             </li>
           ))}

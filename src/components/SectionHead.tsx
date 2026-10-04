@@ -29,8 +29,9 @@ export default function SectionHead({
       <span className="absolute inset-y-0 rtl:right-0 ltr:left-0 w-[3px] bg-gradient-to-b from-gold via-gold/40 to-transparent" />
 
       <div className="px-6 sm:px-8 py-7 sm:py-9">
+        {/* ⚠ لا رمزَ زخرفيّ هنا: رموزُ الأقسام من أظهر ما يوحي بصفحةٍ مولَّدة آليًّا.
+            والرقمُ وحدَه يكفي للتسلسل. */}
         <div className="flex items-center gap-3 mb-2.5">
-          {icon && <span className="text-gold text-lg leading-none">{icon}</span>}
           <span className="font-mono text-xs text-gold/60">{String(n).padStart(2, "0")}</span>
           <div className="flex-1 hairline" />
         </div>

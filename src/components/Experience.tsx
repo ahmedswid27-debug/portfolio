@@ -5,7 +5,7 @@ export default function Experience({ c }: { c: Content }) {
   const { experience, ui } = c;
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
-      <SectionHead n={2} icon="◈" title={ui.sec.experience} img="/riyadh/aerial-day.jpg" />
+      <SectionHead n={2} title={ui.sec.experience} img="/riyadh/aerial-day.jpg" />
 
       <div className="card-gold rounded-2xl p-7 sm:p-9">
         <div className="flex justify-end pb-5 border-b border-gold/15">

@@ -6,7 +6,7 @@ export default function Credentials({ c }: { c: Content }) {
   const { certifications, courses, languages, ui } = c;
   return (
     <section id="credentials" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
-      <SectionHead n={8} icon="❂" title={ui.sec.credentials} img="/riyadh/skyline-sunset.jpg" />
+      <SectionHead n={8} title={ui.sec.credentials} img="/riyadh/skyline-sunset.jpg" />
 
       <div className="mt-10 grid lg:grid-cols-[1.3fr_0.7fr] gap-6">
         <div className="space-y-5">
@@ -17,7 +17,7 @@ export default function Credentials({ c }: { c: Content }) {
                   <Image src={cert.image} alt={cert.title} fill sizes="160px" className="object-cover" />
                 </div>
               ) : (
-                <div className="w-16 h-16 shrink-0 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center text-2xl text-gold">❖</div>
+                <div className="w-1 self-stretch shrink-0 rounded-full bg-gold/35" />
               )}
               <div className="min-w-0">
                 <h3 className="font-display font-bold leading-snug group-hover:text-gold transition-colors">{cert.title}</h3>
@@ -31,7 +31,7 @@ export default function Credentials({ c }: { c: Content }) {
 
         <div className="card-gold rounded-2xl p-7">
           <h3 className="font-display font-bold text-lg mb-6 flex items-center gap-2">
-            <span className="text-gold">◆</span> {ui.creds.languages}
+            {ui.creds.languages}
           </h3>
           <div className="space-y-6">
             {languages.map((l) => (
@@ -51,7 +51,7 @@ export default function Credentials({ c }: { c: Content }) {
 
       <div className="mt-8">
         <h3 className="font-display font-bold text-lg mb-5 flex items-center gap-2">
-          <span className="text-gold">❖</span> {ui.creds.courses}
+          {ui.creds.courses}
           <span className="text-sm text-white/40 font-normal">{ui.creds.coursesCount(courses.length)}</span>
         </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

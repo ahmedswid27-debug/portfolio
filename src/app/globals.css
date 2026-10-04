@@ -274,3 +274,15 @@ body {
   .cv-root .py-6 { padding-top: 12px !important; padding-bottom: 12px !important; }
   .cv-root section h2 { margin-bottom: 5px !important; }
 }
+
+/* ═══ السيرة التدريبية: الضغط للطباعة وحدها ═══
+   الشاشة تبقى مريحةً للقراءة، والورقة تُضغط حتى تسع صفحةً واحدة.
+   ⚠ النسخة الإنجليزية أطول من العربية في العرض نفسه (الكلمة الإنجليزية
+     أعرض بالمتوسط)، فالقاعدةُ تُقاس عليها هي لا على العربية. */
+@media print {
+  .cv-trainer header { padding: 10px 24px !important; }
+  .cv-trainer .cv-body { padding: 10px 24px !important; }
+  .cv-trainer .cv-body > * + * { margin-top: 8px !important; }
+  .cv-trainer section h2 { margin-bottom: 4px !important; }
+  .cv-trainer p, .cv-trainer li { line-height: 1.55 !important; }
+}
