@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import Portfolio from "@/components/Portfolio";
+import type { Metadata, Viewport } from "next";
+import RecruiterPage from "@/components/recruiter/RecruiterPage";
 import { getContent } from "@/data/content";
 
 const c = getContent("en");
@@ -12,10 +12,12 @@ export const metadata: Metadata = {
     description: c.profile.tagline,
     type: "website",
     locale: "en_US",
-    url: "https://ahmed-swid.vercel.app/en",
+    url: "https://www.ahmedswid.com/en",
   },
 };
 
+export const viewport: Viewport = { themeColor: "#FFFFFF" };
+
 export default function EnHome() {
-  return <Portfolio lang="en" />;
+  return <RecruiterPage lang="en" />;
 }

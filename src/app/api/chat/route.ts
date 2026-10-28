@@ -41,7 +41,7 @@ function localAnswer(question: string, lang: Lang): string {
 
   if (has("تواصل", "اتصال", "رقم", "ايميل", "ايمي", "contact", "email", "phone", "reach", "hire"))
     return en
-      ? `You can reach Ahmed on WhatsApp ${c.profile.phone} or email ${c.profile.email}. He's available for freelance & consulting.`
+      ? `You can reach Ahmed on WhatsApp ${c.profile.phone} or email ${c.profile.email}. He is open to full-time analyst roles.`
       : `يمكنك التواصل مع أحمد عبر واتساب ${c.profile.phone} أو البريد ${c.profile.email}. وهو متاح للعمل الحر والاستشارات.`;
   if (has("مخاطر", "خطورة", "سلامة", "risk", "safety"))
     return en
@@ -53,8 +53,8 @@ function localAnswer(question: string, lang: Lang): string {
       : `أحمد حاصل على شهادة CAPM، ويبني لوحات أداء بمنهج القيمة المكتسبة (EVM): مؤشر أداء الجدول والتكلفة لكل عقد، والمخطّط مقابل الفعلي شهرياً، ونِسب التحصيل والالتزام بالموازنة.`;
   if (has("power bi", "داشبورد", "لوحة", "dashboard", "تحليل", "analy", "بيانات", "data"))
     return en
-      ? `Ahmed is a certified Power BI expert. His boards run real operations at Riyadh Municipality — lighting risk analysis over 60,658 poles, complaint analytics, earned-value project performance, and executive KPI dashboards. See the Data Analytics section.`
-      : `أحمد خبير معتمد في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر 60,658 عمود إنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
+      ? `Ahmed is a Power BI expert. His boards run real operations at Riyadh Municipality — lighting risk analysis over 60,658 poles, complaint analytics, earned-value project performance, and executive KPI dashboards. See the Data Analytics section.`
+      : `أحمد خبير في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر 60,658 عمود إنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
   if (has("تدريب", "كورس", "دورة", "train", "course", "workshop"))
     return en
       ? `Ahmed has trained 150+ employees and delivered an official "Business Analysis with Power BI" course. See the Training section for photos.`
@@ -68,8 +68,8 @@ function localAnswer(question: string, lang: Lang): string {
       ? `Ahmed is a Business & Data Analyst at Riyadh Municipality — 5+ years, CAPM certified, certified Power BI expert. He has built and operates a platform running SAR 179.3M of contracts, risk-classified 60,000+ lighting poles, and trained 150+ employees. He's open to opportunities — ${c.profile.email}.`
       : `أحمد محلل أعمال وبيانات في أمانة الرياض — أكثر من 5 سنوات، حاصل على CAPM، وخبير معتمد في Power BI. بنى ويشغّل منصّة تدير عقوداً بقيمة 179.3 مليون ريال، وصنّف مخاطر أكثر من 60 ألف عمود إنارة، ودرّب أكثر من 150 موظفاً. وهو منفتح على الفرص — ${c.profile.email}.`;
   return en
-    ? `Ahmed is a Business & Data Analyst and certified Power BI expert. Ask me about his analytics, automation, design, or training work — or reach him at ${c.profile.email}.`
-    : `أحمد محلل أعمال وبيانات وخبير معتمد في Power BI. اسألني عن أعماله في التحليل أو الأتمتة أو التصميم أو التدريب، أو تواصل معه عبر ${c.profile.email}.`;
+    ? `Ahmed is a Business & Data Analyst and Power BI expert. Ask me about his analytics, automation, design, or training work — or reach him at ${c.profile.email}.`
+    : `أحمد محلل أعمال وبيانات وخبير في Power BI. اسألني عن أعماله في التحليل أو الأتمتة أو التصميم أو التدريب، أو تواصل معه عبر ${c.profile.email}.`;
 }
 
 type Msg = { role: "user" | "assistant"; content: string };

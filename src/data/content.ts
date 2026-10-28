@@ -183,10 +183,10 @@ const EN_PROFILE = {
   name: "Ahmed Swid",
   fullName: "Ahmed Mahmoud Swid",
   initials: "AS",
-  title: "Business Analyst · Dashboard Design · Reporting · Power BI Workshops",
-  titleShort: "Business & Data Analyst",
+  title: "Power BI Expert · Data & Business Analyst · Dashboards · Reporting Automation",
+  titleShort: "Power BI Expert, Data & Business Analyst",
   tagline:
-    "I turn raw operational data into clear indicators and decision-ready reports — and build automation that cuts manual effort and speeds delivery.",
+    "I build Power BI dashboards and operational platforms that management reads every morning, from raw data to the decision.",
   location: "Riyadh, Saudi Arabia",
   // ٥٠–١٠٠ كلمة، بالمصطلحات التي تطابقها أنظمة ATS لوظائف البيانات وذكاء الأعمال.
   cvSummary:

@@ -286,3 +286,93 @@ body {
   .cv-trainer section h2 { margin-bottom: 4px !important; }
   .cv-trainer p, .cv-trainer li { line-height: 1.55 !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   الصفحة الرئيسية بعد إعادة التصميم (2026-10-29) — الشبكة السويسرية.
+   كل القواعد تحت ‎.rx‎ فلا تمسّ صفحات /cv و/training.
+   الألوان: أبيض · حبر ‎#111‎ · رمادي ‎#5F6368‎ · خط ‎#E2E2E2‎ · أصفر ‎#F2C811‎ (مساحة فقط).
+   ════════════════════════════════════════════════════════════════ */
+.font-plex { font-family: var(--font-plex), system-ui, sans-serif; }
+.rx { color: #111; --rx-yellow: #F2C811; }
+.rx ::selection { background: var(--rx-yellow); color: #111; }
+.rx-wrap { max-width: 1200px; margin-inline: auto; padding-inline: 24px; }
+@media (max-width: 767px) { .rx-wrap { padding-inline: 16px; } }
+
+.rx-display {
+  font-size: clamp(40px, 7.2vw, 76px);
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.rx[dir="ltr"] .rx-display { letter-spacing: -0.025em; line-height: 1.12; }
+.rx-role {
+  display: flex; align-items: center; gap: 14px;
+  font-size: clamp(20px, 2.6vw, 28px); line-height: 1.5; font-weight: 500;
+}
+.rx-bar {
+  flex: none; width: 40px; height: 12px; background: var(--rx-yellow);
+  transform-origin: inline-start; animation: rx-grow .9s cubic-bezier(.2,.7,.2,1) .15s both;
+}
+@keyframes rx-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.rx-num { font-size: clamp(34px, 4.4vw, 52px); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; }
+.rx-num-sm { font-size: clamp(26px, 3vw, 34px); font-weight: 300; line-height: 1.15; letter-spacing: -0.015em; }
+
+.rx-h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; line-height: 1.35; }
+.rx-h3 { font-size: clamp(22px, 2.4vw, 26px); font-weight: 700; line-height: 1.45; }
+.rx-h4 { font-size: 18px; font-weight: 700; line-height: 1.5; }
+.rx-label { font-size: 13px; font-weight: 500; color: #5F6368; letter-spacing: .02em; }
+.rx[dir="ltr"] .rx-label { text-transform: uppercase; letter-spacing: .08em; }
+
+.rx-index { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 300; }
+.rx-square { width: 10px; height: 10px; background: var(--rx-yellow); display: inline-block; }
+
+.rx-list { display: grid; gap: 14px; }
+.rx-list li {
+  position: relative; padding-inline-start: 22px; font-size: 16px; line-height: 1.85; color: #222;
+}
+.rx-list li::before {
+  content: ""; position: absolute; inset-inline-start: 0; top: .78em; width: 10px; height: 2px; background: #111;
+}
+
+.rx-tag { font-size: 13px; padding: 5px 10px; background: #111; color: #fff; line-height: 1.4; }
+
+.rx-btn {
+  display: inline-flex; align-items: center; justify-content: center; font-weight: 700;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.rx-btn-primary { background: var(--rx-yellow); color: #111; border: 2px solid var(--rx-yellow); }
+.rx-btn-primary:hover { background: #111; color: #fff; border-color: #111; }
+.rx-btn-ghost { background: transparent; color: #111; border: 2px solid #111; }
+.rx-btn-ghost:hover { background: #111; color: #fff; }
+
+.rx-link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 5px;
+  text-decoration-thickness: 2px; transition: text-decoration-color .2s ease; }
+.rx-link:hover { text-decoration-color: currentColor; }
+.rx-link-block:hover span:first-child { text-decoration: underline; text-underline-offset: 5px; }
+
+.rx a:focus-visible, .rx button:focus-visible { outline: 3px solid #111; outline-offset: 3px; }
+.rx-skip { position: absolute; inset-inline-start: 16px; top: -60px; z-index: 50; background: #111; color: #fff; padding: 8px 14px; }
+.rx-skip:focus { top: 12px; }
+
+.rx-shot img { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.rx-shot:hover img { transform: scale(1.02); }
+.rx-shot { cursor: zoom-in; }
+
+/* الجوال: شريط أفقي بدل عمود طويل من الصور */
+@media (max-width: 767px) {
+  .rx-scroller {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: -16px; padding-inline: 16px; padding-bottom: 6px; scrollbar-width: none;
+  }
+  .rx-scroller::-webkit-scrollbar { display: none; }
+  .rx-scroller-item { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+.rx-dialog { max-width: min(1400px, 94vw); width: auto; background: #111; padding: 16px; border: 0; margin: auto; }
+.rx-dialog::backdrop { background: rgba(0,0,0,.82); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-bar { animation: none; }
+  .rx-shot img, .rx-btn, .rx-link { transition: none; }
+}
