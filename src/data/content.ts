@@ -34,7 +34,7 @@ export type UI = {
     footer: string;
   };
   chat: { greeting: string; ask: string; fab: string; status: string; suggestions: string[]; placeholder: string; error: string };
-  cv: { back: string; print: string; summary: string; experience: string; projects: string; skills: string; core: string; tech: string; certs: string; languages: string; courses: string };
+  cv: { back: string; print: string; summary: string; experience: string; projects: string; skills: string; core: string; tech: string; certs: string; education: string; languages: string; courses: string };
 };
 
 export type Content = {
@@ -111,7 +111,7 @@ const AR_UI: UI = {
   cv: {
     back: "← رجوع للموقع", print: "تحميل / طباعة PDF ⤓",
     summary: "الملخص المهني", experience: "الخبرة العملية", projects: "أبرز المشاريع", skills: "المهارات",
-    core: "المهارات الأساسية", tech: "المهارات التقنية", certs: "الشهادات",
+    core: "المهارات الأساسية", tech: "المهارات التقنية", certs: "الشهادات", education: "المؤهل الدراسي",
     languages: "اللغات", courses: "الدورات التدريبية",
   },
 };
@@ -172,7 +172,7 @@ const EN_UI: UI = {
   cv: {
     back: "← Back to site", print: "Download / Print PDF ⤓",
     summary: "Professional Summary", experience: "Experience", projects: "Key Projects", skills: "Skills",
-    core: "Core skills", tech: "Technical skills", certs: "Certifications",
+    core: "Core skills", tech: "Technical skills", certs: "Certifications", education: "Education",
     languages: "Languages", courses: "Courses",
   },
 };
@@ -190,14 +190,14 @@ const EN_PROFILE = {
   location: "Riyadh, Saudi Arabia",
   // ٥٠–١٠٠ كلمة، بالمصطلحات التي تطابقها أنظمة ATS لوظائف البيانات وذكاء الأعمال.
   cvSummary:
-    "Business & Data Analyst with 5+ years at Riyadh Municipality, turning operational data into " +
+    "Business & Data Analyst with 4+ years on Riyadh Municipality projects, turning operational data into " +
     "decision-ready dashboards and KPIs. Designed and delivered BI platforms governing SAR 179.3M in " +
     "maintenance contracts, and automated executive reporting end to end — from data cleaning to daily " +
     "delivery with no manual step. Skilled in Power BI, DAX, Power Query, SQL and Excel across data " +
     "modelling, dashboard design and workflow automation. PMI CAPM® certified; delivered over 360 hours of " +
     "hands-on Power BI workshops to 150+ staff, and authored their material.",
   summary:
-    "A business and data analyst at Riyadh Municipality. My work starts from a question management asks and " +
+    "A business and data analyst on Riyadh Municipality projects. My work starts from a question management asks and " +
     "cannot answer reliably — where complaints are piling up, which contractor is behind, which lighting pole is " +
     "about to cause an accident — and ends with a system that answers it every morning with no human in the loop. " +
     "For the Wasat sector I built a thirty-four-screen platform running SAR 179.3M of maintenance contracts, " +
@@ -207,19 +207,20 @@ const EN_PROFILE = {
     "of the work rather than an addition to it: hands-on Power BI workshops delivered to Municipality staff in " +
     "the West, North and South sectors — over 360 hours in all — with practice data carrying deliberate defects " +
     "and typeset handbooks I authored. CAPM certified in project management.",
-  bio: "I'm Ahmed Mahmoud Swid, a Business & Data Analyst at Riyadh Municipality with 5+ years of practical experience and a certified Power BI expert. I specialize in operational data analysis, administrative reporting, dashboard design (Power BI), and process automation with n8n. I've trained and mentored 150+ employees in a government entity, and I hold the CAPM project-management certification. I turn raw data into measurable decisions.",
+  education: "Bachelor of Laws (LL.B.) — Zagazig University, Egypt, 2011",
+  bio: "I'm Ahmed Mahmoud Swid, a Business & Data Analyst on Riyadh Municipality projects with 4+ years of experience and a Power BI expert. I specialize in operational data analysis, administrative reporting, dashboard design (Power BI), and process automation with n8n. I've delivered Power BI workshops to 150+ employees in a government entity, and I hold the CAPM project-management certification. I turn raw data into measurable decisions.",
 };
 
 const EN_STATS = [
-  { value: "+5", label: "Years experience" },
+  { value: "+4", label: "Years experience" },
   { value: "SAR 179M", label: "In contracts run by a system I built" },
   { value: "+320", label: "Analytics projects" },
   { value: "+150", label: "Power BI workshop participants" },
 ];
 
 const EN_FACTS = [
-  "5+ years of practical experience at Riyadh Municipality",
-  "Certified expert in Power BI and dashboard design",
+  "4+ years on Riyadh Municipality projects",
+  "Expert in Power BI and dashboard design",
   "Delivered Power BI workshops to 150+ employees in a government entity",
   "Over 360 hours delivered, with printed material and purpose-built practice data",
   "Proficient across Microsoft Office and Adobe Creative tools",
@@ -228,8 +229,8 @@ const EN_FACTS = [
 
 const EN_EXPERIENCE = {
   role: "Business Analyst",
-  org: "Riyadh Municipality",
-  period: "5+ years",
+  org: "Al-Shathri Company — Riyadh Municipality projects (Operations & Maintenance Agency)",
+  period: "2022 – Present",
   duties: [
     "Built a 34-screen operations platform running SAR 179.3M of street-lighting maintenance contracts for the Wasat sector — from data cleaning to the decision board, as sole analyst, designer, developer and operator.",
     "Automated the seven-page daily executive report so it reaches the director by email and Telegram with no human in the loop, replacing manual preparation every morning.",
@@ -238,7 +239,7 @@ const EN_EXPERIENCE = {
     "Analysed and geo-mapped 7,709 lighting complaints across eight zones, exposing where they accumulate by district, cause and period.",
     "Built an eight-dashboard analytics platform for the North sector with self-serve Excel ingestion, role-based access, and scheduled reports.",
     "Built earned-value (EVM) project performance boards: schedule and cost performance indices and earned value per contract.",
-    "Trained and mentored 150+ employees in data analysis and dashboard building, and delivered an official accredited course.",
+    "Delivered hands-on Power BI workshops to 150+ employees in data analysis and dashboard building, and authored their material.",
   ],
 };
 
@@ -256,7 +257,7 @@ const EN_SKILLS = {
     "Executive Reporting", "Data-Driven Decision Support",
   ],
   technical: [
-    "Microsoft Excel", "Power BI — Certified Expert", "Tableau", "n8n Automation",
+    "Microsoft Excel", "Power BI — Expert", "Tableau", "n8n Automation",
     "Supabase", "APIs", "Telegram Bots", "Dashboard Design", "Data Cleaning",
     "Workflow Automation", "Web Design",
   ],
@@ -476,7 +477,7 @@ const EN_SKILL_GROUPS: typeof ar.skillGroups = [
   {
     title: "Data analysis & modelling",
     proof: "Boards running SAR 179M of contracts, and a risk classification across 60,658 lighting poles.",
-    items: ["Power BI — certified expert", "DAX", "Data modelling", "Power Query", "Microsoft Excel", "Tableau"],
+    items: ["Power BI — expert", "DAX", "Data modelling", "Power Query", "Microsoft Excel", "Tableau"],
     icon: "◆",
   },
   {

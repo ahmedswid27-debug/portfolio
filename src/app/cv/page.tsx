@@ -121,7 +121,7 @@ export default async function CvPage({
             </ul>
           </Section>
 
-          <div className="grid sm:grid-cols-2 gap-x-7 gap-y-5">
+          <div className="grid grid-cols-3 gap-x-6 gap-y-5">
             <Section title={ui.cv.certs}>
               <ul className="space-y-1.5">
                 {certifications.map((cert) => (
@@ -131,6 +131,9 @@ export default async function CvPage({
                   </li>
                 ))}
               </ul>
+            </Section>
+            <Section title={ui.cv.education}>
+              <p className="text-[12.5px] font-bold text-[#0B0E14] leading-snug">{profile.education}</p>
             </Section>
             <Section title={ui.cv.languages}>
               <ul className="space-y-1">
