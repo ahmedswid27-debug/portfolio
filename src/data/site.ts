@@ -250,7 +250,7 @@ const EN: Site = {
     shot: { src: "/works/analysis/risk-lighting.jpg", title: "Power BI board classifying 60,658 lighting poles by risk" },
   },
   proof: [
-    { value: "4+", label: "years on Riyadh Municipality projects" },
+    { value: "9", label: "years of professional experience, 4+ in data & BI" },
     { value: "SAR 179M", label: "in contracts run by a platform I built" },
     { value: "60,658", label: "lighting poles classified by risk" },
     { value: "150+", label: "participants in Power BI workshops I delivered" },

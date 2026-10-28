@@ -822,7 +822,7 @@ const CV_AR: TrainerCv = {
 
   summaryTitle: "الملخص",
   summary:
-    "محلل أعمال وبيانات بأمانة منطقة الرياض، بخبرة تتجاوز خمس سنوات. نفَّذ ورش عمل تطبيقية " +
+    "محلل أعمال وبيانات في مشاريع أمانة منطقة الرياض، بخبرة مهنية تسع سنوات منها أكثر من أربع في البيانات. نفَّذ ورش عمل تطبيقية " +
     "في تحليل الأعمال وبناء لوحات المعلومات بـ Power BI لأكثر من 150 من منسوبي الأمانة، " +
     "تجاوز مجموعها 360 ساعة. وأعدَّ مادتها: بيانات تطبيقية مصمَّمة لغرض التعليم، وكتيِّبات " +
     "مطبوعة، ومعجم مصطلحات عربي إنجليزي. حاصل على شهادة CAPM من معهد إدارة المشاريع PMI.",
@@ -899,7 +899,7 @@ const CV_EN: TrainerCv = {
 
   summaryTitle: "Summary",
   summary:
-    "Business & Data Analyst at Riyadh Municipality with over five years of practice. Has delivered hands-on " +
+    "Business & Data Analyst on Riyadh Municipality projects with 9 years of professional experience, 4+ in data. Has delivered hands-on " +
     "business-analysis and Power BI dashboard workshops to more than 150 Municipality staff, totalling over 360 " +
     "hours, and authored their material: purpose-built practice data, printed handbooks and a glossary. PMI CAPM certified.",
 

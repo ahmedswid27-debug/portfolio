@@ -27,7 +27,7 @@ export default async function CvPage({
   // ‎?full=1 يعرض الخبرة كاملةً لمن يريد النسخة المطوّلة
   const full = sp.full === "1";
   const c = getContent(lang);
-  const { profile, experience, cvSkills, certifications, courses, languages, keyProjects, ui } = c;
+  const { profile, experience, previousExperience, cvSkills, certifications, courses, languages, keyProjects, ui } = c;
   const dir = ui.dir;
 
   // بندان في الخبرة يكرّران مشروعَين مذكورَين في «أبرز المشاريع» أسفلهما
@@ -104,6 +104,11 @@ export default async function CvPage({
                 </li>
               ))}
             </ul>
+            <div className="mt-2.5 flex items-baseline justify-between flex-wrap gap-2">
+              <h3 className="font-bold text-[13.5px] text-[#0B0E14]">{previousExperience.role} — {previousExperience.org}</h3>
+              <span className="text-[11px] text-[#8a6d2f]">{previousExperience.period}</span>
+            </div>
+            {full && <p className="mt-1 text-[12.5px] leading-[1.7] text-[#3a3f52]">{previousExperience.line}</p>}
           </Section>
 
           <Section title={ui.cv.projects}>

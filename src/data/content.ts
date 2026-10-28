@@ -43,6 +43,7 @@ export type Content = {
   stats: typeof ar.stats;
   facts: string[];
   experience: typeof ar.experience;
+  previousExperience: typeof ar.previousExperience;
   skills: typeof ar.skills;
   cvSkills: string[];
   skillGroups: typeof ar.skillGroups;
@@ -190,7 +191,7 @@ const EN_PROFILE = {
   location: "Riyadh, Saudi Arabia",
   // ٥٠–١٠٠ كلمة، بالمصطلحات التي تطابقها أنظمة ATS لوظائف البيانات وذكاء الأعمال.
   cvSummary:
-    "Business & Data Analyst with 4+ years on Riyadh Municipality projects, turning operational data into " +
+    "Business & Data Analyst with 9 years of professional experience, including 4+ years on Riyadh Municipality projects, turning operational data into " +
     "decision-ready dashboards and KPIs. Designed and delivered BI platforms governing SAR 179.3M in " +
     "maintenance contracts, and automated executive reporting end to end — from data cleaning to daily " +
     "delivery with no manual step. Skilled in Power BI, DAX, Power Query, SQL and Excel across data " +
@@ -208,18 +209,18 @@ const EN_PROFILE = {
     "the West, North and South sectors — over 360 hours in all — with practice data carrying deliberate defects " +
     "and typeset handbooks I authored. CAPM certified in project management.",
   education: "Bachelor of Laws (LL.B.) — Zagazig University, Egypt, 2011",
-  bio: "I'm Ahmed Mahmoud Swid, a Business & Data Analyst on Riyadh Municipality projects with 4+ years of experience and a Power BI expert. I specialize in operational data analysis, administrative reporting, dashboard design (Power BI), and process automation with n8n. I've delivered Power BI workshops to 150+ employees in a government entity, and I hold the CAPM project-management certification. I turn raw data into measurable decisions.",
+  bio: "I'm Ahmed Mahmoud Swid, a Business & Data Analyst on Riyadh Municipality projects with 9 years of professional experience (4+ in data & BI) and a Power BI expert. I specialize in operational data analysis, administrative reporting, dashboard design (Power BI), and process automation with n8n. I've delivered Power BI workshops to 150+ employees in a government entity, and I hold the CAPM project-management certification. I turn raw data into measurable decisions.",
 };
 
 const EN_STATS = [
-  { value: "+4", label: "Years experience" },
+  { value: "+9", label: "Years professional experience, 4+ in data" },
   { value: "SAR 179M", label: "In contracts run by a system I built" },
   { value: "60,658", label: "Lighting poles classified by risk" },
   { value: "+150", label: "Power BI workshop participants" },
 ];
 
 const EN_FACTS = [
-  "4+ years on Riyadh Municipality projects",
+  "9 years of professional experience, 4+ on Riyadh Municipality projects",
   "Expert in Power BI and dashboard design",
   "Delivered Power BI workshops to 150+ employees in a government entity",
   "Over 360 hours delivered, with printed material and purpose-built practice data",
@@ -230,7 +231,7 @@ const EN_FACTS = [
 const EN_EXPERIENCE = {
   role: "Business Analyst",
   org: "Al-Shathri Company — Riyadh Municipality projects (Operations & Maintenance Agency)",
-  period: "2022 – Present",
+  period: "Dec 2021 – Present",
   duties: [
     "Built a 34-screen operations platform running SAR 179.3M of street-lighting maintenance contracts for the Wasat sector — from data cleaning to the decision board, as sole analyst, designer, developer and operator.",
     "Automated the seven-page daily executive report so it reaches the director by email and Telegram with no human in the loop, replacing manual preparation every morning.",
@@ -241,6 +242,13 @@ const EN_EXPERIENCE = {
     "Built earned-value (EVM) project performance boards: schedule and cost performance indices and earned value per contract.",
     "Delivered hands-on Power BI workshops to 150+ employees in data analysis and dashboard building, and authored their material.",
   ],
+};
+
+const EN_PREVIOUS_EXPERIENCE = {
+  role: "Business Analyst & Designer",
+  org: "Mihab Advertising & Marketing",
+  period: "2017 – 2021",
+  line: "Visual identities, digital and print campaigns, and motion graphics (Premiere, After Effects) for multiple brands.",
 };
 
 const EN_CV_SKILLS: string[] = [
@@ -277,7 +285,7 @@ const EN_COURSES = ar.courses.map((c) => ({ ...c }));
 
 const EN_LANGUAGES = [
   { name: "Arabic", level: "Native", pct: 100 },
-  { name: "English", level: "Good", pct: 70 },
+  { name: "English", level: "Very good", pct: 80 },
 ];
 
 const EN_DISCIPLINES = [
@@ -440,7 +448,7 @@ const EN_SECTIONS: Section[] = [
 // ───────────────────────── التجميع ─────────────────────────
 const AR_CONTENT: Content = {
   lang: "ar",
-  profile: ar.profile, stats: ar.stats, facts: ar.facts, experience: ar.experience,
+  profile: ar.profile, stats: ar.stats, facts: ar.facts, experience: ar.experience, previousExperience: ar.previousExperience,
   skills: ar.skills, cvSkills: ar.cvSkills, skillGroups: ar.skillGroups, certifications: ar.certifications, courses: ar.courses,
   languages: ar.languages, keyProjects: ar.keyProjects, sections: ar.sections, disciplines: ar.disciplines, ui: AR_UI,
 };
@@ -502,7 +510,7 @@ const EN_SKILL_GROUPS: typeof ar.skillGroups = [
 
 const EN_CONTENT: Content = {
   lang: "en",
-  profile: EN_PROFILE, stats: EN_STATS, facts: EN_FACTS, experience: EN_EXPERIENCE,
+  profile: EN_PROFILE, stats: EN_STATS, facts: EN_FACTS, experience: EN_EXPERIENCE, previousExperience: EN_PREVIOUS_EXPERIENCE,
   skills: EN_SKILLS, cvSkills: EN_CV_SKILLS, skillGroups: EN_SKILL_GROUPS, certifications: EN_CERTS, courses: EN_COURSES,
   languages: EN_LANGUAGES, keyProjects: EN_KEY_PROJECTS, sections: EN_SECTIONS, disciplines: EN_DISCIPLINES, ui: EN_UI,
 };
