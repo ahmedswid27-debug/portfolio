@@ -68,7 +68,7 @@ const AR_UI: UI = {
     trainingPage: "ورش العمل والمحاور",
   },
   hero: {
-    badge: "مفتوح للفرص", iAm: "",
+    badge: "خبير Power BI ومحلل بيانات وأعمال", iAm: "",
     ctaWork: "نماذج للأعمال", ctaContact: "تواصل معي", ctaCv: "السيرة الذاتية ⤓",
     cardTop: "خبير Power BI", cardSub: "CAPM® · محلل أعمال وبيانات",
   },
@@ -92,7 +92,7 @@ const AR_UI: UI = {
   },
   contact: {
     title: "للتواصل",
-    sub: "مفتوح للفرص في تحليل الأعمال والبيانات وبناء أنظمة القرار.",
+    sub: "تحليل الأعمال والبيانات، ولوحات Power BI، وأنظمة القرار.",
     sendTitle: "راسلني مباشرة", nameLabel: "الاسم", namePh: "الاسم",
     msgLabel: "الرسالة", msgPh: "اكتب باختصار…",
     send: "إرسال عبر واتساب →",
@@ -129,7 +129,7 @@ const EN_UI: UI = {
     trainingPage: "Workshop profile",
   },
   hero: {
-    badge: "Open to opportunities", iAm: "I'm ",
+    badge: "Power BI expert · Data & business analyst", iAm: "I'm ",
     ctaWork: "Work samples", ctaContact: "Get in touch", ctaCv: "Resume ⤓",
     cardTop: "Power BI Expert", cardSub: "CAPM® · Business & Data Analyst",
   },
@@ -153,7 +153,7 @@ const EN_UI: UI = {
   },
   contact: {
     title: "Contact",
-    sub: "Open to opportunities in business and data analysis and building decision systems.",
+    sub: "Business and data analysis, Power BI dashboards, and decision systems.",
     sendTitle: "Message me directly", nameLabel: "Name", namePh: "Name",
     msgLabel: "Message", msgPh: "Keep it brief…",
     send: "Send via WhatsApp →",
@@ -214,7 +214,7 @@ const EN_PROFILE = {
 const EN_STATS = [
   { value: "+4", label: "Years experience" },
   { value: "SAR 179M", label: "In contracts run by a system I built" },
-  { value: "+320", label: "Analytics projects" },
+  { value: "60,658", label: "Lighting poles classified by risk" },
   { value: "+150", label: "Power BI workshop participants" },
 ];
 

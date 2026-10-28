@@ -68,7 +68,7 @@ export const profile = {
 export const stats: { value: string; label: string }[] = [
   { value: "+4", label: "سنوات خبرة عملية" },
   { value: "179M", label: "ريال عقود يديرها نظام بنيته" },
-  { value: "+320", label: "مشروع تحليلي" },
+  { value: "60,658", label: "عمود إنارة مصنّف بدرجة الخطورة" },
   { value: "+150", label: "مشارك في ورش Power BI" },
 ];
 
