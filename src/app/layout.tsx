@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Cairo, IBM_Plex_Sans_Arabic, Tajawal } from "next/font/google";
+import { Anton, Cairo, IBM_Plex_Sans_Arabic, Tajawal } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { profile } from "@/data/profile";
 
@@ -23,6 +24,20 @@ const plex = IBM_Plex_Sans_Arabic({
   variable: "--font-plex",
   display: "swap",
 });
+
+// هوية ملف الأعمال (2026-10-29): بهيج خط ملف أحمد نفسه، وAnton بديل مفتوح لـAcumin Extra Condensed.
+const bahij = localFont({
+  src: [
+    { path: "./fonts/bahij-SemiLight.woff2", weight: "300" },
+    { path: "./fonts/bahij-Plain.woff2", weight: "400" },
+    { path: "./fonts/bahij-SemiBold.woff2", weight: "600" },
+    { path: "./fonts/bahij-Bold.woff2", weight: "700" },
+    { path: "./fonts/bahij-ExtraBold.woff2", weight: "800" },
+  ],
+  variable: "--font-bahij",
+  display: "swap",
+});
+const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ahmedswid.com"),
@@ -67,7 +82,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       data-scroll-behavior="smooth"
-      className={`${display.variable} ${body.variable} ${plex.variable} h-full`}
+      className={`${display.variable} ${body.variable} ${plex.variable} ${bahij.variable} ${anton.variable} h-full`}
     >
       <body className="grain font-body text-white/85 antialiased min-h-full">
         {children}

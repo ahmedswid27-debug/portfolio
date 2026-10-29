@@ -1,0 +1,242 @@
+<!doctype html>
+<!--
+  لوحات توضيحية للموقع: أربع لوحات بأسلوب لوحات Power BI التي صممها أحمد،
+  وكل رقم فيها مولد من بذرة ثابتة (لا بيانات عمل حقيقية — القيد 3).
+  التصيير: python tools/boards/render.py  ←  public/works/illustrative/board-N.png
+  الاختيار بالرابط: boards.html?b=1..4
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:B;src:url(../../src/app/fonts/bahij-SemiLight.woff2);font-weight:300}
+@font-face{font-family:B;src:url(../../src/app/fonts/bahij-Plain.woff2);font-weight:400}
+@font-face{font-family:B;src:url(../../src/app/fonts/bahij-SemiBold.woff2);font-weight:600}
+@font-face{font-family:B;src:url(../../src/app/fonts/bahij-Bold.woff2);font-weight:700}
+@font-face{font-family:B;src:url(../../src/app/fonts/bahij-ExtraBold.woff2);font-weight:800}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:1000px;overflow:hidden}
+body{font-family:B,sans-serif;font-variant-numeric:lining-nums tabular-nums;color:#2b2f36}
+svg{direction:ltr}
+svg text{font-family:B,sans-serif}
+.board{width:1600px;height:1000px;display:none;position:relative}
+.on{display:block}
+.tag{position:absolute;z-index:5;font-size:15px;font-weight:700;padding:5px 14px;letter-spacing:0}
+.card{background:#fff;border:1px solid #e3e7ea;border-radius:6px;box-shadow:0 1px 3px rgba(20,40,60,.06);position:absolute;overflow:hidden}
+.ct{font-size:17px;font-weight:700;color:#3b4652;padding:12px 16px 0}
+.kv{font-weight:800;line-height:1}
+.kl{font-size:14px;color:#6b7580;font-weight:600}
+
+/* 1 — متابعة أعمال المشروع */
+#b1{background:#eef1f3}
+#b1 .hd{position:absolute;top:18px;right:18px;left:18px;height:78px;background:#476e80;border-radius:6px;color:#fff;display:flex;align-items:center;padding:0 28px;justify-content:space-between}
+#b1 .hd h1{font-size:34px;font-weight:800}
+#b1 .tabs{display:flex;gap:8px}
+#b1 .tabs span{background:#fff;color:#476e80;font-size:15px;font-weight:600;padding:7px 22px;border-radius:5px}
+#b1 .tabs span+span{background:#6b8d9c;color:#fff}
+#b1 .krow{position:absolute;top:110px;right:18px;left:18px;height:108px;display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+#b1 .krow div{background:#fff;border:1px solid #e3e7ea;border-radius:6px;border-top:3px solid #e9c88f;text-align:center;padding-top:12px}
+#b1 .krow .kv{font-size:40px;color:#2d7a4f;margin-top:10px}
+
+/* 2 — تحليل البلاغات */
+#b2{background:#f4f6f5}
+#b2 .side{position:absolute;top:0;right:0;width:190px;height:1000px;background:#fff;border-left:1px solid #e3e7ea;padding:26px 18px}
+#b2 .logo{height:58px;border:2px solid #1a7e5c;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#1a7e5c;font-size:22px;margin-bottom:26px}
+#b2 .side span{display:block;background:#eef1f0;border-radius:5px;margin-bottom:10px;padding:10px 14px;font-size:16px;font-weight:600;color:#4a5560}
+#b2 .side span.a{background:#1a7e5c;color:#fff}
+#b2 .tt{position:absolute;top:22px;right:220px;display:flex;align-items:center;gap:14px}
+#b2 .tt h1{font-size:32px;font-weight:800;color:#2b3a4a;border-bottom:4px solid #f9ae42;padding-bottom:4px}
+#b2 .krow{position:absolute;top:96px;right:220px;left:24px;height:122px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#b2 .krow>div{background:#fff;border:1px solid #e3e7ea;border-radius:6px;padding:14px 18px;position:relative}
+#b2 .krow .kv{font-size:42px;color:#2d8a57;margin-top:10px}
+#b2 .krow svg{position:absolute;left:14px;bottom:16px}
+#b2 .krow .pct{font-size:14px;color:#8a949e;margin-top:6px}
+
+/* 3 — التدفق المالي */
+#b3{background:#f3f5f7}
+#b3 .ban{position:absolute;top:0;right:0;left:0;height:170px;background:#20323f url(../../public/riyadh/skyline-sunset.jpg) center 62%/cover}
+#b3 .ban:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,25,35,.25),rgba(15,25,35,.62))}
+#b3 .ban h1{position:absolute;right:48px;top:50px;z-index:2;color:#fff;font-size:46px;font-weight:800}
+#b3 .krow{position:absolute;top:190px;right:24px;left:24px;height:118px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+#b3 .krow>div{background:#fff;border:1px solid #e3e7ea;border-radius:6px;padding:16px 20px;border-right:5px solid #2f7f8a}
+#b3 .krow .kv{font-size:38px;color:#24313d;margin-top:12px}
+
+/* 4 — أداء الأسطول (داكن) */
+#b4{background:radial-gradient(1200px 700px at 80% 0%,#1f4a5a,#0f2129 60%,#0b1a20)}
+#b4 .g{position:absolute;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:14px}
+#b4 .ct{color:#e7eef1}
+#b4 .kl{color:#f2b04a;font-size:14px}
+#b4 .kv{color:#fff;font-size:36px}
+#b4 .kc{text-align:center;padding-top:18px}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="board" id="b1">
+  <div class="hd"><div class="tabs"><span>الرئيسية</span><span>تحليل متابعة الأعمال</span></div><h1>متابعة أعمال المشروع</h1></div>
+  <div class="tag" style="top:36px;left:420px;background:#f9ae42;color:#3a2a08;border-radius:4px">بيانات توضيحية</div>
+  <div class="krow" id="k1"></div>
+  <div class="card" style="top:232px;right:18px;width:250px;height:750px" id="b1side"></div>
+  <div class="card" style="top:232px;right:280px;width:760px;height:750px"><div class="ct">نسبة الإنجاز الفعلي مقارنة بالمخطط</div><svg id="s1" width="760" height="700"></svg></div>
+  <div class="card" style="top:232px;left:18px;width:530px;height:330px"><div class="ct">العناصر المنقولة</div><div id="b1items"></div></div>
+  <div class="card" style="top:574px;left:18px;width:530px;height:408px"><div class="ct">نسبة إنجاز المراحل الثلاث</div><svg id="s1b" width="530" height="360"></svg></div>
+</section>
+
+<!-- 2 -->
+<section class="board" id="b2">
+  <div class="side"><div class="logo">AS</div><span class="a">الرئيسية</span><span>الأسباب</span><span>الأحياء</span><span>المحطات</span><span>مواقع البلاغات</span><span>الاتجاه الشهري</span></div>
+  <div class="tt"><h1>تحليل البلاغات</h1></div>
+  <div class="tag" style="top:30px;left:24px;background:#1a7e5c;color:#fff;border-radius:4px">بيانات توضيحية</div>
+  <div class="krow" id="k2"></div>
+  <div class="card" style="top:234px;right:220px;width:760px;height:390px"><div class="ct">البلاغات حسب السبب</div><svg id="s2a" width="760" height="350"></svg></div>
+  <div class="card" style="top:234px;left:24px;width:582px;height:390px"><div class="ct">الاتجاه الشهري للبلاغات</div><svg id="s2b" width="582" height="350"></svg></div>
+  <div class="card" style="top:640px;right:220px;width:960px;height:340px"><div class="ct">البلاغات حسب النطاق</div><svg id="s2c" width="960" height="300"></svg></div>
+  <div class="card" style="top:640px;left:24px;width:382px;height:340px"><div class="ct">متوسط أيام الإغلاق</div><svg id="s2d" width="382" height="300"></svg></div>
+</section>
+
+<!-- 3 -->
+<section class="board" id="b3">
+  <div class="ban"><h1>التدفـــق المـالـي</h1></div>
+  <div class="tag" style="top:24px;left:28px;background:rgba(255,255,255,.92);color:#20323f;border-radius:4px">بيانات توضيحية</div>
+  <div class="krow" id="k3"></div>
+  <div class="card" style="top:324px;right:24px;width:1000px;height:380px"><div class="ct">الصرف التراكمي مقابل المخطط (مليون ريال)</div><svg id="s3a" width="1000" height="340"></svg></div>
+  <div class="card" style="top:324px;left:24px;width:528px;height:380px"><div class="ct">نسبة الصرف من قيمة العقود</div><svg id="s3b" width="528" height="340"></svg></div>
+  <div class="card" style="top:720px;right:24px;left:24px;height:262px"><div class="ct">المخطط والمصروف لكل مشروع (مليون ريال)</div><svg id="s3c" width="1552" height="222"></svg></div>
+</section>
+
+<!-- 4 -->
+<section class="board" id="b4">
+  <div class="tag" style="top:22px;left:30px;background:#f2b04a;color:#1b1406;border-radius:4px">بيانات توضيحية</div>
+  <div class="g" style="top:70px;right:30px;width:1000px;height:250px" id="k4"></div>
+  <div class="g" style="top:70px;left:30px;width:510px;height:250px"><div class="ct">أوقات الذروة</div><svg id="s4t" width="510" height="210"></svg></div>
+  <div class="g" style="top:340px;right:30px;width:1540px;height:250px"><div class="ct">عدد الرحلات اليومية</div><svg id="s4a" width="1540" height="210"></svg></div>
+  <div class="g" style="top:610px;right:30px;width:600px;height:360px"><div class="ct">إجمالي الرحلات حسب اليوم</div><svg id="s4b" width="600" height="320"></svg></div>
+  <div class="g" style="top:610px;right:650px;width:520px;height:360px"><div class="ct">المركبات العاملة</div><svg id="s4c" width="520" height="320"></svg></div>
+  <div class="g" style="top:610px;left:30px;width:380px;height:360px"><div class="ct">مسار الطلبات</div><svg id="s4d" width="380" height="320"></svg></div>
+</section>
+
+<script>
+// ---------- أدوات ----------
+let seed = 20261029;
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const fmt = (v, d = 0) => v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const NS = "http://www.w3.org/2000/svg";
+function el(svg, tag, a, txt) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; }
+const mix = (a, b, t) => { const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16)); const A = p(a), B = p(b); return "rgb(" + A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(",") + ")"; };
+
+// أعمدة رأسية (المحور من اليمين لأن اللوحة عربية)
+function bars(svg, data, o) {
+  const W = +svg.getAttribute("width"), H = +svg.getAttribute("height");
+  const m = Object.assign({ t: 40, b: 46, l: 24, r: 24 }, o.m || {}), max = o.max || Math.max(...data.map(d => d.v)) * 1.15;
+  const n = data.length, bw = (W - m.l - m.r) / n;
+  if (o.grid !== false) for (let i = 0; i <= 4; i++) { const y = m.t + (H - m.t - m.b) * i / 4; el(svg, "line", { x1: m.l, x2: W - m.r, y1: y, y2: y, stroke: o.gridc || "#eceff1" }); }
+  data.forEach((d, i) => {
+    const x = W - m.r - (i + 1) * bw + bw * (1 - (o.w || .62)) / 2, w = bw * (o.w || .62), h = (H - m.t - m.b) * d.v / max, y = H - m.b - h;
+    el(svg, "rect", { x, y, width: w, height: h, fill: d.c || o.c, rx: o.rx || 0 });
+    if (o.vals !== false) el(svg, "text", { x: x + w / 2, y: y - 8, "text-anchor": "middle", "font-size": o.vfs || 14, "font-weight": 700, fill: o.vc || "#3b4652" }, o.vf ? o.vf(d.v) : fmt(d.v));
+    el(svg, "text", { x: x + w / 2, y: H - m.b + 24, "text-anchor": "middle", "font-size": o.lfs || 13, fill: o.lc || "#6b7580" }, d.l);
+  });
+}
+// خطوط ومساحات
+function lines(svg, series, labels, o) {
+  const W = +svg.getAttribute("width"), H = +svg.getAttribute("height");
+  const m = Object.assign({ t: o.legend ? 44 : 34, b: 44, l: 54, r: 24 }, o.m || {}), max = o.max || Math.max(...series.flatMap(s => s.v)) * 1.1, n = labels.length;
+  const X = i => m.l + (W - m.l - m.r) * i / (n - 1), Y = v => H - m.b - (H - m.t - m.b) * v / max;
+  for (let i = 0; i <= 4; i++) { const y = m.t + (H - m.t - m.b) * i / 4; el(svg, "line", { x1: m.l, x2: W - m.r, y1: y, y2: y, stroke: o.gridc || "#eceff1", "stroke-dasharray": o.dash ? "3 4" : "" }); el(svg, "text", { x: m.l - 10, y: y + 5, "text-anchor": "end", "font-size": 13, fill: o.lc || "#8a949e" }, fmt(max * (4 - i) / 4)); }
+  labels.forEach((l, i) => { if (i % (o.every || 1) === 0) el(svg, "text", { x: X(i), y: H - m.b + 26, "text-anchor": "middle", "font-size": 13, fill: o.lc || "#6b7580" }, l); });
+  series.forEach(s => {
+    const pts = s.v.map((v, i) => [X(i), Y(v)]);
+    let d = s.step ? pts.map((p, i) => i ? `H${p[0]}V${p[1]}` : `M${p[0]},${p[1]}`).join("") : pts.map((p, i) => (i ? "L" : "M") + p[0] + "," + p[1]).join("");
+    if (s.area) { const g = "g" + Math.random().toString(36).slice(2); const lg = el(svg, "linearGradient", { id: g, x1: 0, y1: 0, x2: 0, y2: 1 }); el(lg, "stop", { offset: 0, "stop-color": s.c, "stop-opacity": .35 }); el(lg, "stop", { offset: 1, "stop-color": s.c, "stop-opacity": .02 }); el(svg, "path", { d: d + `L${pts.at(-1)[0]},${H - m.b}L${pts[0][0]},${H - m.b}Z`, fill: `url(#${g})` }); }
+    el(svg, "path", { d, fill: "none", stroke: s.c, "stroke-width": s.w || 3, "stroke-dasharray": s.dash || "", "stroke-linejoin": "round" });
+    if (s.labels) pts.forEach((p, i) => { if (i % s.labels === 0 || i === pts.length - 1) el(svg, "text", { x: p[0], y: p[1] - 10, "text-anchor": "middle", "font-size": 13, "font-weight": 700, fill: s.lc || "#4a5560" }, fmt(s.v[i])); });
+  });
+  if (o.legend) o.legend.forEach((s, i) => { const x = W - m.r - i * 170; el(svg, "rect", { x: x - 14, y: 8, width: 14, height: 4, fill: s.c }); el(svg, "text", { x: x - 22, y: 15, "font-size": 14, fill: o.lc || "#4a5560", "text-anchor": "end" }, s.n); });
+}
+// مقياس نصف دائري كما في لوحات Power BI
+function gauge(svg, v, o) {
+  const W = +svg.getAttribute("width"), H = +svg.getAttribute("height"), cx = W / 2, cy = H * .78, r = Math.min(W * .38, H * .62);
+  const arc = (a0, a1) => { const p = a => [cx - r * Math.cos(a), cy - r * Math.sin(a)]; const [x0, y0] = p(a0), [x1, y1] = p(a1); return `M${x0},${y0}A${r},${r} 0 0 1 ${x1},${y1}`; };
+  el(svg, "path", { d: arc(0, Math.PI), stroke: o.bg || "#e6eaed", "stroke-width": r * .34, fill: "none" });
+  el(svg, "path", { d: arc(0, Math.PI * v / (o.max || 100)), stroke: o.c, "stroke-width": r * .34, fill: "none" });
+  el(svg, "text", { x: cx, y: cy - 6, "text-anchor": "middle", "font-size": r * .42, "font-weight": 800, fill: o.tc || "#24313d" }, o.f ? o.f(v) : fmt(v, 1) + "%");
+  if (o.sub) el(svg, "text", { x: cx, y: cy + 30, "text-anchor": "middle", "font-size": 15, fill: "#8a949e" }, o.sub);
+}
+function spark(w, h, c, n = 9) { const s = document.createElementNS(NS, "svg"); s.setAttribute("width", w); s.setAttribute("height", h); const v = Array.from({ length: n }, () => .2 + rnd() * .7); el(s, "path", { d: v.map((y, i) => (i ? "L" : "M") + (w * i / (n - 1)) + "," + (h - y * h)).join(""), fill: "none", stroke: c, "stroke-width": 3, "stroke-linejoin": "round" }); return s; }
+const MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+
+// ---------- 1 ----------
+function b1() {
+  const K = [["نسبة إنجاز المرحلة 1 (%)", 100], ["نسبة إنجاز المرحلة 2 (%)", 78], ["نسبة إنجاز المرحلة 3 (%)", 41], ["الإنجاز الإجمالي (%)", 72.4], ["عدد المنقولات", 186], ["عدد الموظفين", 12], ["عدد الدوريات", 4], ["فرق الدعم", 3]];
+  document.getElementById("k1").innerHTML = K.map(([l, v]) => `<div><div class="kl">${l}</div><div class="kv">${fmt(v, v % 1 ? 1 : 0)}</div></div>`).join("");
+  document.getElementById("b1side").innerHTML = `<div class="ct">المخطط له (%)</div><div class="kv" style="font-size:46px;color:#2d7a4f;text-align:center;margin:14px 0 4px">68.2</div><div class="kl" style="text-align:center">الأيام المنقضية</div><div class="kv" style="font-size:40px;color:#476e80;text-align:center;margin:10px 0 20px">51</div>` +
+    ["الأحد 4 يناير", "الإثنين 12 يناير", "الثلاثاء 20 يناير", "الأربعاء 28 يناير", "الخميس 5 فبراير", "الأحد 15 فبراير", "الإثنين 23 فبراير", "الثلاثاء 3 مارس"].map((d, i) => `<div style="margin:0 16px 10px;padding:10px 12px;border:1px solid #dfe4e8;border-radius:6px;font-size:14px;color:#4a5560;${i == 7 ? "background:#476e80;color:#fff" : ""}">${d}</div>`).join("");
+  const n = 22, plan = [], act = []; let p = 0, a = 0;
+  for (let i = 0; i < n; i++) { p = Math.min(100, p + 2.2 + i * .18); plan.push(+p.toFixed(0)); a = Math.min(96, a + (i < 3 ? 1 : rnd() * 7.5)); act.push(+a.toFixed(0)); }
+  lines(document.getElementById("s1"), [{ v: plan, c: "#2f3a44", w: 2.5, labels: 4 }, { v: act, c: "#2d8a57", w: 5, dash: "7 6", step: true, labels: 4, lc: "#2d8a57" }], Array.from({ length: n }, (_, i) => i % 3 ? "" : "أسبوع " + (i + 1)), { max: 100, legend: [{ n: "نسبة الإنجاز الفعلي", c: "#2d8a57" }, { n: "نسبة المخطط له", c: "#2f3a44" }], dash: true });
+  document.getElementById("b1items").innerHTML = `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px 10px;padding:26px 18px;text-align:center">` +
+    [["أعمدة وإنارات", 24], ["حواجز جانبية", 46], ["كاميرات", 18], ["لوحات إرشادية", 31], ["كيابل (متر)", "2.4K"], ["أسلاك (متر)", 980]].map(([l, v]) => `<div><div class="kv" style="font-size:38px;color:#2d7a4f">${typeof v == "number" ? fmt(v) : v}</div><div class="kl" style="margin-top:8px">${l}</div></div>`).join("") + "</div>";
+  const L = ["ي1", "ي2", "ي3", "ي4", "ف1", "ف2", "ف3", "ف4", "م1", "م2"];
+  const ser = [[5, 18, 37, 62, 88, 100, 100, 100, 100, 100], [0, 0, 4, 12, 26, 41, 58, 69, 75, 78], [0, 0, 0, 0, 3, 9, 17, 26, 34, 41]];
+  lines(document.getElementById("s1b"), ser.map((v, i) => ({ v, c: ["#5b8fc7", "#2e3f8f", "#e07b39"][i], w: 3.5, step: true })), L, { max: 100, every: 3, legend: [{ n: "المرحلة 1", c: "#5b8fc7" }, { n: "المرحلة 2", c: "#2e3f8f" }, { n: "المرحلة 3", c: "#e07b39" }] });
+}
+
+// ---------- 2 ----------
+function b2() {
+  const K = [["إجمالي البلاغات", 4860, "100% من المسجل", "#d9a62b"], ["البلاغات المغلقة", 4212, "86.7% من الإجمالي", "#2d8a57"], ["بلاغات الكهرباء", 318, "6.5% من الإجمالي", "#d9a62b"], ["البلاغات الخطيرة", 142, "2.9% من الإجمالي", "#c94a3c"]];
+  const k = document.getElementById("k2");
+  K.forEach(([l, v, s, c]) => { const d = document.createElement("div"); d.innerHTML = `<div class="kl">${l}</div><div class="kv">${fmt(v)}</div><div class="pct">${s}</div>`; d.appendChild(spark(120, 44, c)); k.appendChild(d); });
+  const causes = ["انطفاء كلي", "انطفاء جزئي", "عمود مائل", "كابل مكشوف", "غطاء مفقود", "تذبذب", "حادث مروري", "عطل محطة", "تسريب", "أخرى"];
+  let v = 1180; const cd = causes.map((l, i) => { const r = { l, v: Math.round(v), c: mix("#d64541", "#3fae6a", i / (causes.length - 1)) }; v *= .62 + rnd() * .16; return r; });
+  bars(document.getElementById("s2a"), cd, { lfs: 12.5 });
+  const mv = MONTHS.slice(0, 10).map((_, i) => Math.round(330 + 160 * Math.sin(i / 1.6) + rnd() * 90));
+  lines(document.getElementById("s2b"), [{ v: mv, c: "#3fae6a", area: true, labels: 3 }], MONTHS.slice(0, 10), { every: 2 });
+  const zones = ["النطاق 1", "النطاق 2", "النطاق 3", "النطاق 4", "النطاق 5", "النطاق 6", "النطاق 7", "النطاق 8"];
+  bars(document.getElementById("s2c"), zones.map((l, i) => ({ l, v: Math.round(820 - i * 70 + rnd() * 120) })), { c: "#4f8f9c", w: .5 });
+  gauge(document.getElementById("s2d"), 3.4, { max: 7, c: "#f9ae42", f: v => fmt(v, 1), sub: "يوم من الهدف 7 أيام" });
+}
+
+// ---------- 3 ----------
+function b3() {
+  const K = [["قيمة العقود المخططة", "96.4M"], ["المصروف حتى الآن", "71.9M"], ["نسبة الصرف", "74.6%"], ["المتبقي", "24.5M"], ["عدد المستخلصات", "48"]];
+  document.getElementById("k3").innerHTML = K.map(([l, v]) => `<div><div class="kl">${l}</div><div class="kv">${v}</div></div>`).join("");
+  let p = 0, a = 0; const P = [], A = [];
+  for (let i = 0; i < 12; i++) { p += 8.03; P.push(+p.toFixed(1)); a += i < 10 ? 5 + rnd() * 4.3 : 0; A.push(i < 10 ? +a.toFixed(1) : null); }
+  const Aok = A.filter(x => x != null);
+  lines(document.getElementById("s3a"), [{ v: P, c: "#9aa7b3", w: 2.5, dash: "6 6" }, { v: Aok.concat(Array(12 - Aok.length).fill(Aok.at(-1))), c: "#2f7f8a", area: true, w: 3.5, labels: 3 }], MONTHS, { max: 100, legend: [{ n: "المصروف الفعلي", c: "#2f7f8a" }, { n: "المخطط", c: "#9aa7b3" }] });
+  gauge(document.getElementById("s3b"), 74.6, { c: "#2f7f8a", sub: "من 96.4 مليون ريال" });
+  const svg = document.getElementById("s3c"), proj = ["مشروع أ", "مشروع ب", "مشروع ج", "مشروع د", "مشروع هـ", "مشروع و", "مشروع ز", "مشروع ح"];
+  const W = 1552, H = 222, bw = (W - 48) / proj.length;
+  proj.forEach((l, i) => {
+    const pl = 6 + rnd() * 12, sp = pl * (.45 + rnd() * .5), x = W - 24 - (i + 1) * bw, base = H - 40, sc = 8;
+    el(svg, "rect", { x: x + bw * .22, y: base - pl * sc, width: bw * .26, height: pl * sc, fill: "#cfd8df" });
+    el(svg, "rect", { x: x + bw * .52, y: base - sp * sc, width: bw * .26, height: sp * sc, fill: "#2f7f8a" });
+    el(svg, "text", { x: x + bw * .35, y: base - pl * sc - 6, "text-anchor": "middle", "font-size": 13, fill: "#6b7580" }, fmt(pl, 1));
+    el(svg, "text", { x: x + bw * .65, y: base - sp * sc - 6, "text-anchor": "middle", "font-size": 13, "font-weight": 700, fill: "#24313d" }, fmt(sp, 1));
+    el(svg, "text", { x: x + bw / 2, y: H - 14, "text-anchor": "middle", "font-size": 14, fill: "#4a5560" }, l);
+  });
+}
+
+// ---------- 4 ----------
+function b4() {
+  const K = [["إجمالي الرحلات", "5,214"], ["المركبات المسجلة", "1,136"], ["الرحلات المسائية", "2.31K"], ["الرحلات الصباحية", "2.90K"], ["متوسط الرحلة (دقيقة)", "37"], ["المحطات الأكثر طلبا", "9"], ["الإنجاز في الوقت", "91.2%"], ["المركبات العاملة", "1,012"]];
+  document.getElementById("k4").innerHTML = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:14px">` + K.map(([l, v]) => `<div class="kc"><div class="kv">${v}</div><div class="kl" style="margin-top:8px">${l}</div></div>`).join("") + "</div>";
+  const n = 42, d = Array.from({ length: n }, (_, i) => Math.round(110 + 40 * Math.sin(i / 4) + rnd() * 50));
+  lines(document.getElementById("s4a"), [{ v: d, c: "#5fb3d0", w: 2.5, dash: "4 4", area: true }], Array.from({ length: n }, (_, i) => i % 7 ? "" : "أسبوع " + (i / 7 + 1)), { lc: "#9fb3bb", gridc: "rgba(255,255,255,.08)", m: { b: 40 } });
+  const days = ["السبت", "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
+  bars(document.getElementById("s4b"), days.map((l, i) => ({ l, v: Math.round(620 + i * 40 + rnd() * 160) })), { c: "#f2b04a", vc: "#fff", lc: "#9fb3bb", gridc: "rgba(255,255,255,.08)", w: .6 });
+  bars(document.getElementById("s4c"), ["ي", "ف", "م", "أ", "م", "ي", "ي", "أ"].map((l, i) => ({ l: MONTHS[i], v: Math.round(840 + i * 22 + rnd() * 60) })), { c: "#2d8fb0", vc: "#fff", lc: "#9fb3bb", gridc: "rgba(255,255,255,.08)", w: .55, vfs: 13, lfs: 12 });
+  const f = document.getElementById("s4d"), st = [["الطلبات", 100], ["المقبولة", 82], ["المنفذة", 71], ["في الوقت", 64.7]];
+  st.forEach(([l, v], i) => { const w = 250 * v / 100, y = 30 + i * 66; el(f, "rect", { x: 160 - w / 2, y, width: w, height: 44, fill: i === 3 ? "#5fb3d0" : "#f2b04a" }); el(f, "text", { x: 160, y: y + 29, "text-anchor": "middle", "font-size": 16, "font-weight": 800, fill: "#1b1406" }, fmt(v, v % 1 ? 1 : 0) + "%"); el(f, "text", { x: 160 + w / 2 + 12, y: y + 28, "font-size": 14, fill: "#cfe0e6", "text-anchor": "start" }, l); });
+  const t = document.getElementById("s4t"), hrs = ["6", "7", "8", "9", "12", "13", "16", "17", "18", "21"];
+  bars(t, hrs.map(h => ({ l: h, v: Math.round(60 + rnd() * 240) })), { c: "#5fb3d0", vc: "#e7eef1", lc: "#9fb3bb", gridc: "rgba(255,255,255,.08)", vfs: 12, m: { t: 30, b: 36 } });
+}
+
+const b = +(new URLSearchParams(location.search).get("b") || 1);
+document.getElementById("b" + b).classList.add("on");
+({ 1: b1, 2: b2, 3: b3, 4: b4 })[b]();
+document.fonts.ready.then(() => document.body.dataset.ready = 1);
+</script>
+</body>
+</html>

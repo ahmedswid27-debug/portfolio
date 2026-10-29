@@ -376,3 +376,117 @@ body {
   .rx-bar { animation: none; }
   .rx-shot img, .rx-btn, .rx-link { transition: none; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   هوية «ملف الأعمال» (2026-10-29، الجولة الثانية) — مأخوذة بالقياس من
+   ملف أعمال أحمد نفسه: portfolio.pdf و«بورتفوليو 2026.ai».
+   الخلفية ‎#F4F8F6‎ · الحبر ‎#221F1F‎ · النص الكحلي ‎#2B2965‎ · الاسم ‎#1C6181‎
+   · «ملف أعمال» ‎#F9AE42‎ · التسميات ‎#1A7E5C‎ · الشريط النعناعي يتدرج إلى ‎#DAEDE2‎.
+   الخطوط: بهيج (خط الملف) وAnton بديلا مفتوحا لـAcumin Extra Condensed.
+   كل القواعد تحت ‎.fo‎.
+   ════════════════════════════════════════════════════════════════ */
+.fo {
+  --paper: #F4F8F6; --ink: #221F1F; --navy: #2B2965; --teal: #1C6181;
+  --orange: #F9AE42; --green: #1A7E5C; --mint: #DAEDE2; --line: #D5E0DA; --muted: #5B6470;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-bahij), system-ui, sans-serif;
+  font-variant-numeric: lining-nums;
+  overflow-x: clip;
+}
+.fo ::selection { background: var(--mint); color: var(--ink); }
+.fo-wrap { max-width: 1240px; margin-inline: auto; padding-inline: 32px; }
+@media (max-width: 767px) { .fo-wrap { padding-inline: 16px; } }
+.fo-latin { font-family: var(--font-anton), Impact, sans-serif; font-weight: 400; }
+
+/* الشريط النعناعي: من لون الصفحة إلى النعناعي، بحواف حادة كما في الملف */
+.fo-band { background: linear-gradient(180deg, rgba(218,237,226,0) 0%, rgba(218,237,226,.55) 45%, var(--mint) 100%); }
+.fo-panel { background: linear-gradient(180deg, rgba(255,255,255,.75) 0%, #E9F3EC 70%, #E1EFE6 100%); }
+
+/* الكلمة الضخمة */
+.fo-mark-box { position: relative; display: inline-block; }
+.fo-mark-box .fo-band { position: absolute; inset-inline: -2.5%; bottom: -0.16em; height: 62%; z-index: 0;
+  transform-origin: bottom; animation: fo-rise 1.1s cubic-bezier(.2,.7,.2,1) .1s both; }
+.fo-mark { position: relative; z-index: 1; color: var(--ink); line-height: .86; letter-spacing: .055em; white-space: nowrap; }
+.fo-mark-xl { font-size: clamp(88px, 21vw, 300px); }
+.fo-mark-lg { font-size: clamp(60px, 13vw, 190px); }
+.fo-name { color: var(--teal); font-size: clamp(54px, 8vw, 104px); line-height: .95; letter-spacing: .015em; }
+.fo-kicker { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; justify-content: flex-end; }
+.fo-kicker b { color: var(--orange); font-weight: 700; font-size: clamp(24px, 2.6vw, 34px); }
+.fo-kicker span { color: var(--navy); font-size: clamp(16px, 1.6vw, 21px); }
+@keyframes fo-rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* العناوين */
+.fo-label { color: var(--green); font-weight: 700; font-size: 17px; }
+.fo-h2 { position: relative; display: inline-block; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.32; padding-bottom: 4px; color: var(--ink); }
+.fo-h2::after { content: ""; position: absolute; inset-inline: -10px; bottom: 2px; height: 46%; z-index: -1;
+  background: linear-gradient(180deg, rgba(218,237,226,0), var(--mint)); }
+.fo-h2-wrap { isolation: isolate; }
+.fo-lede { color: var(--navy); font-size: clamp(17px, 1.5vw, 19px); line-height: 1.95; max-width: 62ch; }
+.fo[dir="ltr"] .fo-lede { line-height: 1.75; }
+.fo-small { color: var(--muted); font-size: 14px; line-height: 1.8; }
+
+.fo-sec { padding-block: clamp(72px, 9vw, 128px); }
+.fo-rule { border-top: 1px solid var(--line); }
+
+/* أرقام */
+.fo-num { font-family: var(--font-anton), Impact, sans-serif; font-size: clamp(54px, 6vw, 84px); line-height: 1; color: var(--ink); letter-spacing: .02em; }
+.fo-num-sm { font-family: var(--font-anton), Impact, sans-serif; font-size: clamp(40px, 4vw, 56px); line-height: 1; color: var(--teal); }
+.fo-idx { font-family: var(--font-anton), Impact, sans-serif; color: var(--teal); font-size: 22px; line-height: 1.6; letter-spacing: .04em; }
+
+/* الأزرار */
+.fo-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding-inline: 24px;
+  font-weight: 700; font-size: 16px; border: 2px solid var(--ink); transition: background-color .2s, color .2s; }
+.fo-btn-ink { background: var(--ink); color: #fff; }
+.fo-btn-ink:hover { background: var(--teal); border-color: var(--teal); }
+.fo-btn-line { background: transparent; color: var(--ink); }
+.fo-btn-line:hover { background: var(--ink); color: #fff; }
+.fo-link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; text-decoration-thickness: 2px; transition: text-decoration-color .2s; }
+.fo-link:hover { text-decoration-color: currentColor; }
+
+/* إطار العمل: صورة فوق شريط نعناعي، كما تجلس الصور في الملف */
+.fo-frame { position: relative; display: block; width: 100%; padding: 14px 14px 0; cursor: zoom-in; text-align: start; }
+.fo-frame::before { content: ""; position: absolute; inset: 22% 0 0 0; background: linear-gradient(180deg, rgba(218,237,226,0), var(--mint)); z-index: 0; }
+.fo-frame > * { position: relative; z-index: 1; }
+.fo-frame img { display: block; width: 100%; height: auto; box-shadow: 0 18px 40px -22px rgba(28,47,60,.45); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.fo-frame:hover img { transform: translateY(-4px); }
+.fo-cap { padding: 14px 2px 16px; }
+.fo-cap b { display: block; font-weight: 700; font-size: 17px; color: var(--ink); }
+.fo-cap span { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+.fo-reports { columns: 3 280px; column-gap: 28px; }
+.fo-reports > li { break-inside: avoid; margin-bottom: 28px; }
+
+.fo-points { counter-reset: p; display: grid; gap: 0; }
+.fo-points li { counter-increment: p; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding-block: 14px; border-top: 1px solid var(--line); font-size: 16.5px; line-height: 1.85; color: var(--navy); }
+.fo-points li::before { content: counter(p, decimal-leading-zero); font-family: var(--font-anton), Impact, sans-serif; color: var(--teal); font-size: 20px; line-height: 1.5; }
+
+.fo-tag { display: inline-block; font-size: 14px; padding: 6px 12px; background: #fff; border: 1px solid var(--line); color: var(--ink); line-height: 1.5; }
+
+/* الشريط العلوي */
+.fo-top { position: sticky; top: 0; z-index: 40; background: rgba(244,248,246,.97); border-bottom: 1px solid var(--line); }
+.fo-top .fo-latin { color: var(--teal); font-size: 24px; letter-spacing: .04em; line-height: 1; }
+
+.fo a:focus-visible, .fo button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.fo-skip { position: absolute; inset-inline-start: 16px; top: -60px; z-index: 60; background: var(--ink); color: #fff; padding: 8px 14px; }
+.fo-skip:focus { top: 12px; }
+
+/* ظهور هادئ عند التمرير — لا يخفي شيئا إلا بعد تشغيل جافاسكربت */
+.fo-js [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.fo-js [data-reveal].in { opacity: 1; transform: none; }
+.fo-js [data-reveal] .fo-h2::after { transform: scaleY(0); transform-origin: bottom; transition: transform .9s cubic-bezier(.2,.7,.2,1) .25s; }
+.fo-js [data-reveal].in .fo-h2::after { transform: scaleY(1); }
+
+.fo-dialog { max-width: min(1500px, 95vw); max-height: 92vh; width: auto; background: var(--paper); padding: 14px; border: 0; margin: auto; }
+.fo-dialog::backdrop { background: rgba(20,28,32,.86); }
+.fo-dialog img { max-height: calc(92vh - 90px); width: auto; max-width: 100%; margin-inline: auto; display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fo-mark-box .fo-band { animation: none; }
+  .fo-js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .fo-js [data-reveal] .fo-h2::after { transform: none; transition: none; }
+  .fo-frame img, .fo-btn, .fo-link { transition: none; }
+}
+@media print {
+  .fo-js [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .fo-top { position: static; }
+}

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import RecruiterPage from "@/components/recruiter/RecruiterPage";
+import FolioPage from "@/components/folio/FolioPage";
 import { getContent } from "@/data/content";
 
 const c = getContent("en");
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#FFFFFF" };
+export const viewport: Viewport = { themeColor: "#F4F8F6" };
 
 export default function EnHome() {
-  return <RecruiterPage lang="en" />;
+  return <FolioPage lang="en" />;
 }

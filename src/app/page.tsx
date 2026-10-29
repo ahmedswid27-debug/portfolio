@@ -1,8 +1,8 @@
 import type { Viewport } from "next";
-import RecruiterPage from "@/components/recruiter/RecruiterPage";
+import FolioPage from "@/components/folio/FolioPage";
 
-export const viewport: Viewport = { themeColor: "#FFFFFF" };
+export const viewport: Viewport = { themeColor: "#F4F8F6" };
 
 export default function Home() {
-  return <RecruiterPage lang="ar" />;
+  return <FolioPage lang="ar" />;
 }
