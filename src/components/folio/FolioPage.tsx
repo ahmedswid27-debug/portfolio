@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { getFolio, type Lang } from "@/data/folio";
-import HtmlLang from "@/components/HtmlLang";
+import { getCases } from "@/data/cases";
+import FolioShell from "./FolioShell";
 import Gallery from "./Gallery";
-import Reveal from "./Reveal";
+import LiveBoard from "./LiveBoard";
 
 /**
  * الصفحة الرئيسية على هوية ملف الأعمال الذي صممه أحمد بيده
@@ -25,31 +26,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
   const p = s.profile;
 
   return (
-    <div dir={s.dir} lang={s.lang} className="fo relative z-[2] min-h-screen">
-      <HtmlLang lang={s.lang} dir={s.dir} />
-      <Reveal />
-      <a href="#main" className="fo-skip">{en ? "Skip to content" : "تخطَّ إلى المحتوى"}</a>
-
-      {/* ── الشريط العلوي ── */}
-      <header className="fo-top">
-        <div className="fo-wrap flex items-center justify-between h-16 gap-4">
-          <a href={en ? "/en" : "/"} className="fo-latin whitespace-nowrap min-h-11 inline-flex items-center" dir="ltr" aria-label={p.name}>
-            AHMED SWID
-          </a>
-          <nav aria-label={en ? "Sections" : "الأقسام"} className="hidden lg:flex items-center gap-8 text-[15px] font-semibold">
-            {s.nav.map((n) => (
-              <a key={n.id} href={`#${n.id}`} className="fo-link">{n.label}</a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2 sm:gap-4">
-            <a href={s.other.href} hrefLang={en ? "ar" : "en"} className="fo-link text-[15px] font-semibold min-h-11 inline-flex items-center px-2">
-              {s.other.label}
-            </a>
-            <a href={s.cv.href} download className="fo-btn fo-btn-ink min-h-11 px-4 text-[15px]">{s.cv.label}</a>
-          </div>
-        </div>
-      </header>
-
+    <FolioShell lang={lang} onHome>
       <main id="main">
         {/* ── الغلاف: كلمة الملف نفسها ── */}
         <section className="pt-12 md:pt-20" aria-labelledby="hero-title">
@@ -143,6 +120,54 @@ export default function FolioPage({ lang }: { lang: Lang }) {
               />
             </div>
             <p className="fo-small mt-4 max-w-3xl">{s.boards.disclaimer}</p>
+            <a href="#live" className="fo-btn fo-btn-ink mt-6">{s.boards.link}</a>
+          </div>
+        </section>
+
+        {/* ── لوحة حية ── */}
+        <section id="live" className="fo-sec fo-rule" aria-labelledby="h-live">
+          <div className="fo-wrap">
+            <Head id="h-live" label={s.live.label} title={s.live.title} lede={s.live.lede} />
+            <div className="mt-10"><LiveBoard lang={lang} /></div>
+          </div>
+        </section>
+
+        {/* ── المنهج ── */}
+        <section id="method" className="fo-sec fo-rule" aria-labelledby="h-method">
+          <div className="fo-wrap">
+            <Head id="h-method" label={s.method.label} title={s.method.title} lede={s.method.lede} />
+            <ol className="fo-method mt-12">
+              {s.method.steps.map((m, i) => (
+                <li key={m.t} data-reveal>
+                  <span className="fo-idx" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{m.t}</h3>
+                  <p>{m.d}</p>
+                  <p className="fo-method-out"><b>{s.method.outLabel}</b> {m.out}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ── دراسات الحالة ── */}
+        <section id="cases" className="fo-sec fo-rule" aria-labelledby="h-cases">
+          <div className="fo-wrap">
+            <Head id="h-cases" label={s.cases.label} title={s.cases.title} lede={s.cases.lede} />
+            <ul className="mt-12 border-b" style={{ borderColor: "var(--line)" }}>
+              {getCases(lang).map((c, i) => (
+                <li key={c.slug} data-reveal>
+                  <a href={`${en ? "/en" : ""}/work/${c.slug}`} className="fo-case">
+                    <span className="fo-idx" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+                    <span>
+                      <span className="fo-label block">{c.tag}</span>
+                      <span className="fo-case-title">{c.title}</span>
+                      <span className="fo-case-card">{c.card}</span>
+                    </span>
+                    <span className="fo-case-go">{s.cases.read}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -171,7 +196,28 @@ export default function FolioPage({ lang }: { lang: Lang }) {
                 className="w-full h-auto"
               />
               <p className="fo-small mt-2">{s.platform.note}</p>
+              <a href={`${en ? "/en" : ""}/work/data-pipeline`} className="fo-btn fo-btn-line mt-6">{s.platform.link}</a>
             </div>
+          </div>
+        </section>
+
+        {/* ── دروس من الإنتاج ── */}
+        <section id="lessons" className="fo-sec fo-rule" aria-labelledby="h-lessons">
+          <div className="fo-wrap">
+            <Head id="h-lessons" label={s.lessons.label} title={s.lessons.title} lede={s.lessons.lede} />
+            <div className="mt-12 grid md:grid-cols-2 gap-x-10">
+              {s.lessons.items.map((l) => (
+                <article key={l.t} data-reveal className="fo-lesson">
+                  <h3>{l.t}</h3>
+                  <dl>
+                    <dt>{s.lessons.labels.wrong}</dt><dd>{l.wrong}</dd>
+                    <dt>{s.lessons.labels.caught}</dt><dd>{l.caught}</dd>
+                    <dt>{s.lessons.labels.rule}</dt><dd className="font-bold">{l.rule}</dd>
+                  </dl>
+                </article>
+              ))}
+            </div>
+            <p className="fo-small mt-6">{s.lessons.note}</p>
           </div>
         </section>
 
@@ -343,9 +389,6 @@ export default function FolioPage({ lang }: { lang: Lang }) {
         </section>
       </main>
 
-      <footer className="fo-wrap py-8 text-[14px] border-t" style={{ borderColor: "var(--line)", color: "var(--muted)" }}>
-        {s.footer}
-      </footer>
-    </div>
+    </FolioShell>
   );
 }
