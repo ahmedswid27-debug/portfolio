@@ -3,10 +3,10 @@
 import { useState } from "react";
 import type { Lang } from "@/data/folio";
 
-/** حاسبة قاعدة التصنيف: الفرق = نسبة المدة المنقضية − نسبة الصرف. والعتبات نفسها في قياس Status. */
+/** قاعدة التصنيف: الفرق = نسبة المدة المنقضية − نسبة الصرف. والعتبات نفسها في قياس Status. */
 const T = {
-  ar: { time: "المدة المنقضية", spend: "نسبة الصرف", gap: "الفرق", cls: ["ممتاز", "جيد", "ضعيف", "متعثر"], note: "أي صرف يسبق المدة يبقى ممتازا: القاعدة تقيس التأخر فقط." },
-  en: { time: "Time elapsed", spend: "Percent spent", gap: "Gap", cls: ["Excellent", "Good", "Weak", "At risk"], note: "Spending ahead of time stays Excellent: the rule only measures delay." },
+  ar: { time: "المدة المنقضية", spend: "الصرف", gap: "الفرق", cls: ["ممتاز", "جيد", "ضعيف", "متعثر"] },
+  en: { time: "Time elapsed", spend: "Spent", gap: "Gap", cls: ["Excellent", "Good", "Weak", "At risk"] },
 };
 
 export default function EvmCalc({ lang }: { lang: Lang }) {
@@ -16,7 +16,7 @@ export default function EvmCalc({ lang }: { lang: Lang }) {
   const gap = time - spend;
   const i = gap < 10 ? 0 : gap < 15 ? 1 : gap < 20 ? 2 : 3;
   return (
-    <div className="fo-calc">
+    <div className="fo-calc card-gold rounded-2xl">
       <label>
         <span>{t.time} <b dir="ltr">{time}%</b></span>
         <input type="range" min={0} max={100} value={time} onChange={(e) => setTime(+e.target.value)} />
@@ -36,7 +36,6 @@ export default function EvmCalc({ lang }: { lang: Lang }) {
           ))}
         </ol>
       </div>
-      <p className="fo-small mt-3">{t.note}</p>
     </div>
   );
 }

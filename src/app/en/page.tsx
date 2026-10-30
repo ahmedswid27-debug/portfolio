@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#F4F8F6" };
+export const viewport: Viewport = { themeColor: "#0B0E14" };
 
 export default function EnHome() {
   return <FolioPage lang="en" />;

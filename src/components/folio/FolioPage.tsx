@@ -1,394 +1,239 @@
 import Image from "next/image";
-import { getFolio, type Lang } from "@/data/folio";
+import SectionHead from "@/components/SectionHead";
 import { getCases } from "@/data/cases";
+import { getFolio, type Lang } from "@/data/folio";
 import FolioShell from "./FolioShell";
 import Gallery from "./Gallery";
 import LiveBoard from "./LiveBoard";
 
-/**
- * الصفحة الرئيسية على هوية ملف الأعمال الذي صممه أحمد بيده
- * (portfolio.pdf و«بورتفوليو 2026.ai»): الكلمة الضخمة فوق الشريط النعناعي،
- * والاسم بالأزرق المخضر، والبرتقالي لعبارة «ملف أعمال» وحدها، واللوحات على أجهزة لوحية.
- */
-function Head({ label, title, lede, id }: { label: string; title: string; lede?: string; id: string }) {
+/** الرئيسية بهوية صفحة الورش: صورة الواجهة، والعنوان الذهبي، وشريط الأرقام، وترويسات مصورة. */
+function Sec({ id, n, title, img, children }: { id: string; n: number; title: string; img: string; children: React.ReactNode }) {
   return (
-    <div data-reveal className="fo-h2-wrap max-w-3xl">
-      <p className="fo-label">{label}</p>
-      <h2 id={id} className="fo-h2 mt-2">{title}</h2>
-      {lede && <p className="fo-lede mt-5">{lede}</p>}
-    </div>
+    <section id={id} className="py-12 sm:py-16" aria-label={title}>
+      <SectionHead n={n} title={title} img={img} />
+      {children}
+    </section>
   );
 }
 
 export default function FolioPage({ lang }: { lang: Lang }) {
   const s = getFolio(lang);
   const en = lang === "en";
-  const p = s.profile;
+  const base = en ? "/en" : "";
 
   return (
     <FolioShell lang={lang} onHome>
-      <main id="main">
-        {/* ── الغلاف: كلمة الملف نفسها ── */}
-        <section className="pt-12 md:pt-20" aria-labelledby="hero-title">
-          <h1 id="hero-title" className="sr-only">{`${p.name}، ${p.role}`}</h1>
-          <div className="fo-wrap flex justify-center">
-            <div className="fo-mark-box" aria-hidden="true">
-              <span className="fo-band" style={{ bottom: 0, height: "56%" }} />
-              <span className="fo-mark fo-mark-xl fo-latin block text-center" dir="ltr">portfolio</span>
-              <p className="fo-kicker px-[3%] pt-3 pb-4" dir={s.dir}>
-                <b>{s.hero.kicker}</b>
-                <span>{s.hero.sub}</span>
-              </p>
-            </div>
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image src="/riyadh/lamps-hero.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/70 to-ink" />
+          <div className="absolute inset-0 rtl:bg-gradient-to-l ltr:bg-gradient-to-r from-ink via-ink/65 to-ink/10" />
+        </div>
+        <div className="mx-auto max-w-6xl px-6 sm:px-10 pt-16 pb-20 sm:pt-24 sm:pb-28">
+          <span className="inline-block text-[12px] tracking-wider px-3 py-1 rounded-full bg-gold/12 border border-gold/30 text-gold">{s.hero.badge}</span>
+          <h1 className="mt-5 font-display font-black leading-[1.34] pb-1 text-[34px] sm:text-[46px] lg:text-[56px] max-w-4xl text-gold-shine">{s.hero.name}</h1>
+          <p className="mt-4 max-w-3xl text-[15px] sm:text-[17px] text-white/78 leading-loose">{s.hero.lead}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a href={s.cv.href} download className="fo-btn fo-btn-gold">{s.cv.label}</a>
+            <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className="fo-btn fo-btn-line">LinkedIn</a>
           </div>
-          <div className="fo-wrap mt-6 md:mt-10 max-sm:overflow-hidden">
-            <Image
-              src="/works/illustrative/tablets.png"
-              alt={s.hero.alt}
-              width={2000}
-              height={670}
-              priority
-              sizes="(max-width: 640px) 170vw, (max-width: 1240px) 100vw, 1180px"
-              className="w-full h-auto max-sm:w-[165%] max-sm:max-w-none max-sm:ltr:-ml-[65%]"
-            />
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── الملف الشخصي (صفحة 2 من الملف) ── */}
-        <section id="profile" className="fo-sec pt-10 md:pt-16" aria-label={p.name}>
-          <div className="fo-wrap">
-            <div data-reveal>
-              <div className="fo-mark-box" dir="ltr">
-                <span className="fo-band" style={{ bottom: "-4px", height: "48%" }} />
-                <p className="fo-name fo-latin relative z-[1] px-1">AHMED SWID</p>
-              </div>
-              <p className="mt-6 text-[24px] md:text-[28px] font-extrabold leading-snug">{p.name}</p>
-              <p className="mt-1 text-[19px] md:text-[22px] font-semibold" style={{ color: "var(--teal)" }}>{p.role}</p>
+      <div className="mx-auto max-w-6xl px-6 sm:px-10 -mt-10 relative z-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 rounded-2xl overflow-hidden border border-gold/20 bg-panel/90 backdrop-blur-md divide-x rtl:divide-x-reverse divide-gold/10 shadow-[0_24px_60px_-30px_rgba(0,0,0,1)]">
+          {s.stats.map((x) => (
+            <div key={x.label} className="px-4 py-5 sm:py-7 text-center">
+              <div className="font-display text-2xl sm:text-[32px] font-bold text-gold tabular leading-none" dir="ltr">{x.value}</div>
+              <p className="mt-2 text-[12px] sm:text-xs text-white/72 leading-snug">{x.label}</p>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <div className="mt-10 grid md:grid-cols-12 gap-4">
-              <div data-reveal className="fo-panel md:col-span-8 p-6 md:p-10">
-                {p.summary.map((t, i) => (
-                  <p key={i} className={`fo-lede ${i ? "mt-5 text-[16px]" : ""}`}>{t}</p>
-                ))}
-              </div>
-              <div data-reveal className="fo-panel md:col-span-4 p-6 md:p-8 flex flex-col">
-                <ul className="grid gap-3 text-[16px] leading-relaxed" style={{ color: "var(--navy)" }}>
-                  {p.facts.map((f) => <li key={f}>{f}</li>)}
-                </ul>
-                <div className="mt-8 md:mt-auto pt-6 grid gap-1 text-[15px] font-bold" style={{ color: "var(--navy)" }}>
-                  <a href={p.contact.phoneHref} className="fo-link min-h-11 inline-flex items-center">
-                    {en ? "Phone" : "الجوال"}: <bdi dir="ltr" className="ms-1">{p.contact.phone}</bdi>
-                  </a>
-                  <a href={`mailto:${p.contact.email}`} className="fo-link break-all min-h-11 inline-flex items-center">{p.contact.email}</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href={s.cv.href} download className="fo-btn fo-btn-ink">{s.cv.download}</a>
-              <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className="fo-btn fo-btn-line">LinkedIn</a>
-            </div>
-
-            <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t" style={{ borderColor: "var(--line)" }}>
-              {s.proof.map((x, i) => (
-                <div
-                  key={x.label}
-                  data-reveal
-                  className={`pt-7 pb-2 pe-4 ${i % 2 ? "max-md:ps-4 max-md:border-s" : ""} ${i ? "md:ps-6 md:border-s" : ""}`}
-                  style={{ borderColor: "var(--line)" }}
-                >
-                  <dd className="fo-num" dir="ltr" style={{ textAlign: en ? "left" : "right" }}>{x.value}</dd>
-                  <dt className="mt-3 text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>{x.label}</dt>
+      <main id="main" className="mx-auto max-w-6xl px-6 sm:px-10">
+        <Sec id="about" n={1} title={s.about.title} img="/riyadh/kafd.jpg">
+          <div className="grid lg:grid-cols-5 gap-5">
+            <p className="lg:col-span-3 card-gold rounded-2xl p-6 sm:p-8 text-[15px] sm:text-[16px] text-white/80 leading-loose">{s.about.text}</p>
+            <dl className="lg:col-span-2 card-gold rounded-2xl divide-y divide-gold/10">
+              {s.about.facts.map((f) => (
+                <div key={f.k} className="grid grid-cols-[84px_1fr] gap-3 px-5 py-3">
+                  <dt className="font-display font-bold text-[13px] text-gold/90">{f.k}</dt>
+                  <dd className="text-[14px] text-white/74">{f.v}</dd>
                 </div>
               ))}
             </dl>
           </div>
-        </section>
+        </Sec>
 
-        {/* ── لوحات Power BI ── */}
-        <section id="boards" className="fo-sec fo-rule" aria-labelledby="h-boards">
-          <div className="fo-wrap">
-            <Head id="h-boards" label={s.boards.label} title={s.boards.title} lede={s.boards.lede} />
-            <div className="mt-12" data-reveal>
-              <Gallery
-                items={s.boards.flat}
-                className="grid sm:grid-cols-2 gap-x-6 gap-y-4"
-                sizes="(max-width: 640px) 100vw, 600px"
-                zoom={s.zoom}
-                close={s.closeLabel}
-              />
-            </div>
-            <p className="fo-small mt-4 max-w-3xl">{s.boards.disclaimer}</p>
-            <a href="#live" className="fo-btn fo-btn-ink mt-6">{s.boards.link}</a>
-          </div>
-        </section>
+        <Sec id="boards" n={2} title={s.boards.title} img="/riyadh/skyline-sunset.jpg">
+          <Gallery items={s.boards.items} className="grid sm:grid-cols-2 gap-5" sizes="(max-width: 640px) 100vw, 560px" zoom={s.zoom} close={s.closeLabel} />
+          <p className="fo-small mt-3">{s.boards.notice}</p>
+        </Sec>
 
-        {/* ── لوحة حية ── */}
-        <section id="live" className="fo-sec fo-rule" aria-labelledby="h-live">
-          <div className="fo-wrap">
-            <Head id="h-live" label={s.live.label} title={s.live.title} lede={s.live.lede} />
-            <div className="mt-10"><LiveBoard lang={lang} /></div>
-          </div>
-        </section>
+        <Sec id="live" n={3} title={s.live.title} img="/riyadh/aerial-day.jpg">
+          <LiveBoard lang={lang} />
+        </Sec>
 
-        {/* ── المنهج ── */}
-        <section id="method" className="fo-sec fo-rule" aria-labelledby="h-method">
-          <div className="fo-wrap">
-            <Head id="h-method" label={s.method.label} title={s.method.title} lede={s.method.lede} />
-            <ol className="fo-method mt-12">
-              {s.method.steps.map((m, i) => (
-                <li key={m.t} data-reveal>
-                  <span className="fo-idx" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
-                  <h3>{m.t}</h3>
-                  <p>{m.d}</p>
-                  <p className="fo-method-out"><b>{s.method.outLabel}</b> {m.out}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <Sec id="method" n={4} title={s.method.title} img="/riyadh/street.jpg">
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {s.method.steps.map((m, i) => (
+              <li key={m.t} data-reveal className="card-gold rounded-2xl p-5 flex flex-col">
+                <span className="font-mono text-xs text-gold/60" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-2 font-display font-bold text-[17px] text-white/95">{m.t}</h3>
+                <p className="mt-1.5 text-[13.5px] text-white/68 leading-relaxed">{m.d}</p>
+                <p className="mt-auto pt-3 text-[12.5px] text-gold/90"><span className="text-white/45">{s.method.output}: </span>{m.out}</p>
+              </li>
+            ))}
+          </ol>
+        </Sec>
 
-        {/* ── دراسات الحالة ── */}
-        <section id="cases" className="fo-sec fo-rule" aria-labelledby="h-cases">
-          <div className="fo-wrap">
-            <Head id="h-cases" label={s.cases.label} title={s.cases.title} lede={s.cases.lede} />
-            <ul className="mt-12 border-b" style={{ borderColor: "var(--line)" }}>
-              {getCases(lang).map((c, i) => (
-                <li key={c.slug} data-reveal>
-                  <a href={`${en ? "/en" : ""}/work/${c.slug}`} className="fo-case">
-                    <span className="fo-idx" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
-                    <span>
-                      <span className="fo-label block">{c.tag}</span>
-                      <span className="fo-case-title">{c.title}</span>
-                      <span className="fo-case-card">{c.card}</span>
-                    </span>
-                    <span className="fo-case-go">{s.cases.read}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* ── منصة تشغيلية ── */}
-        <section id="platform" className="fo-sec fo-rule" aria-labelledby="h-platform">
-          <div className="fo-wrap">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-              <div className="lg:col-span-5">
-                <Head id="h-platform" label={s.platform.label} title={s.platform.title} />
-                <p className="fo-small mt-3">{s.platform.org}</p>
-                <p data-reveal className="fo-lede mt-6">{s.platform.lede}</p>
-              </div>
-              <div className="lg:col-span-7 lg:pt-6">
-                <ol data-reveal className="fo-points">
-                  {s.platform.points.map((t) => <li key={t}>{t}</li>)}
-                </ol>
-              </div>
-            </div>
-            <div data-reveal className="mt-12">
-              <Image
-                src="/works/illustrative/tablets-2.png"
-                alt={s.platform.mockAlt}
-                width={2000}
-                height={670}
-                sizes="(max-width: 1240px) 100vw, 1180px"
-                className="w-full h-auto"
-              />
-              <p className="fo-small mt-2">{s.platform.note}</p>
-              <a href={`${en ? "/en" : ""}/work/data-pipeline`} className="fo-btn fo-btn-line mt-6">{s.platform.link}</a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── دروس من الإنتاج ── */}
-        <section id="lessons" className="fo-sec fo-rule" aria-labelledby="h-lessons">
-          <div className="fo-wrap">
-            <Head id="h-lessons" label={s.lessons.label} title={s.lessons.title} lede={s.lessons.lede} />
-            <div className="mt-12 grid md:grid-cols-2 gap-x-10">
-              {s.lessons.items.map((l) => (
-                <article key={l.t} data-reveal className="fo-lesson">
-                  <h3>{l.t}</h3>
-                  <dl>
-                    <dt>{s.lessons.labels.wrong}</dt><dd>{l.wrong}</dd>
-                    <dt>{s.lessons.labels.caught}</dt><dd>{l.caught}</dd>
-                    <dt>{s.lessons.labels.rule}</dt><dd className="font-bold">{l.rule}</dd>
-                  </dl>
-                </article>
-              ))}
-            </div>
-            <p className="fo-small mt-6">{s.lessons.note}</p>
-          </div>
-        </section>
-
-        {/* ── التقارير ── */}
-        <section id="reports" className="fo-sec fo-rule" aria-labelledby="h-reports">
-          <div className="fo-wrap">
-            <Head id="h-reports" label={s.reports.label} title={s.reports.title} lede={s.reports.lede} />
-            <div className="mt-12" data-reveal>
-              <Gallery items={s.reports.items} className="fo-reports" sizes="(max-width: 640px) 100vw, 400px" zoom={s.zoom} close={s.closeLabel} />
-            </div>
-          </div>
-        </section>
-
-        {/* ── الورش ── */}
-        <section id="workshops" className="fo-sec fo-rule" aria-labelledby="h-workshops">
-          <div className="fo-wrap">
-            <div className="grid lg:grid-cols-12 gap-10 items-end">
-              <div className="lg:col-span-7">
-                <Head id="h-workshops" label={s.workshops.label} title={s.workshops.title} lede={s.workshops.lede} />
-              </div>
-              <dl data-reveal className="lg:col-span-5 grid grid-cols-3 gap-4">
-                {s.workshops.numbers.map((n) => (
-                  <div key={n.label}>
-                    <dd className="fo-num-sm" dir="ltr" style={{ textAlign: en ? "left" : "right" }}>{n.value}</dd>
-                    <dt className="mt-2 text-[14px]" style={{ color: "var(--muted)" }}>{n.label}</dt>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            <div className="mt-12 grid gap-4" data-reveal>
-              <Gallery
-                items={s.workshops.photos.filter((x) => x.w > x.h)}
-                className="grid sm:grid-cols-2 gap-x-4"
-                sizes="(max-width: 640px) 100vw, 600px"
-                zoom={s.zoom}
-                close={s.closeLabel}
-              />
-              <Gallery
-                items={s.workshops.photos.filter((x) => x.w <= x.h)}
-                className="grid grid-cols-2 md:grid-cols-4 gap-x-4"
-                sizes="(max-width: 768px) 50vw, 300px"
-                zoom={s.zoom}
-                close={s.closeLabel}
-              />
-            </div>
-            <a href={s.workshops.link.href} className="fo-btn fo-btn-line mt-8">{s.workshops.link.label}</a>
-          </div>
-        </section>
-
-        {/* ── الخبرة ── */}
-        <section id="experience" className="fo-sec fo-rule" aria-labelledby="h-exp">
-          <div className="fo-wrap">
-            <Head id="h-exp" label={s.experience.label} title={s.experience.title} />
-            <div className="mt-12 grid gap-12">
-              {s.experience.jobs.map((j) => (
-                <article key={j.org} data-reveal className="grid lg:grid-cols-12 gap-4 lg:gap-10 pt-8 border-t" style={{ borderColor: "var(--line)" }}>
-                  <div className="lg:col-span-4">
-                    <p className="text-[15px] font-bold" style={{ color: "var(--teal)" }}>{j.period}</p>
-                    <h3 className="mt-2 text-[24px] font-extrabold leading-snug">{j.role}</h3>
-                    <p className="mt-2 text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>{j.org}</p>
-                  </div>
-                  <ol className="fo-points lg:col-span-8">
-                    {j.points.map((t) => <li key={t}>{t}</li>)}
-                  </ol>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── المهارات ── */}
-        <section id="skills" className="fo-sec fo-rule" aria-labelledby="h-skills">
-          <div className="fo-wrap">
-            <Head id="h-skills" label={s.skills.label} title={s.skills.title} />
-            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {s.skills.groups.map((g) => (
-                <div key={g.title} data-reveal className="fo-panel p-6">
-                  <h3 className="text-[18px] font-extrabold">{g.title}</h3>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {g.items.map((t) => <li key={t} className="fo-tag">{t}</li>)}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── الشهادات ── */}
-        <section id="creds" className="fo-sec fo-rule" aria-labelledby="h-creds">
-          <div className="fo-wrap">
-            <Head id="h-creds" label={s.creds.label} title={s.creds.title} />
-            <div className="mt-12 grid lg:grid-cols-12 gap-10">
-              <a href={s.creds.capm.href} target="_blank" rel="noopener noreferrer" data-reveal className="lg:col-span-7 block group">
-                <span className="fo-frame" style={{ cursor: "pointer" }}>
-                  <Image src={s.creds.capm.img} alt={s.creds.capm.title} width={1187} height={916} sizes="(max-width: 1024px) 100vw, 680px" />
-                  <span className="fo-cap">
-                    <b>{s.creds.capm.title}</b>
-                    <span>{s.creds.capm.meta}</span>
+        <Sec id="cases" n={5} title={s.cases.title} img="/riyadh/kingdom-night.jpg">
+          <ul className="grid sm:grid-cols-2 gap-5">
+            {getCases(lang).map((c) => (
+              <li key={c.slug} data-reveal>
+                <a href={`${base}/work/${c.slug}`} className="fo-case card-gold rounded-2xl">
+                  <span className="fo-case-img">
+                    <Image src={c.image} alt="" fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover" />
                   </span>
-                </span>
-              </a>
-              <div data-reveal className="lg:col-span-5 grid gap-10 content-start">
+                  <span className="block p-6">
+                    <span className="block text-[12px] text-gold/80">{c.tag}</span>
+                    <span className="block mt-1 font-display font-bold text-[21px] text-white/95">{c.title}</span>
+                    <span className="block mt-1.5 text-[14px] text-white/68 leading-relaxed">{c.card}</span>
+                    <span className="inline-block mt-4 text-[13px] font-bold text-gold">{s.cases.more}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Sec>
+
+        <Sec id="platform" n={6} title={s.platform.title} img="/riyadh/lamps-hero.jpg">
+          <div className="grid lg:grid-cols-5 gap-6 items-center">
+            <div className="lg:col-span-2">
+              <p className="text-[13px] text-gold/85">{s.platform.org}</p>
+              <ul className="mt-3 card-gold rounded-2xl divide-y divide-gold/10">
+                {s.platform.points.map((t) => <li key={t} className="px-5 py-2.5 text-[14px] text-white/78">{t}</li>)}
+              </ul>
+              <a href={`${base}/work/data-pipeline`} className="fo-btn fo-btn-line mt-4">{s.platform.more}</a>
+            </div>
+            <div className="lg:col-span-3">
+              <Image src="/works/illustrative/tablets-2.png" alt={s.platform.alt} width={2000} height={670} sizes="(max-width: 1024px) 100vw, 680px" className="w-full h-auto" />
+              <p className="fo-small mt-2">{s.platform.notice}</p>
+            </div>
+          </div>
+        </Sec>
+
+        <Sec id="lessons" n={7} title={s.lessons.title} img="/riyadh/street.jpg">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {s.lessons.items.map((l) => (
+              <article key={l.t} data-reveal className="card-gold rounded-2xl p-5">
+                <h3 className="font-display font-bold text-[16px] text-white/95">{l.t}</h3>
+                <dl className="mt-3 grid gap-2 text-[13.5px] leading-relaxed">
+                  <div><dt className="inline text-white/45">{s.lessons.labels.wrong}: </dt><dd className="inline text-white/72">{l.wrong}</dd></div>
+                  <div><dt className="inline text-gold/90">{s.lessons.labels.rule}: </dt><dd className="inline text-white/90">{l.rule}</dd></div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        </Sec>
+
+        <Sec id="reports" n={8} title={s.reports.title} img="/riyadh/kafd.jpg">
+          <Gallery items={s.reports.items} className="fo-reports" sizes="(max-width: 640px) 100vw, 360px" zoom={s.zoom} close={s.closeLabel} />
+        </Sec>
+
+        <Sec id="workshops" n={9} title={s.workshops.title} img="/riyadh/skyline-sunset.jpg">
+          <dl className="grid grid-cols-3 rounded-2xl overflow-hidden border border-gold/20 bg-panel/90 divide-x rtl:divide-x-reverse divide-gold/10 mb-6">
+            {s.workshops.numbers.map((n) => (
+              <div key={n.label} className="px-3 py-5 text-center">
+                <dd className="font-display text-2xl sm:text-[30px] font-bold text-gold tabular leading-none" dir="ltr">{n.value}</dd>
+                <dt className="mt-2 text-[12px] text-white/72">{n.label}</dt>
+              </div>
+            ))}
+          </dl>
+          <Gallery items={s.workshops.photos.filter((x) => x.w > x.h)} className="grid sm:grid-cols-2 gap-4" sizes="(max-width: 640px) 100vw, 560px" zoom={s.zoom} close={s.closeLabel} />
+          <Gallery items={s.workshops.photos.filter((x) => x.w <= x.h)} className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4" sizes="(max-width: 768px) 50vw, 270px" zoom={s.zoom} close={s.closeLabel} />
+          <a href={s.workshops.link.href} className="fo-btn fo-btn-line mt-6">{s.workshops.link.label}</a>
+        </Sec>
+
+        <Sec id="experience" n={10} title={s.experience.title} img="/riyadh/aerial-day.jpg">
+          <div className="grid gap-5">
+            {s.experience.jobs.map((j) => (
+              <article key={j.org} data-reveal className="card-gold rounded-2xl p-6 sm:p-7 grid lg:grid-cols-3 gap-4">
                 <div>
-                  <h3 className="fo-label">{s.creds.coursesTitle}</h3>
-                  <ul className="mt-3">
-                    {s.creds.courses.map((c) => (
-                      <li key={c.href} className="border-t" style={{ borderColor: "var(--line)" }}>
-                        <a href={c.href} target="_blank" rel="noopener noreferrer" dir="ltr" className="fo-link block py-3 text-[15px] leading-relaxed" style={{ textAlign: en ? "left" : "right" }}>
-                          {c.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-[12.5px] text-gold/85">{j.period}</p>
+                  <h3 className="mt-1 font-display font-bold text-[19px] text-white/95">{j.role}</h3>
+                  <p className="mt-1 text-[13.5px] text-white/62">{j.org}</p>
                 </div>
-                <div>
-                  <h3 className="fo-label">{s.creds.eduTitle}</h3>
-                  <p className="mt-3 text-[17px] font-bold">{s.creds.edu}</p>
+                <ul className="lg:col-span-2 grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-[14px] text-white/76 leading-relaxed">
+                  {j.points.map((t) => <li key={t}>{t}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </Sec>
+
+        <Sec id="skills" n={11} title={s.skills.title} img="/riyadh/kingdom-night.jpg">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {s.skills.groups.map((g) => (
+              <div key={g.title} data-reveal className="card-gold rounded-2xl p-5">
+                <h3 className="font-display font-bold text-[15px] text-gold">{g.title}</h3>
+                <ul className="mt-3 flex flex-wrap gap-1.5">
+                  {g.items.map((t) => <li key={t} className="fo-tag">{t}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Sec>
+
+        <Sec id="creds" n={12} title={s.creds.title} img="/riyadh/street.jpg">
+          <div className="grid lg:grid-cols-2 gap-5">
+            <a href={s.creds.capm.href} target="_blank" rel="noopener noreferrer" className="card-gold rounded-2xl p-4 block">
+              <Image src={s.creds.capm.img} alt={s.creds.capm.title} width={1187} height={916} sizes="(max-width: 1024px) 100vw, 540px" className="w-full h-auto rounded-lg" />
+              <p className="mt-3 font-display font-bold text-[15px] text-white/95">{s.creds.capm.title}</p>
+              <p className="text-[12.5px] text-white/60">{s.creds.capm.meta}</p>
+            </a>
+            <div className="grid gap-5 content-start">
+              <div className="card-gold rounded-2xl p-5">
+                <h3 className="font-display font-bold text-[14px] text-gold">{s.creds.coursesTitle}</h3>
+                <ul className="mt-2 divide-y divide-gold/10">
+                  {s.creds.courses.map((c) => (
+                    <li key={c.href}><a href={c.href} target="_blank" rel="noopener noreferrer" dir="ltr" className="block py-2 text-[13.5px] text-white/76 hover:text-gold transition-colors" style={{ textAlign: en ? "left" : "right" }}>{c.name}</a></li>
+                  ))}
+                </ul>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="card-gold rounded-2xl p-5">
+                  <h3 className="font-display font-bold text-[14px] text-gold">{s.creds.eduTitle}</h3>
+                  <p className="mt-2 text-[14px] text-white/78">{s.creds.edu}</p>
                 </div>
-                <div>
-                  <h3 className="fo-label">{s.creds.langTitle}</h3>
-                  <ul className="mt-3 grid gap-1 text-[16px]">
-                    {s.creds.langs.map((l) => (
-                      <li key={l.name}><b>{l.name}</b> <span style={{ color: "var(--muted)" }}>{l.level}</span></li>
-                    ))}
+                <div className="card-gold rounded-2xl p-5">
+                  <h3 className="font-display font-bold text-[14px] text-gold">{s.creds.langTitle}</h3>
+                  <ul className="mt-2 text-[14px] text-white/78">
+                    {s.creds.langs.map((l) => <li key={l.name}>{l.name}{en ? ", " : "، "}{l.level}</li>)}
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </Sec>
 
-        {/* ── التواصل والختام (الصفحة الأخيرة من الملف) ── */}
-        <section id="contact" className="fo-sec fo-rule pb-10" aria-labelledby="h-contact">
-          <div className="fo-wrap">
-            <Head id="h-contact" label={s.contact.label} title={s.contact.title} lede={s.contact.lede} />
-            <ul data-reveal className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 border-t" style={{ borderColor: "var(--line)" }}>
-              {[
-                { l: s.contact.labels.phone, v: p.contact.phone, h: p.contact.phoneHref, ltr: true },
-                { l: s.contact.labels.email, v: p.contact.email, h: `mailto:${p.contact.email}`, ltr: true },
-                { l: s.contact.labels.linkedin, v: "ahmed-mahmoud-95aa1b2a5", h: s.linkedin, ltr: true, ext: true },
-                { l: s.contact.labels.cv, v: en ? "Download PDF" : "تحميل PDF", h: s.cv.href, ltr: true, dl: true },
-              ].map((c, i) => (
-                <li key={c.l} className={`py-6 ${i ? "lg:ps-6 lg:border-s" : ""} ${i % 2 ? "sm:ps-6 sm:border-s" : ""} max-sm:border-b`} style={{ borderColor: "var(--line)" }}>
-                  <p className="text-[14px]" style={{ color: "var(--muted)" }}>{c.l}</p>
-                  <a
-                    href={c.h}
-                    {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    {...(c.dl ? { download: true } : {})}
-                    dir={c.ltr ? "ltr" : undefined}
-                    className="fo-link mt-1 min-h-11 inline-flex items-center text-[17px] font-bold break-all"
-                  >
-                    {c.v}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="fo-wrap mt-20 md:mt-28 flex justify-center" aria-hidden="true">
-            <div className="fo-mark-box" data-reveal>
-              <span className="fo-band" style={{ bottom: 0, height: "58%" }} />
-              <span className="fo-mark fo-mark-lg fo-latin block text-center" dir="ltr">{s.close}</span>
-              <p className="fo-kicker px-[3%] pt-2 pb-3" dir={s.dir}>
-                <b>{s.closeSub}</b>
-                <span>{s.hero.sub}</span>
-              </p>
-            </div>
-          </div>
-        </section>
+        <Sec id="contact" n={13} title={s.contact.title} img="/riyadh/lamps-hero.jpg">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { l: s.contact.phone, v: s.contact.phoneValue, h: s.contact.phoneHref },
+              { l: s.contact.email, v: s.contact.emailValue, h: `mailto:${s.contact.emailValue}` },
+              { l: s.contact.linkedin, v: "ahmed-mahmoud", h: s.linkedin, ext: true },
+              { l: s.contact.cv, v: s.contact.download, h: s.cv.href, dl: true },
+            ].map((c) => (
+              <li key={c.l} className="card-gold rounded-2xl p-5">
+                <p className="text-[12.5px] text-gold/85">{c.l}</p>
+                <a href={c.h} {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} {...(c.dl ? { download: true } : {})} dir="ltr" className="block mt-1 min-h-8 text-[14.5px] font-bold text-white/90 break-all hover:text-gold transition-colors" style={{ textAlign: en ? "left" : "right" }}>{c.v}</a>
+              </li>
+            ))}
+          </ul>
+        </Sec>
       </main>
-
     </FolioShell>
   );
 }
