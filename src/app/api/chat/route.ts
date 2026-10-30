@@ -57,16 +57,16 @@ function localAnswer(question: string, lang: Lang): string {
       : `أحمد خبير في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر 60,658 عمود إنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
   if (has("تدريب", "كورس", "دورة", "train", "course", "workshop"))
     return en
-      ? `Ahmed has trained 150+ employees and delivered an official "Business Analysis with Power BI" course. See the Training section for photos.`
-      : `درّب أحمد أكثر من 150 موظفًا وقدّم دورة رسمية بعنوان "تحليل الأعمال باستخدام Power BI". يمكنك مشاهدة الصور في قسم "التدريب".`;
+      ? `Ahmed has delivered Power BI workshops for 150+ employees, including "Business Analysis with Power BI". See the Training section for photos.`
+      : `نفّذ أحمد ورش Power BI لأكثر من 150 موظفًا، منها ورشة "تحليل الأعمال باستخدام Power BI". يمكنك مشاهدة الصور في قسم "التدريب".`;
   if (has("أتمتة", "بوت", "الوسط", "وسط", "منصة", "نظام", "automation", "bot", "n8n", "ai", "wasat", "platform", "system"))
     return en
       ? `Ahmed builds full operational platforms. His flagship is the Wasat Sector platform for Riyadh Municipality: 34 analytical screens running SAR 179.3M of maintenance contracts, 7,709 complaints mapped across eight zones, EVM forecasting, a Claude assistant on Telegram, and a daily executive report. See the Automation section.`
       : `يبني أحمد منصّات تشغيلية كاملة. وأبرزها منصة قطاع الوسط لأمانة الرياض: 34 شاشة تحليلية تدير عقود صيانة بقيمة 179.3 مليون ريال، وخريطة لـ7,709 بلاغات على ثمانية نطاقات، وتنبؤ EVM، ومساعد Claude على تيليجرام، وتقرير تنفيذي يومي. اطّلع على قسم "الأتمتة".`;
   if (has("خبرة", "experience", "سنوات", "years", "من هو", "who", "توظيف", "وظيفة", "hire", "hiring"))
     return en
-      ? `Ahmed is a Business & Data Analyst at Riyadh Municipality — 5+ years, CAPM certified, certified Power BI expert. He has built and operates a platform running SAR 179.3M of contracts, risk-classified 60,000+ lighting poles, and trained 150+ employees. He's open to opportunities — ${c.profile.email}.`
-      : `أحمد محلل أعمال وبيانات في أمانة الرياض — أكثر من 5 سنوات، حاصل على CAPM، وخبير معتمد في Power BI. بنى ويشغّل منصّة تدير عقوداً بقيمة 179.3 مليون ريال، وصنّف مخاطر أكثر من 60 ألف عمود إنارة، ودرّب أكثر من 150 موظفاً. وهو منفتح على الفرص — ${c.profile.email}.`;
+      ? `Ahmed is a Business & Data Analyst at Al-Shathri Company on Riyadh Municipality projects — 9 years of professional experience, 4+ of them in data, a CAPM holder and a Power BI expert. He has built and operates a platform running SAR 179.3M of contracts, risk-classified 60,000+ lighting poles, and delivered workshops for 150+ employees. Reach him at ${c.profile.email}.`
+      : `أحمد محلل أعمال وبيانات في شركة الشثري ضمن مشاريع أمانة منطقة الرياض — 9 سنوات خبرة مهنية، منها أكثر من 4 في البيانات، حاصل على CAPM، وخبير في Power BI. بنى ويشغّل منصّة تدير عقوداً بقيمة 179.3 مليون ريال، وصنّف مخاطر أكثر من 60 ألف عمود إنارة، ونفّذ ورشاً لأكثر من 150 موظفاً. تواصل معه عبر ${c.profile.email}.`;
   return en
     ? `Ahmed is a Business & Data Analyst and Power BI expert. Ask me about his analytics, automation, design, or training work — or reach him at ${c.profile.email}.`
     : `أحمد محلل أعمال وبيانات وخبير في Power BI. اسألني عن أعماله في التحليل أو الأتمتة أو التصميم أو التدريب، أو تواصل معه عبر ${c.profile.email}.`;
