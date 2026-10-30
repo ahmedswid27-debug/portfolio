@@ -41,8 +41,8 @@ function localAnswer(question: string, lang: Lang): string {
 
   if (has("تواصل", "اتصال", "رقم", "ايميل", "ايمي", "contact", "email", "phone", "reach", "hire"))
     return en
-      ? `You can reach Ahmed on WhatsApp ${c.profile.phone} or email ${c.profile.email}. He is open to full-time analyst roles.`
-      : `يمكنك التواصل مع أحمد عبر واتساب ${c.profile.phone} أو البريد ${c.profile.email}. وهو متاح للعمل الحر والاستشارات.`;
+      ? `You can reach Ahmed on WhatsApp ${c.profile.phone} or email ${c.profile.email}.`
+      : `يمكنك التواصل مع أحمد عبر واتساب ${c.profile.phone} أو البريد ${c.profile.email}.`;
   if (has("مخاطر", "خطورة", "سلامة", "risk", "safety"))
     return en
       ? `One of Ahmed's strongest pieces: a risk analysis of Riyadh's street-lighting network that classified 60,658 poles and 445 stations into five risk tiers from resistance and current-leakage readings — so repair priority rests on measurement, not judgement. It's in the Data Analytics section.`
