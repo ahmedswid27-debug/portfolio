@@ -21,6 +21,7 @@ export type Folio = {
   hero: { badge: string; name: string; lead: string };
   stats: { value: string; label: string }[];
   about: { title: string; text: string; facts: { k: string; v: string }[] };
+  fields: { title: string; items: { t: string; d: string; tools: string; link: { id: string; label: string } }[] };
   boards: { title: string; items: Pic[]; notice: string };
   live: { title: string };
   method: { title: string; output: string; steps: { t: string; d: string; out: string }[] };
@@ -62,6 +63,7 @@ const AR: Folio = {
   lang: "ar",
   other: { href: "/en", label: "EN" },
   nav: [
+    { id: "fields", label: "المجالات" },
     { id: "boards", label: "اللوحات" },
     { id: "live", label: "اللوحة التفاعلية" },
     { id: "cases", label: "دراسات الحالة" },
@@ -75,7 +77,7 @@ const AR: Folio = {
   hero: {
     badge: "خبير Power BI",
     name: "أحمد محمود سويد",
-    lead: "محلل بيانات وأعمال في مشاريع أمانة منطقة الرياض.",
+    lead: "محلل بيانات وأعمال في مشاريع أمانة منطقة الرياض. تحليل البيانات والأتمتة والتصميم.",
   },
   stats: [
     { value: "9", label: "سنوات خبرة" },
@@ -91,6 +93,29 @@ const AR: Folio = {
       { k: "الأدوات", v: "DAX, Power Query, SQL, Python, n8n" },
       { k: "الشهادة", v: "CAPM من معهد إدارة المشاريع" },
       { k: "الموقع", v: "الرياض" },
+    ],
+  },
+  fields: {
+    title: "مجالات العمل",
+    items: [
+      {
+        t: "Power BI وتحليل البيانات",
+        d: "نمذجة البيانات، وبناء اللوحات، وتعريف المؤشرات، من المصدر إلى تقرير تقرؤه الإدارة.",
+        tools: "Power BI, DAX, Power Query, SQL, Excel",
+        link: { id: "boards", label: "اللوحات" },
+      },
+      {
+        t: "الأتمتة وبناء الأنظمة",
+        d: "ربط الأنظمة، وأتمتة التقارير والتنبيهات، وبناء منصات وتطبيقات تشغيلية.",
+        tools: "n8n, PostgreSQL, Next.js, Python, APIs",
+        link: { id: "platform", label: "المنصة التشغيلية" },
+      },
+      {
+        t: "التصميم",
+        d: "تصميم التقارير الإدارية والعروض التقديمية والمواد المرئية.",
+        tools: "InDesign, Illustrator, Photoshop, After Effects, Figma",
+        link: { id: "reports", label: "التقارير" },
+      },
     ],
   },
   boards: {
@@ -233,6 +258,7 @@ const EN: Folio = {
   lang: "en",
   other: { href: "/", label: "عربي" },
   nav: [
+    { id: "fields", label: "Fields" },
     { id: "boards", label: "Dashboards" },
     { id: "live", label: "Interactive board" },
     { id: "cases", label: "Case studies" },
@@ -246,7 +272,7 @@ const EN: Folio = {
   hero: {
     badge: "Power BI Expert",
     name: "Ahmed Mahmoud Swid",
-    lead: "Data and business analyst on Riyadh Municipality projects.",
+    lead: "Data and business analyst on Riyadh Municipality projects. Data analysis, automation and design.",
   },
   stats: [
     { value: "9", label: "Years of experience" },
@@ -262,6 +288,29 @@ const EN: Folio = {
       { k: "Tools", v: "DAX, Power Query, SQL, Python, n8n" },
       { k: "Certification", v: "CAPM, Project Management Institute" },
       { k: "Location", v: "Riyadh" },
+    ],
+  },
+  fields: {
+    title: "Fields of work",
+    items: [
+      {
+        t: "Data analysis and Power BI",
+        d: "Data modelling, dashboards and KPI definitions, from the source to a report management can read.",
+        tools: "Power BI, DAX, Power Query, SQL, Excel",
+        link: { id: "boards", label: "Dashboards" },
+      },
+      {
+        t: "Automation and systems",
+        d: "System integration, automated reports and alerts, and operational platforms and apps.",
+        tools: "n8n, PostgreSQL, Next.js, Python, APIs",
+        link: { id: "platform", label: "Operational platform" },
+      },
+      {
+        t: "Design",
+        d: "Management reports, presentations and visual materials.",
+        tools: "InDesign, Illustrator, Photoshop, After Effects, Figma",
+        link: { id: "reports", label: "Reports" },
+      },
     ],
   },
   boards: {

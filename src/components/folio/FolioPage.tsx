@@ -66,16 +66,29 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="boards" n={2} title={s.boards.title} img="/riyadh/skyline-sunset.jpg">
+        <Sec id="fields" n={2} title={s.fields.title} img="/riyadh/aerial-day.jpg">
+          <ul className="grid lg:grid-cols-3 gap-5">
+            {s.fields.items.map((f) => (
+              <li key={f.t} data-reveal className="card-gold rounded-2xl p-6 flex flex-col">
+                <h3 className="font-display font-bold text-[19px] text-white/95">{f.t}</h3>
+                <p className="mt-2 text-[14px] text-white/72 leading-relaxed">{f.d}</p>
+                <p className="mt-4 mb-4 text-[12.5px] text-gold/85 leading-relaxed"><bdi>{f.tools}</bdi></p>
+                <a href={`#${f.link.id}`} className="mt-auto text-[13px] font-bold text-gold">{f.link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </Sec>
+
+        <Sec id="boards" n={3} title={s.boards.title} img="/riyadh/skyline-sunset.jpg">
           <Gallery items={s.boards.items} className="grid sm:grid-cols-2 gap-5" sizes="(max-width: 640px) 100vw, 560px" zoom={s.zoom} close={s.closeLabel} />
           <p className="fo-small mt-3">{s.boards.notice}</p>
         </Sec>
 
-        <Sec id="live" n={3} title={s.live.title} img="/riyadh/aerial-day.jpg">
+        <Sec id="live" n={4} title={s.live.title} img="/riyadh/aerial-day.jpg">
           <LiveBoard lang={lang} />
         </Sec>
 
-        <Sec id="method" n={4} title={s.method.title} img="/riyadh/street.jpg">
+        <Sec id="method" n={5} title={s.method.title} img="/riyadh/street.jpg">
           <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {s.method.steps.map((m, i) => (
               <li key={m.t} data-reveal className="card-gold rounded-2xl p-5 flex flex-col">
@@ -88,7 +101,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </ol>
         </Sec>
 
-        <Sec id="cases" n={5} title={s.cases.title} img="/riyadh/kingdom-night.jpg">
+        <Sec id="cases" n={6} title={s.cases.title} img="/riyadh/kingdom-night.jpg">
           <ul className="grid sm:grid-cols-2 gap-5">
             {getCases(lang).map((c) => (
               <li key={c.slug} data-reveal>
@@ -108,7 +121,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </ul>
         </Sec>
 
-        <Sec id="platform" n={6} title={s.platform.title} img="/riyadh/lamps-hero.jpg">
+        <Sec id="platform" n={7} title={s.platform.title} img="/riyadh/lamps-hero.jpg">
           <div className="grid lg:grid-cols-5 gap-6 items-center">
             <div className="lg:col-span-2">
               <p className="text-[13px] text-gold/85">{s.platform.org}</p>
@@ -124,7 +137,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="lessons" n={7} title={s.lessons.title} img="/riyadh/street.jpg">
+        <Sec id="lessons" n={8} title={s.lessons.title} img="/riyadh/street.jpg">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {s.lessons.items.map((l) => (
               <article key={l.t} data-reveal className="card-gold rounded-2xl p-5">
@@ -138,11 +151,11 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="reports" n={8} title={s.reports.title} img="/riyadh/kafd.jpg">
+        <Sec id="reports" n={9} title={s.reports.title} img="/riyadh/kafd.jpg">
           <Gallery items={s.reports.items} className="fo-reports" sizes="(max-width: 640px) 100vw, 360px" zoom={s.zoom} close={s.closeLabel} />
         </Sec>
 
-        <Sec id="workshops" n={9} title={s.workshops.title} img="/riyadh/skyline-sunset.jpg">
+        <Sec id="workshops" n={10} title={s.workshops.title} img="/riyadh/skyline-sunset.jpg">
           <dl className="grid grid-cols-3 rounded-2xl overflow-hidden border border-gold/20 bg-panel/90 divide-x rtl:divide-x-reverse divide-gold/10 mb-6">
             {s.workshops.numbers.map((n) => (
               <div key={n.label} className="px-3 py-5 text-center">
@@ -156,7 +169,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           <a href={s.workshops.link.href} className="fo-btn fo-btn-line mt-6">{s.workshops.link.label}</a>
         </Sec>
 
-        <Sec id="experience" n={10} title={s.experience.title} img="/riyadh/aerial-day.jpg">
+        <Sec id="experience" n={11} title={s.experience.title} img="/riyadh/aerial-day.jpg">
           <div className="grid gap-5">
             {s.experience.jobs.map((j) => (
               <article key={j.org} data-reveal className="card-gold rounded-2xl p-6 sm:p-7 grid lg:grid-cols-3 gap-4">
@@ -173,7 +186,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="skills" n={11} title={s.skills.title} img="/riyadh/kingdom-night.jpg">
+        <Sec id="skills" n={12} title={s.skills.title} img="/riyadh/kingdom-night.jpg">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {s.skills.groups.map((g) => (
               <div key={g.title} data-reveal className="card-gold rounded-2xl p-5">
@@ -186,7 +199,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="creds" n={12} title={s.creds.title} img="/riyadh/street.jpg">
+        <Sec id="creds" n={13} title={s.creds.title} img="/riyadh/street.jpg">
           <div className="grid lg:grid-cols-2 gap-5">
             <a href={s.creds.capm.href} target="_blank" rel="noopener noreferrer" className="card-gold rounded-2xl p-4 block">
               <Image src={s.creds.capm.img} alt={s.creds.capm.title} width={1187} height={916} sizes="(max-width: 1024px) 100vw, 540px" className="w-full h-auto rounded-lg" />
@@ -218,7 +231,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
           </div>
         </Sec>
 
-        <Sec id="contact" n={13} title={s.contact.title} img="/riyadh/lamps-hero.jpg">
+        <Sec id="contact" n={14} title={s.contact.title} img="/riyadh/lamps-hero.jpg">
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { l: s.contact.phone, v: s.contact.phoneValue, h: s.contact.phoneHref },
