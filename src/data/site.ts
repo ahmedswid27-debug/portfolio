@@ -89,12 +89,10 @@ const AR: Site = {
     place: "الرياض، المملكة العربية السعودية",
     cv: "تحميل السيرة الذاتية",
     li: "لينكد إن",
-    shot: { src: "/works/analysis/risk-lighting.jpg", title: "لوحة Power BI لتحليل خطورة 60,658 عمود إنارة" },
+    shot: { src: "/works/analysis/risk-lighting.jpg", title: "لوحة Power BI لتحليل خطورة أعمدة الإنارة" },
   },
   proof: [
     { value: "+4", label: "سنوات في مشاريع أمانة منطقة الرياض" },
-    { value: "179M", label: "ريال قيمة عقود تديرها منصة بنيتها" },
-    { value: "60,658", label: "عمود إنارة مصنّف بدرجة الخطورة" },
     { value: "+150", label: "مشاركاً في ورش Power BI نفّذتُها" },
   ],
   caseStudy: {
@@ -105,9 +103,6 @@ const AR: Site = {
     org: "مشاريع أمانة منطقة الرياض، الإدارة العامة للبنية التحتية",
     role: "التحليل والتصميم والتطوير والتشغيل",
     metrics: [
-      { value: "179.3M", label: "ريال قيمة العقود المُدارة" },
-      { value: "7,709", label: "بلاغاً محلّلاً على الخريطة" },
-      { value: "123K", label: "فانوس إنارة مرصود" },
       { value: "34", label: "شاشة تحليلية" },
     ],
     points: [
@@ -119,7 +114,7 @@ const AR: Site = {
     ],
     shots: [
       { src: "/works/automation/wasat-executive.jpg", title: "المؤشرات الرئيسية", note: "قيمة العقود والأصول وحداثة البيانات" },
-      { src: "/works/automation/wasat-map.jpg", title: "الخريطة الميدانية", note: "7,709 بلاغاً على ثمانية نطاقات" },
+      { src: "/works/automation/wasat-map.jpg", title: "الخريطة الميدانية", note: "البلاغات على النطاقات" },
       { src: "/works/automation/wasat-inventory.jpg", title: "أصول الإنارة", note: "الفوانيس والأعمدة والمحطات حسب النطاق" },
     ],
     note: "النظام داخلي ويتطلب دخولاً. اللقطات من البيئة الحية وتعرض مؤشرات مجمّعة فقط.",
@@ -153,10 +148,10 @@ const AR: Site = {
     org: "شركة الشثري، مشاريع أمانة منطقة الرياض (وكالة التشغيل والصيانة)",
     period: "2022 حتى الآن",
     points: [
-      "بناء منصة تشغيلية من 34 شاشة تدير عقود صيانة الإنارة لقطاع الوسط بقيمة 179.3 مليون ريال.",
+      "بناء منصة تشغيلية من 34 شاشة تدير عقود صيانة الإنارة لقطاع الوسط بملايين الريالات.",
       "أتمتة التقرير التنفيذي اليومي ليصل مدير الإدارة بالبريد وتيليجرام بدل إعداده يدوياً كل صباح.",
-      "تصنيف 60,658 عمود إنارة و445 محطة في خمس درجات خطورة، فصار ترتيب الإصلاح مبنياً على القياس.",
-      "تحليل 7,709 بلاغات إنارة ورسمها على ثمانية نطاقات حسب الحي والسبب والفترة.",
+      "تصنيف عشرات آلاف أعمدة الإنارة ومئات المحطات في خمس درجات خطورة، فصار ترتيب الإصلاح مبنياً على القياس.",
+      "تحليل بلاغات الإنارة ورسمها على النطاقات حسب الحي والسبب والفترة.",
       "بناء منصة تحليلية من ثماني لوحات لقطاع الشمال، برفع Excel ذاتي وصلاحيات وتقارير مجدولة.",
       "لوحات أداء مشاريع بمنهج القيمة المكتسبة: مؤشر أداء الجدول والتكلفة لكل عقد.",
     ],
@@ -182,7 +177,7 @@ const AR: Site = {
     groups: [
       {
         title: "تحليل البيانات والنمذجة",
-        proof: "لوحات تتابع عقوداً بقيمة 179 مليون ريال، وتصنيف خطورة 60,658 عموداً.",
+        proof: "لوحات تتابع عقودا بملايين الريالات، وتصنيف خطورة أعمدة الإنارة.",
         items: ["Power BI", "DAX", "Power Query", "نمذجة البيانات", "SQL", "Excel المتقدم"],
       },
       {
@@ -247,12 +242,10 @@ const EN: Site = {
     place: "Riyadh, Saudi Arabia",
     cv: "Download CV",
     li: "LinkedIn",
-    shot: { src: "/works/analysis/risk-lighting.jpg", title: "Power BI board classifying 60,658 lighting poles by risk" },
+    shot: { src: "/works/analysis/risk-lighting.jpg", title: "Power BI board classifying lighting poles by risk" },
   },
   proof: [
     { value: "9", label: "years of professional experience, 4+ in data & BI" },
-    { value: "SAR 179M", label: "in contracts run by a platform I built" },
-    { value: "60,658", label: "lighting poles classified by risk" },
     { value: "150+", label: "participants in Power BI workshops I delivered" },
   ],
   caseStudy: {
@@ -263,9 +256,6 @@ const EN: Site = {
     org: "Riyadh Municipality projects, General Directorate of Infrastructure",
     role: "Analysis, design, development and operation",
     metrics: [
-      { value: "SAR 179.3M", label: "contract value managed" },
-      { value: "7,709", label: "complaints analysed on the map" },
-      { value: "123K", label: "light fixtures tracked" },
       { value: "34", label: "analytical screens" },
     ],
     points: [
@@ -277,7 +267,7 @@ const EN: Site = {
     ],
     shots: [
       { src: "/works/automation/wasat-executive.jpg", title: "Executive KPIs", note: "Contract value, assets and data freshness" },
-      { src: "/works/automation/wasat-map.jpg", title: "Field map", note: "7,709 complaints across eight zones" },
+      { src: "/works/automation/wasat-map.jpg", title: "Field map", note: "Complaints across zones" },
       { src: "/works/automation/wasat-inventory.jpg", title: "Lighting assets", note: "Fixtures, poles and stations by zone" },
     ],
     note: "The system is internal and requires sign-in. Screenshots come from the live environment and show aggregated indicators only.",
@@ -311,10 +301,10 @@ const EN: Site = {
     org: "Al-Shathri Company, Riyadh Municipality projects (Operations & Maintenance Agency)",
     period: "2022 to present",
     points: [
-      "Built a 34-screen operations platform running SAR 179.3M of street-lighting maintenance contracts for the Wasat sector.",
+      "Built a 34-screen operations platform running multi-million-riyal street-lighting maintenance contracts for the Wasat sector.",
       "Automated the daily executive report so it reaches the director by email and Telegram instead of being prepared by hand every morning.",
-      "Classified 60,658 lighting poles and 445 stations into five risk tiers, so repair priority rests on measurement.",
-      "Analysed and mapped 7,709 lighting complaints across eight zones by district, cause and period.",
+      "Classified lighting poles and stations into five risk tiers, so repair priority rests on measurement.",
+      "Analysed and mapped lighting complaints across zones by district, cause and period.",
       "Built an eight-dashboard analytics platform for the North sector with self-serve Excel upload, access control and scheduled reports.",
       "Built earned-value performance boards: schedule and cost performance indices for every contract.",
     ],
@@ -340,7 +330,7 @@ const EN: Site = {
     groups: [
       {
         title: "Data analysis & modelling",
-        proof: "Boards tracking SAR 179M of contracts, and a risk classification of 60,658 poles.",
+        proof: "Boards tracking multi-million-riyal contracts, and a risk classification of lighting poles.",
         items: ["Power BI", "DAX", "Power Query", "Data modelling", "SQL", "Advanced Excel"],
       },
       {

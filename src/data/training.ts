@@ -889,7 +889,7 @@ const CV_AR: TrainerCv = {
   practiceTitle: "الخلفية العملية",
   practice:
     "ما يُدرَّس مأخوذ من ممارسة قائمة: محلل أعمال وبيانات بأمانة منطقة الرياض، بنى منصة تحليلية من 34 شاشة " +
-    "تدير عقود صيانة بقيمة 179.3 مليون ريال، وصنّف 60,658 عمود إنارة إلى خمس درجات خطورة.",
+    "تدير عقود صيانة بملايين الريالات، وصنّف أعمدة الإنارة إلى خمس درجات خطورة.",
 };
 
 const CV_EN: TrainerCv = {
@@ -965,7 +965,7 @@ const CV_EN: TrainerCv = {
   practiceTitle: "Practical background",
   practice:
     "What is taught comes from live practice: a Business & Data Analyst at Riyadh Municipality who built a " +
-    "34-screen platform running SAR 179.3M of maintenance contracts.",
+    "34-screen platform running multi-million-riyal maintenance contracts.",
 };
 
 export const getTrainerCv = (lang: "ar" | "en"): TrainerCv => (lang === "en" ? CV_EN : CV_AR);

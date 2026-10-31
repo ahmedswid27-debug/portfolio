@@ -192,7 +192,7 @@ const EN_PROFILE = {
   // ٥٠–١٠٠ كلمة، بالمصطلحات التي تطابقها أنظمة ATS لوظائف البيانات وذكاء الأعمال.
   cvSummary:
     "Business & Data Analyst with 9 years of professional experience, including 4+ years on Riyadh Municipality projects, turning operational data into " +
-    "decision-ready dashboards and KPIs. Designed and delivered BI platforms governing SAR 179.3M in " +
+    "decision-ready dashboards and KPIs. Designed and delivered BI platforms governing multi-million-riyal " +
     "maintenance contracts, and automated executive reporting end to end — from data cleaning to daily " +
     "delivery with no manual step. Skilled in Power BI, DAX, Power Query, SQL and Excel across data " +
     "modelling, dashboard design and workflow automation. PMI CAPM® certified; delivered over 360 hours of " +
@@ -201,8 +201,8 @@ const EN_PROFILE = {
     "A business and data analyst on Riyadh Municipality projects. My work starts from a question management asks and " +
     "cannot answer reliably — where complaints are piling up, which contractor is behind, which lighting pole is " +
     "about to cause an accident — and ends with a system that answers it every morning with no human in the loop. " +
-    "For the Wasat sector I built a thirty-four-screen platform running SAR 179.3M of maintenance contracts, " +
-    "classified 60,658 lighting poles into five risk tiers from resistance and leakage readings, and replaced " +
+    "For the Wasat sector I built a thirty-four-screen platform running multi-million-riyal maintenance contracts, " +
+    "classified the lighting network into five risk tiers from resistance and leakage readings, and replaced " +
     "subjective contractor assessment with one objective yardstick. I work in Power BI, DAX and data modelling, " +
     "and build with Next.js, Supabase and n8n when a dashboard alone is not enough. Capability building is part " +
     "of the work rather than an addition to it: hands-on Power BI workshops delivered to Municipality staff in " +
@@ -214,8 +214,6 @@ const EN_PROFILE = {
 
 const EN_STATS = [
   { value: "+9", label: "Years professional experience, 4+ in data" },
-  { value: "SAR 179M", label: "In contracts run by a system I built" },
-  { value: "60,658", label: "Lighting poles classified by risk" },
   { value: "+150", label: "Power BI workshop participants" },
 ];
 
@@ -233,11 +231,11 @@ const EN_EXPERIENCE = {
   org: "Al-Shathri Company — Riyadh Municipality projects (Operations & Maintenance Agency)",
   period: "Dec 2021 – Present",
   duties: [
-    "Built a 34-screen operations platform running SAR 179.3M of street-lighting maintenance contracts for the Wasat sector — from data cleaning to the decision board, as sole analyst, designer, developer and operator.",
+    "Built a 34-screen operations platform running multi-million-riyal street-lighting maintenance contracts for the Wasat sector — from data cleaning to the decision board, as sole analyst, designer, developer and operator.",
     "Automated the seven-page daily executive report so it reaches the director by email and Telegram with no human in the loop, replacing manual preparation every morning.",
     "Replaced subjective contractor assessment with one objective yardstick across eight maintenance contracts: spend rate against elapsed duration, safety score, and deducted penalties.",
-    "Ran a risk analysis of the lighting network — 60,658 poles and 445 stations classified into five risk tiers from resistance and leakage readings — so repair priority rests on measurement rather than judgement.",
-    "Analysed and geo-mapped 7,709 lighting complaints across eight zones, exposing where they accumulate by district, cause and period.",
+    "Ran a risk analysis of the lighting network — tens of thousands of poles and hundreds of stations classified into five risk tiers from resistance and leakage readings — so repair priority rests on measurement rather than judgement.",
+    "Analysed and geo-mapped lighting complaints across multiple zones, exposing where they accumulate by district, cause and period.",
     "Built an eight-dashboard analytics platform for the North sector with self-serve Excel ingestion, role-based access, and scheduled reports.",
     "Built earned-value (EVM) project performance boards: schedule and cost performance indices and earned value per contract.",
     "Delivered hands-on Power BI workshops to 150+ employees in data analysis and dashboard building, and authored their material.",
@@ -315,9 +313,6 @@ const EN_SECTIONS: Section[] = [
           "on each contract. On top sits a decision layer: a schedule performance index per project, one objective " +
           "contractor scorecard, and an executive report that reaches the director every morning with no human in the loop.",
         metrics: [
-          { value: "SAR 179.3M", label: "in contracts managed" },
-          { value: "7,709", label: "complaints analysed & mapped" },
-          { value: "123K", label: "light fixtures tracked" },
           { value: "34", label: "analytical screens" },
         ],
         highlights: [
@@ -331,7 +326,7 @@ const EN_SECTIONS: Section[] = [
         ],
         gallery: [
           { src: "/works/automation/wasat-executive.jpg", caption: "Executive KPIs — contract value, assets, and data freshness" },
-          { src: "/works/automation/wasat-map.jpg", caption: "Field map — 7,709 complaints across eight zones" },
+          { src: "/works/automation/wasat-map.jpg", caption: "Field map of complaints across zones" },
           { src: "/works/automation/wasat-inventory.jpg", caption: "Lighting assets — fixtures, poles and stations by zone" },
         ],
         tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Claude", "n8n", "Leaflet", "Recharts", "PWA"],
@@ -348,7 +343,7 @@ const EN_SECTIONS: Section[] = [
     id: "analysis", name: "Data Analytics", sub: "Interactive Power BI dashboards and executive KPIs for Riyadh Municipality",
     icon: "◆", layout: "gallery",
     items: [
-      { title: "Risk Analysis — Street-Lighting Network", desc: "Classifies 60,658 lighting poles into five risk tiers from resistance readings and current leakage on the pole body — a preventive-safety tool that says where repair should start.", image: "/works/analysis/risk-lighting.jpg", tags: ["Power BI", "Risk analysis", "Safety"] },
+      { title: "Risk Analysis — Street-Lighting Network", desc: "Classifies lighting poles into five risk tiers from resistance readings and current leakage on the pole body — a preventive-safety tool that says where repair should start.", image: "/works/analysis/risk-lighting.jpg", tags: ["Power BI", "Risk analysis", "Safety"] },
       { title: "Key Milestones — Earned-Value Project Performance", desc: "A financial and delivery board on earned-value method: EV, SPI, CV, SV and BACKLOG, with planned-versus-actual by month plus collection and budget-adherence rates.", image: "/works/analysis/evm-milestones.jpg", tags: ["Power BI", "EVM", "Financial analysis"] },
       { title: "Complaints Analysis — Multi-page Report", desc: "A five-page interactive report with a navigation bar: key milestones, severe complaints, repeats and short-cycle cases — 3,472 complaints analysed by cause, district and station.", image: "/works/analysis/c26-milestones.jpg", tags: ["Power BI", "Interactive report", "UX"] },
       { title: "Complaints Report — Navigation Cover", desc: "A landing page linking the report's five pages — design that makes a report browsable rather than page-flipped.", image: "/works/analysis/c26-cover.jpg", tags: ["Power BI", "Report design", "UX"] },
@@ -458,8 +453,8 @@ const EN_KEY_PROJECTS: typeof ar.keyProjects = [
     name: "Wasat Sector Platform — Street-Lighting Maintenance",
     org: "Riyadh Municipality · General Directorate of Infrastructure",
     line:
-      "A 34-screen operations platform running SAR 179.3M of maintenance contracts: automated data cleaning, " +
-      "a field map of 7,709 complaints across eight zones, an objective contractor scorecard, EVM forecasting, " +
+      "A 34-screen operations platform running multi-million-riyal maintenance contracts: automated data cleaning, " +
+      "a field map of citizen complaints across multiple zones, an objective contractor scorecard, EVM forecasting, " +
       "and an analytical assistant plus a daily executive report delivered to the director automatically.",
     stack: "Next.js · TypeScript · Supabase/PostgreSQL · Claude · n8n · Leaflet",
   },
@@ -484,7 +479,7 @@ const EN_KEY_PROJECTS: typeof ar.keyProjects = [
 const EN_SKILL_GROUPS: typeof ar.skillGroups = [
   {
     title: "Data analysis & modelling",
-    proof: "Boards running SAR 179M of contracts, and a risk classification across 60,658 lighting poles.",
+    proof: "Boards running multi-million-riyal contracts, and a risk classification across a city-scale lighting network.",
     items: ["Power BI — expert", "DAX", "Data modelling", "Power Query", "Microsoft Excel", "Tableau"],
     icon: "◆",
   },
