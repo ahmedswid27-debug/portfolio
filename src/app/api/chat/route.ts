@@ -45,28 +45,28 @@ function localAnswer(question: string, lang: Lang): string {
       : `يمكنك التواصل مع أحمد عبر واتساب ${c.profile.phone} أو البريد ${c.profile.email}.`;
   if (has("مخاطر", "خطورة", "سلامة", "risk", "safety"))
     return en
-      ? `One of Ahmed's strongest pieces: a risk analysis of Riyadh's street-lighting network that classified 60,658 poles and 445 stations into five risk tiers from resistance and current-leakage readings — so repair priority rests on measurement, not judgement. It's in the Data Analytics section.`
-      : `من أقوى أعمال أحمد: تحليل مخاطر شبكة الإنارة في الرياض — صنّف 60,658 عمود إنارة و445 محطة إلى خمس درجات خطورة من قراءات المقاومة والتسريب، فصار ترتيب أولويات الإصلاح مبنيّاً على قياس لا على اجتهاد. تجده في قسم "تحليل البيانات".`;
+      ? `One of Ahmed's strongest pieces: a risk analysis of Riyadh's street-lighting network that classified the network's poles and stations into five risk tiers from resistance and current-leakage readings — so repair priority rests on measurement, not judgement. It's in the Data Analytics section.`
+      : `من أقوى أعمال أحمد: تحليل مخاطر شبكة الإنارة في الرياض — صنّف الأعمدة والمحطات إلى خمس درجات خطورة من قراءات المقاومة والتسريب، فصار ترتيب أولويات الإصلاح مبنيّاً على قياس لا على اجتهاد. تجده في قسم "تحليل البيانات".`;
   if (has("evm", "قيمة مكتسبة", "spi", "مشاريع", "project", "capm", "إدارة مشاريع"))
     return en
       ? `Ahmed holds the CAPM certification and builds earned-value (EVM) performance boards — schedule and cost performance indices per contract, planned versus actual by month, plus collection and budget-adherence rates.`
       : `أحمد حاصل على شهادة CAPM، ويبني لوحات أداء بمنهج القيمة المكتسبة (EVM): مؤشر أداء الجدول والتكلفة لكل عقد، والمخطّط مقابل الفعلي شهرياً، ونِسب التحصيل والالتزام بالموازنة.`;
   if (has("power bi", "داشبورد", "لوحة", "dashboard", "تحليل", "analy", "بيانات", "data"))
     return en
-      ? `Ahmed is a Power BI expert. His boards run real operations at Riyadh Municipality — lighting risk analysis over 60,658 poles, complaint analytics, earned-value project performance, and executive KPI dashboards. See the Data Analytics section.`
-      : `أحمد خبير في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر 60,658 عمود إنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
+      ? `Ahmed is a Power BI expert. His boards run real operations at Riyadh Municipality — lighting risk analysis, complaint analytics, earned-value project performance, and executive KPI dashboards. See the Data Analytics section.`
+      : `أحمد خبير في Power BI، ولوحاته تُشغّل عملاً حقيقياً في أمانة الرياض: تحليل مخاطر شبكة الإنارة، وتحليل البلاغات، وأداء المشاريع بالقيمة المكتسبة، ولوحات المؤشرات التنفيذية. اطّلع على قسم "تحليل البيانات".`;
   if (has("تدريب", "كورس", "دورة", "train", "course", "workshop"))
     return en
       ? `Ahmed has delivered Power BI workshops for 150+ employees, including "Business Analysis with Power BI". See the Training section for photos.`
       : `نفّذ أحمد ورش Power BI لأكثر من 150 موظفًا، منها ورشة "تحليل الأعمال باستخدام Power BI". يمكنك مشاهدة الصور في قسم "التدريب".`;
   if (has("أتمتة", "بوت", "الوسط", "وسط", "منصة", "نظام", "automation", "bot", "n8n", "ai", "wasat", "platform", "system"))
     return en
-      ? `Ahmed builds full operational platforms. His flagship is the Wasat Sector platform for Riyadh Municipality: 34 analytical screens running SAR 179.3M of maintenance contracts, 7,709 complaints mapped across eight zones, EVM forecasting, a Claude assistant on Telegram, and a daily executive report. See the Automation section.`
-      : `يبني أحمد منصّات تشغيلية كاملة. وأبرزها منصة قطاع الوسط لأمانة الرياض: 34 شاشة تحليلية تدير عقود صيانة بقيمة 179.3 مليون ريال، وخريطة لـ7,709 بلاغات على ثمانية نطاقات، وتنبؤ EVM، ومساعد Claude على تيليجرام، وتقرير تنفيذي يومي. اطّلع على قسم "الأتمتة".`;
+      ? `Ahmed builds full operational platforms. His flagship is the Wasat Sector platform for Riyadh Municipality: 34 analytical screens running multi-million-riyal maintenance contracts, a field map of complaints, EVM forecasting, a Claude assistant on Telegram, and a daily executive report. See the Automation section.`
+      : `يبني أحمد منصّات تشغيلية كاملة. وأبرزها منصة قطاع الوسط لأمانة الرياض: 34 شاشة تحليلية تدير عقود صيانة بملايين الريالات، وخريطة ميدانية للبلاغات، وتنبؤ EVM، ومساعد Claude على تيليجرام، وتقرير تنفيذي يومي. اطّلع على قسم "الأتمتة".`;
   if (has("خبرة", "experience", "سنوات", "years", "من هو", "who", "توظيف", "وظيفة", "hire", "hiring"))
     return en
-      ? `Ahmed is a Business & Data Analyst at Al-Shathri Company on Riyadh Municipality projects — 9 years of professional experience, 4+ of them in data, a CAPM holder and a Power BI expert. He has built and operates a platform running SAR 179.3M of contracts, risk-classified 60,000+ lighting poles, and delivered workshops for 150+ employees. Reach him at ${c.profile.email}.`
-      : `أحمد محلل أعمال وبيانات في شركة الشثري ضمن مشاريع أمانة منطقة الرياض — 9 سنوات خبرة مهنية، منها أكثر من 4 في البيانات، حاصل على CAPM، وخبير في Power BI. بنى ويشغّل منصّة تدير عقوداً بقيمة 179.3 مليون ريال، وصنّف مخاطر أكثر من 60 ألف عمود إنارة، ونفّذ ورشاً لأكثر من 150 موظفاً. تواصل معه عبر ${c.profile.email}.`;
+      ? `Ahmed is a Business & Data Analyst at Al-Shathri Company on Riyadh Municipality projects — 9 years of professional experience, 4+ of them in data, a CAPM holder and a Power BI expert. He has built and operates a platform running multi-million-riyal contracts, risk-classified a city-scale lighting network, and delivered workshops for 150+ employees. Reach him at ${c.profile.email}.`
+      : `أحمد محلل أعمال وبيانات في شركة الشثري ضمن مشاريع أمانة منطقة الرياض — 9 سنوات خبرة مهنية، منها أكثر من 4 في البيانات، حاصل على CAPM، وخبير في Power BI. بنى ويشغّل منصّة تدير عقودا بملايين الريالات، وصنّف مخاطر شبكة إنارة على مستوى المدينة، ونفّذ ورشاً لأكثر من 150 موظفاً. تواصل معه عبر ${c.profile.email}.`;
   return en
     ? `Ahmed is a Business & Data Analyst and Power BI expert. Ask me about his analytics, automation, design, or training work — or reach him at ${c.profile.email}.`
     : `أحمد محلل أعمال وبيانات وخبير في Power BI. اسألني عن أعماله في التحليل أو الأتمتة أو التصميم أو التدريب، أو تواصل معه عبر ${c.profile.email}.`;
