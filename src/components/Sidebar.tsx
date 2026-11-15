@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Content, Lang } from "@/data/content";
 
-/** ترتيب الأقسام في الشريط — العناوين تُقرأ من ui.nav، والمجموعات من ui.groups. */
+/** ترتيب الأقسام في الشريط — العناوين تقرأ من ui.nav، والمجموعات من ui.groups. */
 const NAV: ({ g: keyof Content["ui"]["groups"] } | { id: string; k: keyof Content["ui"]["nav"] })[] = [
   { g: "main" },
   { id: "about", k: "about" },
@@ -91,9 +91,9 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
 
       {open && <div className="md:hidden fixed inset-0 bg-black/60 z-[70]" onClick={() => setOpen(false)} />}
 
-      {/* الانزلاق للجوال وحده — max-md: يمنع تعارض المتغيّرات مع md: على الشاشات الكبيرة.
+      {/* الانزلاق للجوال وحده — max-md: يمنع تعارض المتغيرات مع md: على الشاشات الكبيرة.
           ⚠ الخلفية = لون الصفحة نفسه (`bg-ink`) بلا شفافية ولا backdrop-blur:
-          أيّ فرقِ درجةٍ أو طبقةِ تركيبٍ هنا يُقرأ خطّاً رأسياً عند الحدّ. */}
+          أي فرق درجة أو طبقة تركيب هنا يقرأ خطا رأسيا عند الحد. */}
       <aside
         className={`no-print ${
           open ? "translate-x-0" : "max-md:rtl:translate-x-full max-md:ltr:-translate-x-full"
@@ -126,7 +126,7 @@ export default function Sidebar({ c, lang }: { c: Content; lang: Lang }) {
           >
             {c.ui.nav.pdf}
           </a>
-          {/* صفحةٌ مستقلّة لا مرساة — تُفتح بالتنقّل لا بالتمرير */}
+          {/* صفحة مستقلة لا مرساة — تفتح بالتنقل لا بالتمرير */}
           <a
             href={trainingHref}
             className="flex items-center justify-center w-full py-2.5 rounded-lg text-[12px] border border-gold/30 text-gold/90 hover:bg-gold/[0.08] transition-colors"

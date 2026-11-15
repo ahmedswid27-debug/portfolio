@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 /**
  * صورة المعاينة عند مشاركة الرابط: واجهة الموقع الداكنة الذهبية بالاسم العربي.
- * تصيّر في كروم بالأمر python tools/og/render.py، لأن Satori لا يشكل العربية جيدا.
+ * تصير في كروم بالأمر python tools/og/render.py، لأن Satori لا يشكل العربية جيدا.
  */
 export const alt = "أحمد محمود سويد، خبير Power BI ومحلل بيانات وأعمال";
 export const size = { width: 1200, height: 630 };

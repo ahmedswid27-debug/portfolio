@@ -1,11 +1,11 @@
 // ============================================================
-//  ملفُّ ورش العمل ومحاورها — صفحة /training و /en/training.
+//  ملف ورش العمل ومحاورها — صفحة /training و /en/training.
 //
 //  مصدر المنهج: C:\Users\User\powerbi-course\training\plan-engineer-28h.md
-//  (٢٨ ساعة · ١٢ جلسة · ٤ أسابيع). ويُحدَّث هذا الملف وحده عند تعديل المنهج.
+//  (٢٨ ساعة · ١٢ جلسة · ٤ أسابيع). ويحدث هذا الملف وحده عند تعديل المنهج.
 //
-//  ⚠ لغة هذه الصفحة رسميةٌ بلا تشكيل وبلا صيغة المتكلّم — تُقرأ من جهةٍ
-//    تدريبية لا من زائرٍ عابر، والمصطلح التقنيّ بحروفه اللاتينية لأنّه
+//  ⚠ لغة هذه الصفحة رسمية بلا تشكيل وبلا صيغة المتكلم — تقرأ من جهة
+//    تدريبية لا من زائر عابر، والمصطلح التقني بحروفه اللاتينية لأنه
 //    كذلك في الأداة وفي التوثيق.
 // ============================================================
 
@@ -15,7 +15,7 @@ export type Session = {
   hours: string;
   points: string[];
   lab: string;
-  /** جلسةٌ محوريةٌ تُبرَز بصرياً ولا تُدمج */
+  /** جلسة محورية تبرز بصريا ولا تدمج */
   pivot?: boolean;
 };
 
@@ -32,15 +32,31 @@ export type Clip = {
   poster: string;
   title: string;
   meta: string;
-  /** طوليّ (٩:١٦) أم عرضيّ (١٦:٩) — يحدّد نسبة الإطار */
+  /** طولي (٩:١٦) أم عرضي (١٦:٩) — يحدد نسبة الإطار */
   portrait: boolean;
-  /** تغطيةٌ نشرتها الجهة نفسها */
+  /** تغطية نشرتها الجهة نفسها */
   official?: boolean;
 };
 
 export type Doc = { href: string; title: string; meta: string };
 
-/** ملفُّ ورش العمل — صفحةٌ واحدة لا تذكر غير الورش. */
+export type Photo = { src: string; title: string; w: number; h: number };
+
+/** أحدث دورة نفذت — مقطعها وصورها وحقائقها، وكل رقم فيها من ملفات الدورة نفسها. */
+export type Latest = {
+  title: string;
+  name: string;
+  org: string;
+  facts: { k: string; v: string }[];
+  unitsTitle: string;
+  units: string[];
+  clip: Clip;
+  photos: Photo[];
+  zoom: string;
+  close: string;
+};
+
+/** ملف ورش العمل — صفحة واحدة لا تذكر غير الورش. */
 export type TrainerCv = {
   back: string;
   print: string;
@@ -74,6 +90,8 @@ export type TrainingContent = {
   title: string;
   lead: string;
   stats: { value: string; label: string }[];
+
+  latest: Latest;
 
   evidenceTitle: string;
   evidenceSub: string;
@@ -121,11 +139,11 @@ const AR: TrainingContent = {
   badge: "ملف ورش العمل",
   title: "تحليل الأعمال وبناء لوحات المعلومات بـ Power BI",
   lead:
-    "ورش عمل تطبيقية في تحليل الأعمال وبناء لوحات المعلومات، نفَّذها أحمد محمود سويد " +
+    "ورش عمل تطبيقية في تحليل الأعمال وبناء لوحات المعلومات، نفذها أحمد محمود سويد " +
     "لمنسوبي أمانة منطقة الرياض. تبدأ الورشة من ملف خام فيه عيوب حقيقية، وتنتهي بتقرير " +
-    "منشور ومؤمَّن يُحدَّث بضغطة واحدة. والمادة والبيانات التطبيقية مُعَدَّة مسبقًا.",
+    "منشور ومؤمن يحدث بضغطة واحدة. والمادة والبيانات التطبيقية معدة مسبقا.",
 
-  // ⚠ سجلٌّ تراكميّ لما نُفِّذ فعلاً، لا وصفٌ لبرنامجٍ واحد.
+  // ⚠ سجل تراكمي لما نفذ فعلا، لا وصف لبرنامج واحد.
   stats: [
     { value: "+150", label: "مشارك" },
     { value: "+360", label: "ساعة تنفيذ" },
@@ -133,10 +151,53 @@ const AR: TrainingContent = {
     { value: "+30", label: "أسبوع عمل" },
   ],
 
-  evidenceTitle: "من قاعة الورشة",
+  latest: {
+    title: "أحدث دورة",
+    name: "تحليل الأعمال باستخدام Power BI",
+    org: "وكالة التشغيل والصيانة بأمانة منطقة الرياض، بالتعاون مع الإدارة العامة لتطوير الموارد البشرية، وبالشراكة مع شركة مشاري الشثري للاستشارات الهندسية",
+    // المصدر: لافتة الدورة، ودليل السلسلة في masar-ahmed\حلقات الدورة، وشرائط ريل الدورة.
+    facts: [
+      { k: "التاريخ", v: "8 إلى 12 نوفمبر 2026" },
+      { k: "المدة", v: "5 أيام، 15 جلسة" },
+      { k: "المشاركون", v: "أكثر من 20 مشاركا" },
+      { k: "الدور", v: "مقدم الدورة" },
+    ],
+    unitsTitle: "الوحدات",
+    units: [
+      "مقدمة إلى Power BI وأول تقرير",
+      "الاتصال بالبيانات: Excel وCSV ومجلد الملفات الشهرية",
+      "التنظيف والتحويل في Power Query",
+      "النمذجة: نموذج النجمة وجدول التاريخ والعلاقات",
+      "التصورات والتفاعل والتنسيق الشرطي",
+      "DAX وCALCULATE والمقارنة الزمنية، ثم النشر",
+    ],
+    clip: {
+      src: "/training/course-2026/course.mp4",
+      poster: "/training/course-2026/course.jpg",
+      title: "دورة تحليل الأعمال باستخدام Power BI",
+      meta: "8 إلى 12 نوفمبر 2026 · وكالة التشغيل والصيانة",
+      portrait: true,
+    },
+    photos: [
+    { src: "/training/course-2026/podium.jpg", title: "الافتتاح من المنصة", w: 1280, h: 960 },
+    { src: "/training/course-2026/hall.jpg", title: "قاعة التدريب بمبنى الوكالة", w: 1280, h: 960 },
+    { src: "/training/course-2026/participants.jpg", title: "التطبيق على أجهزة المشاركين", w: 1600, h: 1200 },
+    { src: "/training/course-2026/follow-up.jpg", title: "متابعة فردية أثناء التطبيق", w: 1600, h: 1200 },
+    { src: "/training/course-2026/guidance-2.jpg", title: "مراجعة تمرين مع مشارك", w: 1200, h: 1600 },
+    { src: "/training/course-2026/guidance.jpg", title: "حل مشكلة على جهاز مشارك", w: 960, h: 1280 },
+    { src: "/training/course-2026/participants-2.jpg", title: "المشاركون في جلسة تطبيقية", w: 1200, h: 1600 },
+    { src: "/training/course-2026/banner.jpg", title: "لافتة الدورة", w: 1200, h: 1600 },
+    { src: "/training/course-2026/session.jpg", title: "جلسة تطبيقية", w: 1600, h: 1200 },
+    { src: "/training/course-2026/table.jpg", title: "العمل على ملف التمرين", w: 1280, h: 960 },
+    ],
+    zoom: "تكبير الصورة",
+    close: "إغلاق",
+  },
+
+  evidenceTitle: "ورش سابقة",
   evidenceSub:
-    "ورش Power BI لمنسوبي أمانة منطقة الرياض — قطاعات الغرب والشمال والجنوب. " +
-    "المقاطع المعلّمة بهوية الأمانة من تغطية حساب التواصل الداخلي بالأمانة.",
+    "لمنسوبي أمانة منطقة الرياض في قطاعات الغرب والشمال والجنوب. " +
+    "المقاطع المعلمة بهوية الأمانة من تغطية حساب التواصل الداخلي بالأمانة.",
   clips: [
     {
       src: "/training/video/workshop-west.mp4",
@@ -195,27 +256,27 @@ const AR: TrainingContent = {
   audience: [
     {
       k: "لمن",
-      v: "المحللون والمهندسون وموظفو التشغيل والمتابعة ومعدو التقارير — من يعمل على Excel يومياً ويحتاج الانتقال إلى نموذج بيانات يحدث بضغطة واحدة.",
+      v: "المحللون والمهندسون وموظفو التشغيل والمتابعة ومعدو التقارير — من يعمل على Excel يوميا ويحتاج الانتقال إلى نموذج بيانات يحدث بضغطة واحدة.",
     },
     { k: "المتطلبات", v: "جهاز بنظام Windows، وPower BI Desktop (مجاني)، وإلمام أساسي بـ Excel. لا تشترط خبرة برمجية." },
-    { k: "الصيغة", v: "ورشة مكثفة في أسبوع، أو جلسات موزّعة على أربعة أسابيع، أو جلسات فردية — حسب جدول الجهة." },
+    { k: "الصيغة", v: "ورشة مكثفة في أسبوع، أو جلسات موزعة على أربعة أسابيع، أو جلسات فردية — حسب جدول الجهة." },
     { k: "مدة الجلسة", v: "ساعتان إلى ساعتين ونصف، منها 15 دقيقة لمراجعة واجب الجلسة السابقة." },
-    { k: "حجم المجموعة", v: "12 إلى 16 مشاركًا. الورشة تطبيقية وكل مشارك يعمل على جهازه، فالعدد الأكبر يفقد المتابعة الفردية." },
+    { k: "حجم المجموعة", v: "يوصى بـ 12 إلى 16 مشاركا، لأن كل مشارك يعمل على جهازه ويحتاج متابعة فردية. وفي العدد الأكبر يلزم وقت متابعة أطول." },
     { k: "اللغة", v: "عربي، والمصطلح التقني بلفظه الإنجليزي كما يرد في الأداة وفي التوثيق." },
     { k: "التجهيزات", v: "قاعة بأجهزة أو أجهزة شخصية، وشاشة عرض، وإنترنت للنشر إلى Power BI Service في الجلسة الأخيرة." },
   ],
 
   curriculumTitle: "محاور الورشة",
-  curriculumSub: "أربعة محاور متدرّجة، لكل محور مخرَج يراه المشارك بنفسه قبل الانتقال إلى ما بعده.",
+  curriculumSub: "أربعة محاور متدرجة، لكل محور مخرج يراه المشارك بنفسه قبل الانتقال إلى ما بعده.",
   labLabel: "تطبيق",
-  outcomeLabel: "مخرَج المحور",
+  outcomeLabel: "مخرج المحور",
   pivotLabel: "جلسة مفصلية",
   weeks: [
     {
       n: "1",
       title: "المحور الأول — من الفوضى إلى جدول نظيف",
       hours: "",
-      outcome: "ملف يحدث بضغطة واحدة، بعد أن كان عمل ساعتين يدوياً كل شهر.",
+      outcome: "ملف يحدث بضغطة واحدة، بعد أن كان عمل ساعتين يدويا كل شهر.",
       sessions: [
         {
           n: "1",
@@ -225,7 +286,7 @@ const AR: TrainingContent = {
             "دورة البيانات: تولد ← تخزن ← تحلل ← تستهلك ← تثير أسئلة جديدة",
             "المسار الكامل: مصادر ← Power Query ← النموذج ← الرسوم ← النشر",
             "Excel وPower BI: لكل منهما قوة وضعف، ولا يلغي أحدهما الآخر",
-            "الرخص: ما يلزم للتدريب وما يلزم للمشاركة لاحقاً",
+            "الرخص: ما يلزم للتدريب وما يلزم للمشاركة لاحقا",
           ],
           lab: "فتح الأداة والتنقل بين الأوضاع الثلاثة وتسميتها",
         },
@@ -241,7 +302,7 @@ const AR: TrainingContent = {
             "حساسية حالة الأحرف: التوحيد قبل الترشيح لا بعده",
             "العربية أشد: ا/أ/إ · ة/ه · ي/ى · المسافة المزدوجة",
           ],
-          lab: "تنظيف ملف بلاغات خام حتى يصير صالحاً للتحميل",
+          lab: "تنظيف ملف بلاغات خام حتى يصير صالحا للتحميل",
         },
         {
           n: "3",
@@ -273,7 +334,7 @@ const AR: TrainingContent = {
             "لماذا لا يكفي جدول واحد عريض",
             "المخطط النجمي: جداول حقائق وجداول أبعاد",
             "العلاقة: المفتاح · الاتجاه · التعددية",
-            "العلاقة ثنائية الاتجاه: متى تلزم، ولماذا تتجنب افتراضياً",
+            "العلاقة ثنائية الاتجاه: متى تلزم، ولماذا تتجنب افتراضيا",
             "العلاقات غير النشطة ومتى تفعل",
             "التوازن الثلاثي: بساطة للمستخدم ⟷ حجم للأداء ⟷ سهولة صيانة",
           ],
@@ -284,7 +345,7 @@ const AR: TrainingContent = {
           title: "جدول التاريخ والهرميات",
           hours: "",
           points: [
-            "إطفاء التاريخ التلقائي أولاً — ينشئ جدولاً خفياً لكل عمود تاريخ",
+            "إطفاء التاريخ التلقائي أولا — ينشئ جدولا خفيا لكل عمود تاريخ",
             "بناء جدول تاريخ صريح واعتماده",
             "الهرميات: المستوى الأعلى ← الأدنى، والتنقل بينها",
             "خصائص الأعمدة: التنسيق · التصنيف · التلخيص · الترتيب بعمود",
@@ -297,7 +358,7 @@ const AR: TrainingContent = {
           title: "DAX — المقياس والعمود المحسوب",
           hours: "",
           points: [
-            "الفرق الجوهري: العمود يحسب صفاً صفاً ويخزن، والمقياس يحسب عند العرض",
+            "الفرق الجوهري: العمود يحسب صفا صفا ويخزن، والمقياس يحسب عند العرض",
             "متى عمود ومتى مقياس — سؤال يتكرر طول العمل",
             "الأساسيات: SUM · COUNTROWS · DISTINCTCOUNT · DIVIDE",
             "DIVIDE لا القسمة العادية — القسمة على صفر تفسد التقرير",
@@ -334,7 +395,7 @@ const AR: TrainingContent = {
           hours: "",
           points: [
             "CALCULATE — الدالة التي تعدل السياق، ولب DAX كله",
-            "FILTER: متى تلزم، ومتى تكون ترفاً مكلفاً",
+            "FILTER: متى تلزم، ومتى تكون ترفا مكلفا",
             "ALL · ALLEXCEPT · REMOVEFILTERS لإزالة المرشحات",
             "النسب: نسبة الجزء من المجموعة، ونسبة المجموعة من الكل",
             "المقاييس السريعة تستعمل، ثم يقرأ الكود المتولد ويفهم",
@@ -367,12 +428,12 @@ const AR: TrainingContent = {
           title: "الرسوم واختيارها",
           hours: "",
           points: [
-            "قاعدة الاختيار: مقارنة ← أعمدة · تطور ← خط · تركيب ← لا دائرة غالباً",
+            "قاعدة الاختيار: مقارنة ← أعمدة · تطور ← خط · تركيب ← لا دائرة غالبا",
             "البطاقة والمؤشر، ومتى يغنيان عن رسم",
             "المقسمات: أنواعها وأثرها على السياق",
             "التنسيق الشرطي بمعيار مكتوب لا بذوق",
             "السمة والخلفية وشبكة الصفحة",
-            "الرسم يخدم سؤالاً، ورسم بلا سؤال يحذف",
+            "الرسم يخدم سؤالا، ورسم بلا سؤال يحذف",
           ],
           lab: "صفحة مؤشرات رئيسية كاملة",
         },
@@ -407,19 +468,19 @@ const AR: TrainingContent = {
   ],
 
   methodTitle: "منهجية التدريب",
-  methodSub: "خمس قواعد مستخلصة من تدريب أكثر من 150 موظفاً.",
+  methodSub: "خمس قواعد مستخلصة من تدريب أكثر من 150 موظفا.",
   method: [
     { n: "1", t: "لا شريحة تقرأ", d: "الشرح على الشاشة الحية، والمشارك يعمل معك لا يشاهدك." },
-    { n: "2", t: "الخطأ يصنع عمداً", d: "ثم يشخص. تشخيص الخطأ يثبت المعلومة أكثر من الطريق الصحيح." },
+    { n: "2", t: "الخطأ يصنع عمدا", d: "ثم يشخص. تشخيص الخطأ يثبت المعلومة أكثر من الطريق الصحيح." },
     { n: "3", t: "«لماذا» قبل «كيف»", d: "المشارك المحترف لا يقبل خطوة بلا سبب، وهذه ميزة تستثمر لا عائق." },
     { n: "4", t: "المصطلح إنجليزي ومعناه عربي", d: "لأنه سيقرأ التوثيق ويعمل مع أدوات إنجليزية بعد انتهاء الدورة." },
-    { n: "5", t: "جلسة التوقف", d: "إن تعثر في سياق المرشح أعيدت الجلسة السابعة، ولم يمض قدماً." },
+    { n: "5", t: "جلسة التوقف", d: "إن تعثر في سياق المرشح أعيدت الجلسة السابعة، ولم يمض قدما." },
   ],
 
   dataTitle: "البيانات التطبيقية",
   dataSub:
-    "ستة ملفات معدة خصيصاً، في كل منها عيب مقصود يخدم درساً بعينه. " +
-    "والمبدأ: الملف النظيف لا يعلم شيئاً، والمشارك يتعلم من الفوضى.",
+    "ستة ملفات معدة خصيصا، في كل منها عيب مقصود يخدم درسا بعينه. " +
+    "والمبدأ: الملف النظيف لا يعلم شيئا، والمشارك يتعلم من الفوضى.",
   dataHead: ["الملف", "العيب المقصود", "الدرس"],
   dataRows: [
     { file: "السجلات الخام (CSV)", flaw: "ثلاثة صفوف عنوان، وأعمدة بلا أسماء", lesson: "جلسة 2 · التنظيف" },
@@ -474,15 +535,57 @@ const EN: TrainingContent = {
 
   // Cumulative record of what was actually delivered — not one programme's shape.
   stats: [
-    { value: "+150", label: "Participants" },
-    { value: "+360", label: "Hours delivered" },
-    { value: "+30", label: "Hands-on sessions" },
-    { value: "+30", label: "Weeks of delivery" },
+    { value: "150+", label: "Participants" },
+    { value: "360+", label: "Hours delivered" },
+    { value: "30+", label: "Hands-on sessions" },
+    { value: "30+", label: "Weeks of delivery" },
   ],
 
-  evidenceTitle: "From the workshop room",
+  latest: {
+    title: "Latest course",
+    name: "Business Analysis with Power BI",
+    org: "Operations & Maintenance Agency, Riyadh Municipality, with the General Department of Human Resources Development, in partnership with Mashari Al-Shathri Consulting Engineers",
+    facts: [
+      { k: "Dates", v: "8–12 November 2026" },
+      { k: "Length", v: "5 days, 15 sessions" },
+      { k: "Participants", v: "20+" },
+      { k: "Role", v: "Course presenter" },
+    ],
+    unitsTitle: "Units",
+    units: [
+      "Introduction to Power BI and a first report",
+      "Getting data: Excel, CSV and a folder of monthly files",
+      "Cleaning and shaping in Power Query",
+      "Modelling: star schema, date table and relationships",
+      "Visuals, interaction and conditional formatting",
+      "DAX, CALCULATE and time comparison, then publishing",
+    ],
+    clip: {
+      src: "/training/course-2026/course.mp4",
+      poster: "/training/course-2026/course.jpg",
+      title: "Business Analysis with Power BI course",
+      meta: "8–12 November 2026 · Operations & Maintenance Agency",
+      portrait: true,
+    },
+    photos: [
+    { src: "/training/course-2026/podium.jpg", title: "Opening from the podium", w: 1280, h: 960 },
+    { src: "/training/course-2026/hall.jpg", title: "Training hall at the Agency building", w: 1280, h: 960 },
+    { src: "/training/course-2026/participants.jpg", title: "Participants working on their own machines", w: 1600, h: 1200 },
+    { src: "/training/course-2026/follow-up.jpg", title: "One-to-one follow-up during practice", w: 1600, h: 1200 },
+    { src: "/training/course-2026/guidance-2.jpg", title: "Reviewing an exercise with a participant", w: 1200, h: 1600 },
+    { src: "/training/course-2026/guidance.jpg", title: "Fixing an issue on a participant's machine", w: 960, h: 1280 },
+    { src: "/training/course-2026/participants-2.jpg", title: "Participants in a hands-on session", w: 1200, h: 1600 },
+    { src: "/training/course-2026/banner.jpg", title: "Course banner", w: 1200, h: 1600 },
+    { src: "/training/course-2026/session.jpg", title: "Hands-on session", w: 1600, h: 1200 },
+    { src: "/training/course-2026/table.jpg", title: "Working on the practice file", w: 1280, h: 960 },
+    ],
+    zoom: "Enlarge photo",
+    close: "Close",
+  },
+
+  evidenceTitle: "Earlier workshops",
   evidenceSub:
-    "Power BI workshops for Riyadh Municipality staff — West, North and South sectors. " +
+    "For Riyadh Municipality staff in the West, North and South sectors. " +
     "Clips carrying the Municipality's identity are from its own internal-communications coverage.",
   clips: [
     {
@@ -547,7 +650,7 @@ const EN: TrainingContent = {
     { k: "Prerequisites", v: "A Windows machine, Power BI Desktop (free), and working Excel knowledge. No programming experience required." },
     { k: "Format", v: "A one-week intensive workshop, sessions spread across four weeks, or one-to-one sessions — to suit the host's schedule." },
     { k: "Session length", v: "Two to two and a half hours, including 15 minutes reviewing the previous session's assignment." },
-    { k: "Group size", v: "12 to 16 participants. Every participant works on their own machine, so a larger group loses individual follow-up." },
+    { k: "Group size", v: "12 to 16 participants is recommended, since everyone works on their own machine and needs individual follow-up. Larger groups need more follow-up time." },
     { k: "Language", v: "Arabic, with technical terms kept in English as they appear in the tool and its documentation." },
     { k: "Facilities", v: "A room with machines or personal laptops, a display screen, and internet access for publishing to Power BI Service in the final session." },
   ],
@@ -809,11 +912,11 @@ const EN: TrainingContent = {
 
 export const getTraining = (lang: "ar" | "en"): TrainingContent => (lang === "en" ? EN : AR);
 
-// ───────────────────── ملفُّ ورش العمل (نسخةٌ للطباعة) ─────────────────────
-//  ⚠ لا تذكر غير ورش العمل — بطلب المالك. ولا تُستعمل صفةُ «مدرّب» في أيّ موضع:
-//    الوصفُ فعلٌ منفَّذ (ورشٌ قُدِّمت) لا صفةٌ مهنية، تجنّبًا للمساءلة. والخلفية العملية سطرٌ واحدٌ في
-//    آخرها لأنّ مصداقية المحتوى تأتي من ممارسةٍ قائمة، لا بوصفها خبرةً تُعرَض.
-//  ⚠ صفحةٌ واحدة: أيّ بندٍ يُضاف يُقاس بعده عددُ الصفحات لا يُفترَض.
+// ───────────────────── ملف ورش العمل (نسخة للطباعة) ─────────────────────
+//  ⚠ لا تذكر غير ورش العمل — بطلب المالك. ولا تستعمل صفة «مدرب» في أي موضع:
+//    الوصف فعل منفذ (ورش قدمت) لا صفة مهنية، تجنبا للمساءلة. والخلفية العملية سطر واحد في
+//    آخرها لأن مصداقية المحتوى تأتي من ممارسة قائمة، لا بوصفها خبرة تعرض.
+//  ⚠ صفحة واحدة: أي بند يضاف يقاس بعده عدد الصفحات لا يفترض.
 
 const CV_AR: TrainerCv = {
   back: "ملف ورش العمل ←",
@@ -822,9 +925,9 @@ const CV_AR: TrainerCv = {
 
   summaryTitle: "الملخص",
   summary:
-    "محلل أعمال وبيانات في مشاريع أمانة منطقة الرياض، بخبرة مهنية تسع سنوات منها أكثر من أربع في البيانات. نفَّذ ورش عمل تطبيقية " +
+    "محلل أعمال وبيانات في مشاريع أمانة منطقة الرياض، بخبرة مهنية تسع سنوات منها أكثر من أربع في البيانات. نفذ ورش عمل تطبيقية " +
     "في تحليل الأعمال وبناء لوحات المعلومات بـ Power BI لأكثر من 150 من منسوبي الأمانة، " +
-    "تجاوز مجموعها 360 ساعة. وأعدَّ مادتها: بيانات تطبيقية مصمَّمة لغرض التعليم، وكتيِّبات " +
+    "تجاوز مجموعها 360 ساعة. وأعد مادتها: بيانات تطبيقية مصممة لغرض التعليم، وكتيبات " +
     "مطبوعة، ومعجم مصطلحات عربي إنجليزي. حاصل على شهادة CAPM من معهد إدارة المشاريع PMI.",
 
   domainsTitle: "مجالات التدريب",
@@ -847,40 +950,39 @@ const CV_AR: TrainerCv = {
   recordOrg: "أمانة منطقة الرياض",
   recordPeriod: "أكثر من 5 سنوات",
   record: [
-    "ورشة «تحليل الأعمال باستخدام Power BI» لمنسوبي قطاع الغرب — خمسة أيام، 11 إلى 15 يناير 2026، بواقع أربع ساعات ونصف يومياً.",
-    "ورشة Power BI لمدة أسبوع لمنسوبي قطاع الشمال، غطّتها قناة التواصل الداخلي بالأمانة.",
+    "دورة «تحليل الأعمال باستخدام Power BI» لوكالة التشغيل والصيانة — 8 إلى 12 نوفمبر 2026، خمسة أيام و15 جلسة لأكثر من 20 مشاركا.",
+    "ورشة «تحليل الأعمال باستخدام Power BI» لمنسوبي قطاع الغرب — خمسة أيام، 11 إلى 15 يناير 2026، بواقع أربع ساعات ونصف يوميا.",
+    "ورشة Power BI لمدة أسبوع لمنسوبي قطاع الشمال، غطتها قناة التواصل الداخلي بالأمانة.",
     "دورة رسمية في تحليل الأعمال وبناء لوحات المعلومات لمنسوبي قطاع الجنوب.",
-    "تدريب وتوجيه أكثر من 150 موظفاً على تحليل البيانات وإعداد التقارير وبناء لوحات المعلومات.",
-    "الورشة تطبيقية على الشاشة الحية: كل مشارك يعمل على جهازه، ويُختم البرنامج بمشروع ختامي يعرضه بنفسه.",
   ],
 
   programmeTitle: "محاور الورشة",
-  programmeMeta: "أربعة محاور متدرّجة · عربي بالمصطلح الإنجليزي",
+  programmeMeta: "أربعة محاور متدرجة · عربي بالمصطلح الإنجليزي",
   programme: [
-    { w: "المحور الأول", line: "من الفوضى إلى جدول نظيف — الاستيراد والتنظيف والجمع وأتمتة التحديث بـ Power Query. المخرج: ملف يحدّث بضغطة." },
+    { w: "المحور الأول", line: "من الفوضى إلى جدول نظيف — الاستيراد والتنظيف والجمع وأتمتة التحديث بـ Power Query. المخرج: ملف يحدث بضغطة." },
     { w: "المحور الثاني", line: "النموذج — النمذجة البعدية والعلاقات، جدول التاريخ والهرميات، والمقياس مقابل العمود المحسوب في DAX." },
-    { w: "المحور الثالث", line: "قلب الأداة — سياق المرشح جلسةً كاملة وبوابةً إلزامية، ثم CALCULATE وأخواتها وذكاء الوقت." },
+    { w: "المحور الثالث", line: "قلب الأداة — سياق المرشح جلسة كاملة وبوابة إلزامية، ثم CALCULATE وأخواتها وذكاء الوقت." },
     { w: "المحور الرابع", line: "العرض والتسليم — اختيار الرسوم والتفاعل والتنقل، ثم النشر والحوكمة وأمان مستوى الصف والمشروع الختامي." },
   ],
 
   materialsTitle: "المواد المعدة",
   materials: [
     "خطة المنهج ومعيار اللغة — 7 صفحات",
-    "الجزء الأول: مقدمة إلى Power BI — 22 صفحة",
+    "الجزء الأول: مقدمة إلى ⁦Power BI⁩ — 22 صفحة",
     "الجزء الثاني: أول تقرير كامل — 23 صفحة",
     "معجم مصطلحات عربي إنجليزي معتمد للمنهج",
-    "ستة ملفات بيانات تدريبية، في كل منها عيب مقصود يخدم درساً بعينه",
-    "قائمة تحقق قبل نشر أي تقرير، تسلّم للمشارك",
+    "ستة ملفات بيانات تدريبية، في كل منها عيب مقصود يخدم درسا بعينه",
+    "قائمة تحقق قبل نشر أي تقرير، تسلم للمشارك",
   ],
 
   methodTitle: "أسلوب التنفيذ",
   method:
-    "لا شريحة تقرأ، والشرح على الشاشة الحية · الخطأ يصنع عمداً ثم يشخّص · «لماذا» قبل «كيف» · " +
+    "لا شريحة تقرأ، والشرح على الشاشة الحية · الخطأ يصنع عمدا ثم يشخص · «لماذا» قبل «كيف» · " +
     "المصطلح إنجليزي ومعناه عربي · لا انتقال قبل أن يشرح المشارك سياق المرشح بلسانه.",
 
   qualsTitle: "المؤهلات",
   quals: [
-    { t: "CAPM — Certified Associate in Project Management", m: "Project Management Institute (PMI) · رقم 4183768 · 2025–2028" },
+    { t: "CAPM — Certified Associate in Project Management", m: "Project Management Institute (PMI) · رقم 4183768 · من 2025 إلى 2028" },
     { t: "Complete Guide to Power BI for Data Analysts", m: "Microsoft Press · LinkedIn Learning" },
     { t: "Learning Power BI Desktop", m: "LinkedIn Learning" },
   ],
@@ -888,8 +990,8 @@ const CV_AR: TrainerCv = {
   langsTitle: "اللغات",
   practiceTitle: "الخلفية العملية",
   practice:
-    "ما يُدرَّس مأخوذ من ممارسة قائمة: محلل أعمال وبيانات بأمانة منطقة الرياض، بنى منصة تحليلية من 34 شاشة " +
-    "تدير عقود صيانة بملايين الريالات، وصنّف أعمدة الإنارة إلى خمس درجات خطورة.",
+    "ما يدرس مأخوذ من ممارسة قائمة: محلل أعمال وبيانات بأمانة منطقة الرياض، بنى منصة تحليلية من 34 شاشة " +
+    "تدير عقود صيانة بملايين الريالات، وصنف أعمدة الإنارة إلى خمس درجات خطورة.",
 };
 
 const CV_EN: TrainerCv = {
@@ -923,11 +1025,10 @@ const CV_EN: TrainerCv = {
   recordOrg: "Riyadh Municipality",
   recordPeriod: "5+ years",
   record: [
+    "“Business Analysis with Power BI” course for the Operations & Maintenance Agency — 8–12 November 2026, five days and 15 sessions for 20+ participants.",
     "“Business Analysis with Power BI” workshop for West sector staff — five days, 11–15 January 2026, four and a half hours daily.",
     "A week-long Power BI workshop for North sector staff, covered by the Municipality’s internal channel.",
     "An official business analysis and dashboard course for South sector staff.",
-    "Trained and mentored more than 150 staff in data analysis, reporting and dashboard building.",
-    "Hands-on throughout: every participant works on their own machine, and the programme closes with a closing project they present themselves.",
   ],
 
   programmeTitle: "Workshop tracks",

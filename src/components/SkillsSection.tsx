@@ -7,7 +7,7 @@ export default function SkillsSection({ c }: { c: Content }) {
     <section id="skills" className="mx-auto max-w-6xl px-6 sm:px-10 py-20 scroll-mt-24">
       <SectionHead n={7} title={ui.sec.skills} img="/riyadh/street.jpg" />
 
-      {/* كل مجموعة بدليلها — الرقاقة وحدها لا تقول للقارئ شيئاً */}
+      {/* كل مجموعة بدليلها — الرقاقة وحدها لا تقول للقارئ شيئا */}
       <div className="stagger grid gap-5 md:grid-cols-2">
         {skillGroups.map((g) => (
           <article key={g.title} className="tile card-gold rounded-2xl p-6 sm:p-7 flex flex-col">

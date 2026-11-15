@@ -11,7 +11,7 @@ export default function RecruiterPage({ lang }: { lang: Lang }) {
 
   return (
     <div dir={s.dir} lang={s.lang} className="rx relative z-[2] min-h-screen bg-white text-[#111] font-plex">
-      <a href="#work" className="rx-skip">{lang === "en" ? "Skip to work" : "تخطَّ إلى الأعمال"}</a>
+      <a href="#work" className="rx-skip">{lang === "en" ? "Skip to work" : "تخط إلى الأعمال"}</a>
 
       {/* ── الشريط العلوي ── */}
       <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-[#E2E2E2]">

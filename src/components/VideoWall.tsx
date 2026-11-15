@@ -4,13 +4,13 @@ import { useRef, useState } from "react";
 import type { Clip } from "@/data/training";
 
 /**
- * ⚠⚠ هذه البطاقة **خارج** `VideoWall` عمداً، ولا تُنقل داخله.
+ * ⚠⚠ هذه البطاقة **خارج** `VideoWall` عمدا، ولا تنقل داخله.
  *
- * مكوِّنٌ يُعرَّف داخل جسم مكوِّنٍ آخر يصير **نوعاً جديداً في كل تصيير**، فيهدم
- * React شجرته ويبنيها من جديد عند أيّ تغيّر حالة. وأثرُه هنا كان عطلاً مقيساً
- * على الموقع الحيّ: الضغط على زرّ التشغيل يستدعي `play()` ثمّ **يُهدَم عنصر
- * الفيديو نفسه ويُركَّب غيره**، فيبقى `readyState = 0` ولا يبدأ شيء —
- * والمستخدم يرى شريط التحكّم ظهر بلا تشغيل.
+ * مكون يعرف داخل جسم مكون آخر يصير **نوعا جديدا في كل تصيير**، فيهدم
+ * React شجرته ويبنيها من جديد عند أي تغير حالة. وأثره هنا كان عطلا مقيسا
+ * على الموقع الحي: الضغط على زر التشغيل يستدعي `play()` ثم **يهدم عنصر
+ * الفيديو نفسه ويركب غيره**، فيبقى `readyState = 0` ولا يبدأ شيء —
+ * والمستخدم يرى شريط التحكم ظهر بلا تشغيل.
  */
 function ClipCard({
   clip,
@@ -72,17 +72,26 @@ function ClipCard({
 /**
  * جدار مقاطع من قاعة التدريب.
  *
- * ⚠ الطوليّ والعرضيّ لا يخلطان في شبكةٍ واحدة: نسبة ٩:١٦ في خانةٍ عريضة
- *   تترك شريطين أسودين هائلين. فتُفصل الشبكتان.
- * ⚠ شريط التحكّم الأصليّ لا يظهر قبل التشغيل: سبعة أشرطة رماديةٍ ساكنة
- *   تُفسد الصفحة. فيظهر غلافٌ وزرٌّ، ثمّ يُسلَّم الأمر للمتصفّح.
- * ⚠ `preload="none"` مقصود: تحميل بيانات سبعة مقاطع معاً يُبطئ الصفحة.
+ * ⚠ الطولي والعرضي لا يخلطان في شبكة واحدة: نسبة ٩:١٦ في خانة عريضة
+ *   تترك شريطين أسودين هائلين. فتفصل الشبكتان.
+ * ⚠ شريط التحكم الأصلي لا يظهر قبل التشغيل: سبعة أشرطة رمادية ساكنة
+ *   تفسد الصفحة. فيظهر غلاف وزر، ثم يسلم الأمر للمتصفح.
+ * ⚠ `preload="none"` مقصود: تحميل بيانات سبعة مقاطع معا يبطئ الصفحة.
  */
-export default function VideoWall({ clips, officialLabel }: { clips: Clip[]; officialLabel: string }) {
+export default function VideoWall({
+  clips,
+  officialLabel,
+  portraitGrid = "grid gap-5 grid-cols-2 lg:grid-cols-4",
+}: {
+  clips: Clip[];
+  officialLabel: string;
+  /** شبكة المقاطع الطولية؛ مقطع واحد يأخذ عمودا كاملا */
+  portraitGrid?: string;
+}) {
   const refs = useRef<Record<string, HTMLVideoElement | null>>({});
   const [started, setStarted] = useState<Record<string, boolean>>({});
 
-  // تشغيل مقطعٍ يوقف ما سواه — وإلّا تداخلت الأصوات.
+  // تشغيل مقطع يوقف ما سواه — وإلا تداخلت الأصوات.
   const soloPlay = (src: string) => {
     for (const [k, v] of Object.entries(refs.current)) if (k !== src && v) v.pause();
   };
@@ -90,7 +99,7 @@ export default function VideoWall({ clips, officialLabel }: { clips: Clip[]; off
   const start = (src: string) => {
     soloPlay(src);
     setStarted((s) => (s[src] ? s : { ...s, [src]: true }));
-    // الوعد يُرفض إن منع المتصفّح التشغيل — ولا يُعالَج بأكثر من تجاهله.
+    // الوعد يرفض إن منع المتصفح التشغيل — ولا يعالج بأكثر من تجاهله.
     refs.current[src]?.play().catch(() => {});
   };
 
@@ -117,7 +126,7 @@ export default function VideoWall({ clips, officialLabel }: { clips: Clip[]; off
   return (
     <div className="space-y-5">
       {portrait.length > 0 && (
-        <div className="stagger grid gap-5 grid-cols-2 lg:grid-cols-4">{portrait.map(render)}</div>
+        <div className={`stagger ${portraitGrid}`}>{portrait.map(render)}</div>
       )}
       {landscape.length > 0 && (
         <div className="stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{landscape.map(render)}</div>

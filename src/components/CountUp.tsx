@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// يحلّل قيمة مثل "+28K" أو "150" أو "CAPM" ويحرّك الجزء الرقمي من صفر.
+// يحلل قيمة مثل "+28K" أو "150" أو "CAPM" ويحرك الجزء الرقمي من صفر.
 export default function CountUp({ value, className }: { value: string; className?: string }) {
   const m = value.match(/^(\D*)(\d[\d,]*)(.*)$/);
   const hasNum = !!m;
@@ -11,7 +11,7 @@ export default function CountUp({ value, className }: { value: string; className
   const target = m ? parseInt(m[2].replace(/,/g, ""), 10) : 0;
   const [n, setN] = useState(0);
 
-  // الاعتماد على قيم أولية ثابتة فقط (hasNum, target) حتى لا يُعاد تشغيل المؤثّر كل render.
+  // الاعتماد على قيم أولية ثابتة فقط (hasNum, target) حتى لا يعاد تشغيل المؤثر كل render.
   useEffect(() => {
     if (!hasNum) return;
     let raf = 0;

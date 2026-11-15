@@ -53,7 +53,7 @@ export default function Works({ c }: { c: Content }) {
                   onClick={() => setLightbox(item)}
                   className="tile card-gold rounded-2xl overflow-hidden text-start group"
                 >
-                  {/* contain لا cover: أغلفة التقارير طولية وتُقتطع بشعاً مع cover */}
+                  {/* contain لا cover: أغلفة التقارير طولية وتقتطع بشعا مع cover */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-panel2 p-2">
                     {item.image && (
                       <Image src={item.image} alt={item.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-contain transition-transform duration-500 group-hover:scale-[1.04]" />
@@ -167,8 +167,8 @@ export default function Works({ c }: { c: Content }) {
                       </div>
                     )}
                     {item.note && <p className="mt-4 text-[11px] text-white/50 leading-relaxed">{item.note}</p>}
-                    {/* رابطٌ داخليّ (يبدأ بشرطة) يُفتح في الصفحة نفسها ويُبرَز زرّاً —
-                        وخارجيٌّ يُفتح في لسانٍ جديد كما كان. */}
+                    {/* رابط داخلي (يبدأ بشرطة) يفتح في الصفحة نفسها ويبرز زرا —
+                        وخارجي يفتح في لسان جديد كما كان. */}
                     {item.link &&
                       (item.link.startsWith("/") ? (
                         <Link
