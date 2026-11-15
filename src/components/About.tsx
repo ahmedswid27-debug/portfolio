@@ -3,7 +3,7 @@ import SectionHead from "./SectionHead";
 
 export default function About({ c }: { c: Content }) {
   const { profile, facts, ui } = c;
-  // أوّل فقرة تُقدَّم بحجمٍ أكبر — فتُقرأ وحدها إن لم يُقرأ الباقي.
+  // أول فقرة تقدم بحجم أكبر — فتقرأ وحدها إن لم يقرأ الباقي.
   const paras = profile.summary.split(/\n\s*\n/).map((t) => t.trim()).filter(Boolean);
   const [lead, ...rest] = paras;
 

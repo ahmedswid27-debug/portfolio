@@ -7,7 +7,7 @@ export default function Hero({ c }: { c: Content }) {
   return (
     <>
       <section id="top" className="relative isolate overflow-hidden">
-        {/* صورة الرياض — تتحرّك ببطء، والنص فوقها */}
+        {/* صورة الرياض — تتحرك ببطء، والنص فوقها */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image
             src="/riyadh/kafd.jpg"
@@ -17,14 +17,14 @@ export default function Hero({ c }: { c: Content }) {
             sizes="100vw"
             className="object-cover object-center kenburns"
           />
-          {/* تدرّجان: أفقيٌّ ليُقرأ النص، ورأسيٌّ ليذوب في الصفحة */}
+          {/* تدرجان: أفقي ليقرأ النص، ورأسي ليذوب في الصفحة */}
           <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/40 to-ink" />
           <div className="absolute inset-0 rtl:bg-gradient-to-l ltr:bg-gradient-to-r from-ink via-ink/50 to-ink/5" />
         </div>
 
         <div className="px-6 sm:px-10 lg:px-14 pt-24 pb-24 sm:pt-32 sm:pb-32 min-h-[74vh] flex items-center">
           <div className="max-w-3xl">
-            {/* ⚠ leading ≥ 1.3 و pb — الخط العربي العريض يُقتطع دونهما */}
+            {/* ⚠ leading ≥ 1.3 و pb — الخط العربي العريض يقتطع دونهما */}
             <h1 className="rise font-display font-black tracking-normal leading-[1.32] pb-2 text-[34px] sm:text-5xl lg:text-[56px] text-gold-shine">
               {profile.fullName}
             </h1>

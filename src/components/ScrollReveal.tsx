@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-// يضيف ظهورًا تدريجيًا لكل قسم عند دخوله الشاشة (يتجاهل الهيرو).
+// يضيف ظهورا تدريجيا لكل قسم عند دخوله الشاشة (يتجاهل الهيرو).
 export default function ScrollReveal() {
   useEffect(() => {
     const els = Array.from(

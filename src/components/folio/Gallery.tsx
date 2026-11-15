@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import type { Pic } from "@/data/folio";
 
 /**
- * صور تُكبَّر بالعارض الأصلي للمتصفح (<dialog>) — بلا مكتبة.
+ * صور تكبر بالعارض الأصلي للمتصفح (<dialog>) — بلا مكتبة.
  * كل صورة تجلس فوق الشريط النعناعي (‎.fo-frame‎) كما في ملف الأعمال.
  */
 export default function Gallery({

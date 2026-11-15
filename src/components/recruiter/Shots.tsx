@@ -5,8 +5,8 @@ import { useRef, useState } from "react";
 type Shot = { src: string; title: string; note: string };
 
 /**
- * شبكة لقطات تُفتح بالعارض الأصلي للمتصفح (<dialog>) — بلا مكتبة.
- * `cols` يحدد الأعمدة على الشاشة الكبيرة، والجوال يعرض عموداً واحداً أو شريطاً أفقياً.
+ * شبكة لقطات تفتح بالعارض الأصلي للمتصفح (<dialog>) — بلا مكتبة.
+ * `cols` يحدد الأعمدة على الشاشة الكبيرة، والجوال يعرض عمودا واحدا أو شريطا أفقيا.
  */
 export default function Shots({
   items,

@@ -170,7 +170,7 @@ export default function FolioPage({ lang }: { lang: Lang }) {
             <span className="text-[13px] text-white/62 leading-relaxed">{s.workshops.latest.meta}</span>
           </a>
           <Gallery items={s.workshops.photos.filter((x) => x.w > x.h)} className="grid sm:grid-cols-2 gap-4" sizes="(max-width: 640px) 100vw, 560px" zoom={s.zoom} close={s.closeLabel} />
-          <Gallery items={s.workshops.photos.filter((x) => x.w <= x.h)} className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4" sizes="(max-width: 768px) 50vw, 270px" zoom={s.zoom} close={s.closeLabel} />
+          <Gallery items={s.workshops.photos.filter((x) => x.w <= x.h)} className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 [&_img]:aspect-[4/5] [&_img]:object-cover" sizes="(max-width: 768px) 50vw, 270px" zoom={s.zoom} close={s.closeLabel} />
           <a href={s.workshops.link.href} className="fo-btn fo-btn-line mt-6">{s.workshops.link.label}</a>
         </Sec>
 

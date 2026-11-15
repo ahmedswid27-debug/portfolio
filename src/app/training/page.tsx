@@ -6,9 +6,9 @@ const t = getTraining("ar");
 
 export const metadata: Metadata = {
   title: `${t.title} — ورش عمل تطبيقية`,
-  // ⚠ وصفُ البحث لا يتجاوز ١٦٠ حرفاً وإلّا بُتر — و`t.lead` فقرةٌ كاملة
+  // ⚠ وصف البحث لا يتجاوز ١٦٠ حرفا وإلا بتر — و`t.lead` فقرة كاملة
   description:
-    "ورش عمل تطبيقية في Power BI — المحاور والمواد وشروط التنفيذ، وسجلُّ تنفيذٍ يتجاوز 360 ساعةً لأكثر من 150 مشاركاً في جهة حكومية.",
+    "ورش عمل تطبيقية في Power BI — المحاور والمواد وشروط التنفيذ، وسجل تنفيذ يتجاوز 360 ساعة لأكثر من 150 مشاركا في جهة حكومية.",
   alternates: { canonical: "/training", languages: { "ar-SA": "/training", "en-US": "/en/training" } },
   openGraph: {
     title: t.title,

@@ -20,17 +20,17 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
       <HtmlLang lang={lang} dir={t.dir} />
       <ScrollProgress />
       {/* ⚠ `ScrollReveal` يختار `main section` ويخفيها حتى تدخل الشاشة —
-          فأقسام هذه الصفحة كلُّها داخل `<main>` لذلك، وقواعد الطباعة تُظهرها. */}
+          فأقسام هذه الصفحة كلها داخل `<main>` لذلك، وقواعد الطباعة تظهرها. */}
       <ScrollReveal />
 
-      {/* ── شريط علويّ رفيع: الرجوع واللغة ── */}
+      {/* ── شريط علوي رفيع: الرجوع واللغة ── */}
       <header className="no-print sticky top-0 z-50 bg-ink/92 backdrop-blur border-b border-gold/12">
         <div className="mx-auto max-w-6xl px-6 sm:px-10 h-14 flex items-center gap-4">
           <Link href={home} className="inline-flex items-center min-h-11 text-[14px] sm:text-[13px] text-gold/90 hover:text-gold transition-colors">
             {t.back}
           </Link>
           <span className="hidden sm:block flex-1 hairline" />
-          <p className="ms-auto sm:ms-0 text-[13px] sm:text-[12px] text-white/50 truncate">{profile.fullName}</p>
+          <p className="ms-auto sm:ms-0 text-[13px] sm:text-[12px] text-white/50 truncate">{lang === "en" ? profile.fullNameEn : profile.fullName}</p>
           <Link
             href={other}
             className="shrink-0 inline-flex items-center justify-center min-h-11 min-w-11 text-[12px] sm:text-[11px] font-bold px-3 rounded-full border border-gold/30 text-gold hover:bg-gold/[0.08] transition-colors"
@@ -52,7 +52,7 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
           <span className="inline-block text-[12px] sm:text-[11px] tracking-wider px-3 py-1 rounded-full bg-gold/12 border border-gold/30 text-gold">
             {t.badge}
           </span>
-          {/* ⚠ leading ≥ 1.3 و pb — الخط العربي العريض يُقتطع دونهما */}
+          {/* ⚠ leading ≥ 1.3 و pb — الخط العربي العريض يقتطع دونهما */}
           <h1 className="mt-5 font-display font-black leading-[1.34] pb-1 text-[30px] sm:text-[42px] lg:text-[50px] max-w-4xl text-gold-shine">
             {t.title}
           </h1>
@@ -78,8 +78,8 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
         {/* ── ١ · أحدث دورة: مقطعها وحقائقها وصورها ── */}
         <section id="latest" className="py-16 sm:py-20">
           <SectionHead n={1} title={t.latest.title} sub={t.latest.name} img="/riyadh/kafd.jpg" />
-          <div className="grid gap-6 lg:grid-cols-[320px_1fr] items-start">
-            <div className="w-full max-w-[320px] mx-auto lg:mx-0">
+          <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
+            <div className="w-full max-w-[300px] mx-auto lg:mx-0">
               <VideoWall clips={[t.latest.clip]} officialLabel="" portraitGrid="grid gap-5 grid-cols-1" />
             </div>
             <div className="card-gold rounded-2xl p-6 sm:p-8">
@@ -231,8 +231,8 @@ export default function TrainingPage({ lang }: { lang: "ar" | "en" }) {
         <section className="py-16 sm:py-20">
           <SectionHead n={6} title={t.dataTitle} sub={t.dataSub} img="/riyadh/kingdom-night.jpg" />
           <div className="card-gold rounded-2xl overflow-hidden">
-            {/* ⚠ ثلاثة أعمدة في شاشة ٣٩٠ تعرض عمودين ونصفاً، والثالث يُقرأ شظيّةً.
-                فعلى الجوال تُفكَّك الصفوف بطاقاتٍ، وعلى الشاشة الواسعة تبقى جدولاً. */}
+            {/* ⚠ ثلاثة أعمدة في شاشة ٣٩٠ تعرض عمودين ونصفا، والثالث يقرأ شظية.
+                فعلى الجوال تفكك الصفوف بطاقات، وعلى الشاشة الواسعة تبقى جدولا. */}
             <table className="hidden sm:table w-full text-start border-collapse">
               <thead>
                 <tr className="bg-panel2/60 border-b border-gold/15">
