@@ -391,7 +391,7 @@ const EN_SECTIONS: Section[] = [
       {
         featured: true,
         title: "Workshops: Business Analysis & Dashboard Design with Power BI",
-        org: "Riyadh Municipality — West, North and South sectors",
+        org: "Riyadh Municipality — Operations & Maintenance Agency, and the West, North and South sectors",
         status: "Delivered & authored",
         desc:
           "A hands-on programme that starts from a raw file carrying deliberate defects and ends with a published, " +
@@ -406,6 +406,7 @@ const EN_SECTIONS: Section[] = [
         ],
         highlightsLabel: "What the programme covers",
         highlights: [
+          "Latest course: “Business Analysis with Power BI” for the Operations & Maintenance Agency, 8–12 November 2026 — five days, 15 sessions, 20+ participants, presented by Ahmed",
           "Four progressive tracks; each ends in an output the participant can see",
           "A full session on Filter Context — a mandatory gate that is never merged or shortened",
           "Six data files with deliberate defects, each defect serving one specific lesson",

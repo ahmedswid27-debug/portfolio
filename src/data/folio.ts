@@ -29,7 +29,14 @@ export type Folio = {
   platform: { title: string; org: string; points: string[]; more: string; notice: string; alt: string };
   lessons: { title: string; labels: { wrong: string; rule: string }; items: { t: string; wrong: string; rule: string }[] };
   reports: { title: string; items: Pic[] };
-  workshops: { title: string; numbers: { value: string; label: string }[]; photos: Pic[]; link: { href: string; label: string } };
+  workshops: {
+    title: string;
+    numbers: { value: string; label: string }[];
+    /** أحدث دورة: سطر واحد يربط بقسمها في صفحة الورش */
+    latest: { label: string; name: string; meta: string; href: string };
+    photos: Pic[];
+    link: { href: string; label: string };
+  };
   experience: { title: string; jobs: { period: string; role: string; org: string; points: string[] }[] };
   skills: { title: string; groups: { title: string; items: string[] }[] };
   creds: {
@@ -181,12 +188,20 @@ const AR: Folio = {
       { value: "+360", label: "ساعة تنفيذ" },
       { value: "52", label: "صفحة مادة" },
     ],
+    latest: {
+      label: "أحدث دورة",
+      name: "تحليل الأعمال باستخدام Power BI",
+      meta: "وكالة التشغيل والصيانة · 8 إلى 12 نوفمبر 2026 · 15 جلسة لأكثر من 20 مشاركا",
+      href: "/training#latest",
+    },
     photos: [
+      { src: "/training/course-2026/hall.jpg", title: "دورة الوكالة، نوفمبر 2026", w: 1280, h: 960 },
+      { src: "/training/course-2026/follow-up.jpg", title: "متابعة فردية أثناء التطبيق", w: 1600, h: 1200 },
       { src: "/works/training/presenting.jpg", title: "شرح على لوحة حية", w: 719, h: 408 },
       { src: "/training/video/hall.jpg", title: "ورشة قطاع الغرب", w: 854, h: 484 },
+      { src: "/training/course-2026/guidance-2.jpg", title: "مراجعة تمرين مع مشارك", w: 1200, h: 1600 },
+      { src: "/training/course-2026/banner.jpg", title: "لافتة دورة الوكالة", w: 1200, h: 1600 },
       { src: "/works/training/podium.jpg", title: "قاعة الورشة", w: 428, h: 536 },
-      { src: "/works/training/room-powerbi.jpg", title: "التطبيق العملي", w: 431, h: 545 },
-      { src: "/works/training/banner-powerbi.jpg", title: "لافتة الورشة", w: 428, h: 536 },
       { src: "/works/training/certificates.jpg", title: "توقيع الشهادات", w: 428, h: 536 },
     ],
     link: { href: "/training", label: "محاور الورش" },
@@ -370,9 +385,24 @@ const EN: Folio = {
       { value: "360+", label: "Hours delivered" },
       { value: "52", label: "Pages of material" },
     ],
+    latest: {
+      label: "Latest course",
+      name: "Business Analysis with Power BI",
+      meta: "Operations & Maintenance Agency · 8–12 November 2026 · 15 sessions, 20+ participants",
+      href: "/en/training#latest",
+    },
     photos: AR.workshops.photos.map((p, i) => ({
       ...p,
-      title: ["Live dashboard walkthrough", "West sector workshop", "Workshop hall", "Hands-on practice", "Workshop banner", "Signing certificates"][i],
+      title: [
+        "Agency course, November 2026",
+        "One-to-one follow-up during practice",
+        "Live dashboard walkthrough",
+        "West sector workshop",
+        "Reviewing an exercise with a participant",
+        "Agency course banner",
+        "Workshop hall",
+        "Signing certificates",
+      ][i],
     })),
     link: { href: "/en/training", label: "Workshop syllabus" },
   },

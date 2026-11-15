@@ -78,7 +78,16 @@ function ClipCard({
  *   تُفسد الصفحة. فيظهر غلافٌ وزرٌّ، ثمّ يُسلَّم الأمر للمتصفّح.
  * ⚠ `preload="none"` مقصود: تحميل بيانات سبعة مقاطع معاً يُبطئ الصفحة.
  */
-export default function VideoWall({ clips, officialLabel }: { clips: Clip[]; officialLabel: string }) {
+export default function VideoWall({
+  clips,
+  officialLabel,
+  portraitGrid = "grid gap-5 grid-cols-2 lg:grid-cols-4",
+}: {
+  clips: Clip[];
+  officialLabel: string;
+  /** شبكة المقاطع الطولية؛ مقطع واحد يأخذ عمودا كاملا */
+  portraitGrid?: string;
+}) {
   const refs = useRef<Record<string, HTMLVideoElement | null>>({});
   const [started, setStarted] = useState<Record<string, boolean>>({});
 
@@ -117,7 +126,7 @@ export default function VideoWall({ clips, officialLabel }: { clips: Clip[]; off
   return (
     <div className="space-y-5">
       {portrait.length > 0 && (
-        <div className="stagger grid gap-5 grid-cols-2 lg:grid-cols-4">{portrait.map(render)}</div>
+        <div className={`stagger ${portraitGrid}`}>{portrait.map(render)}</div>
       )}
       {landscape.length > 0 && (
         <div className="stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{landscape.map(render)}</div>

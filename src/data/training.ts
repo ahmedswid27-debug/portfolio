@@ -40,6 +40,22 @@ export type Clip = {
 
 export type Doc = { href: string; title: string; meta: string };
 
+export type Photo = { src: string; title: string; w: number; h: number };
+
+/** أحدث دورة نُفِّذت — مقطعها وصورها وحقائقها، وكل رقم فيها من ملفات الدورة نفسها. */
+export type Latest = {
+  title: string;
+  name: string;
+  org: string;
+  facts: { k: string; v: string }[];
+  unitsTitle: string;
+  units: string[];
+  clip: Clip;
+  photos: Photo[];
+  zoom: string;
+  close: string;
+};
+
 /** ملفُّ ورش العمل — صفحةٌ واحدة لا تذكر غير الورش. */
 export type TrainerCv = {
   back: string;
@@ -74,6 +90,8 @@ export type TrainingContent = {
   title: string;
   lead: string;
   stats: { value: string; label: string }[];
+
+  latest: Latest;
 
   evidenceTitle: string;
   evidenceSub: string;
@@ -133,9 +151,52 @@ const AR: TrainingContent = {
     { value: "+30", label: "أسبوع عمل" },
   ],
 
-  evidenceTitle: "من قاعة الورشة",
+  latest: {
+    title: "أحدث دورة",
+    name: "تحليل الأعمال باستخدام Power BI",
+    org: "وكالة التشغيل والصيانة بأمانة منطقة الرياض، بالتعاون مع الإدارة العامة لتطوير الموارد البشرية",
+    // المصدر: لافتة الدورة، ودليل السلسلة في masar-ahmed\حلقات الدورة، وشرائط ريل الدورة.
+    facts: [
+      { k: "التاريخ", v: "8 إلى 12 نوفمبر 2026" },
+      { k: "المدة", v: "5 أيام، 15 جلسة تطبيقية" },
+      { k: "المشاركون", v: "أكثر من 20 مشاركا" },
+      { k: "الدور", v: "مقدم الدورة" },
+    ],
+    unitsTitle: "الوحدات",
+    units: [
+      "مقدمة إلى Power BI وأول تقرير",
+      "الاتصال بالبيانات: Excel وCSV ومجلد الملفات الشهرية",
+      "التنظيف والتحويل في Power Query",
+      "النمذجة: نموذج النجمة وجدول التاريخ والعلاقات",
+      "التصورات والتفاعل والتنسيق الشرطي",
+      "DAX وCALCULATE والمقارنة الزمنية، ثم النشر",
+    ],
+    clip: {
+      src: "/training/course-2026/course.mp4",
+      poster: "/training/course-2026/course.jpg",
+      title: "دورة تحليل الأعمال باستخدام Power BI",
+      meta: "8 إلى 12 نوفمبر 2026 · وكالة التشغيل والصيانة",
+      portrait: true,
+    },
+    photos: [
+    { src: "/training/course-2026/podium.jpg", title: "الافتتاح من المنصة", w: 1280, h: 960 },
+    { src: "/training/course-2026/hall.jpg", title: "قاعة التدريب بمبنى الوكالة", w: 1280, h: 960 },
+    { src: "/training/course-2026/participants.jpg", title: "التطبيق على أجهزة المشاركين", w: 1600, h: 1200 },
+    { src: "/training/course-2026/follow-up.jpg", title: "متابعة فردية أثناء التطبيق", w: 1600, h: 1200 },
+    { src: "/training/course-2026/guidance-2.jpg", title: "مراجعة تمرين مع مشارك", w: 1200, h: 1600 },
+    { src: "/training/course-2026/guidance.jpg", title: "حل مشكلة على جهاز مشارك", w: 960, h: 1280 },
+    { src: "/training/course-2026/participants-2.jpg", title: "المشاركون في جلسة تطبيقية", w: 1200, h: 1600 },
+    { src: "/training/course-2026/banner.jpg", title: "لافتة الدورة", w: 1200, h: 1600 },
+    { src: "/training/course-2026/session.jpg", title: "جلسة تطبيقية", w: 1600, h: 1200 },
+    { src: "/training/course-2026/table.jpg", title: "العمل على ملف التمرين", w: 1280, h: 960 },
+    ],
+    zoom: "تكبير الصورة",
+    close: "إغلاق",
+  },
+
+  evidenceTitle: "ورش سابقة",
   evidenceSub:
-    "ورش Power BI لمنسوبي أمانة منطقة الرياض — قطاعات الغرب والشمال والجنوب. " +
+    "لمنسوبي أمانة منطقة الرياض في قطاعات الغرب والشمال والجنوب. " +
     "المقاطع المعلّمة بهوية الأمانة من تغطية حساب التواصل الداخلي بالأمانة.",
   clips: [
     {
@@ -480,9 +541,51 @@ const EN: TrainingContent = {
     { value: "+30", label: "Weeks of delivery" },
   ],
 
-  evidenceTitle: "From the workshop room",
+  latest: {
+    title: "Latest course",
+    name: "Business Analysis with Power BI",
+    org: "Operations & Maintenance Agency, Riyadh Municipality, with the General Department of Human Resources Development",
+    facts: [
+      { k: "Dates", v: "8–12 November 2026" },
+      { k: "Length", v: "5 days, 15 hands-on sessions" },
+      { k: "Participants", v: "20+" },
+      { k: "Role", v: "Course presenter" },
+    ],
+    unitsTitle: "Units",
+    units: [
+      "Introduction to Power BI and a first report",
+      "Getting data: Excel, CSV and a folder of monthly files",
+      "Cleaning and shaping in Power Query",
+      "Modelling: star schema, date table and relationships",
+      "Visuals, interaction and conditional formatting",
+      "DAX, CALCULATE and time comparison, then publishing",
+    ],
+    clip: {
+      src: "/training/course-2026/course.mp4",
+      poster: "/training/course-2026/course.jpg",
+      title: "Business Analysis with Power BI course",
+      meta: "8–12 November 2026 · Operations & Maintenance Agency",
+      portrait: true,
+    },
+    photos: [
+    { src: "/training/course-2026/podium.jpg", title: "Opening from the podium", w: 1280, h: 960 },
+    { src: "/training/course-2026/hall.jpg", title: "Training hall at the Agency building", w: 1280, h: 960 },
+    { src: "/training/course-2026/participants.jpg", title: "Participants working on their own machines", w: 1600, h: 1200 },
+    { src: "/training/course-2026/follow-up.jpg", title: "One-to-one follow-up during practice", w: 1600, h: 1200 },
+    { src: "/training/course-2026/guidance-2.jpg", title: "Reviewing an exercise with a participant", w: 1200, h: 1600 },
+    { src: "/training/course-2026/guidance.jpg", title: "Fixing an issue on a participant's machine", w: 960, h: 1280 },
+    { src: "/training/course-2026/participants-2.jpg", title: "Participants in a hands-on session", w: 1200, h: 1600 },
+    { src: "/training/course-2026/banner.jpg", title: "Course banner", w: 1200, h: 1600 },
+    { src: "/training/course-2026/session.jpg", title: "Hands-on session", w: 1600, h: 1200 },
+    { src: "/training/course-2026/table.jpg", title: "Working on the practice file", w: 1280, h: 960 },
+    ],
+    zoom: "Enlarge photo",
+    close: "Close",
+  },
+
+  evidenceTitle: "Earlier workshops",
   evidenceSub:
-    "Power BI workshops for Riyadh Municipality staff — West, North and South sectors. " +
+    "For Riyadh Municipality staff in the West, North and South sectors. " +
     "Clips carrying the Municipality's identity are from its own internal-communications coverage.",
   clips: [
     {
@@ -847,6 +950,7 @@ const CV_AR: TrainerCv = {
   recordOrg: "أمانة منطقة الرياض",
   recordPeriod: "أكثر من 5 سنوات",
   record: [
+    "دورة «تحليل الأعمال باستخدام Power BI» لوكالة التشغيل والصيانة، بالتعاون مع الإدارة العامة لتطوير الموارد البشرية — 8 إلى 12 نوفمبر 2026، خمسة أيام و15 جلسة لأكثر من 20 مشاركا.",
     "ورشة «تحليل الأعمال باستخدام Power BI» لمنسوبي قطاع الغرب — خمسة أيام، 11 إلى 15 يناير 2026، بواقع أربع ساعات ونصف يومياً.",
     "ورشة Power BI لمدة أسبوع لمنسوبي قطاع الشمال، غطّتها قناة التواصل الداخلي بالأمانة.",
     "دورة رسمية في تحليل الأعمال وبناء لوحات المعلومات لمنسوبي قطاع الجنوب.",
@@ -923,11 +1027,10 @@ const CV_EN: TrainerCv = {
   recordOrg: "Riyadh Municipality",
   recordPeriod: "5+ years",
   record: [
+    "“Business Analysis with Power BI” course for the Operations & Maintenance Agency — 8–12 November 2026, 15 sessions, 20+ participants.",
     "“Business Analysis with Power BI” workshop for West sector staff — five days, 11–15 January 2026, four and a half hours daily.",
     "A week-long Power BI workshop for North sector staff, covered by the Municipality’s internal channel.",
     "An official business analysis and dashboard course for South sector staff.",
-    "Trained and mentored more than 150 staff in data analysis, reporting and dashboard building.",
-    "Hands-on throughout: every participant works on their own machine, and the programme closes with a closing project they present themselves.",
   ],
 
   programmeTitle: "Workshop tracks",
